@@ -7,22 +7,23 @@ var argv = require('yargs')
 var PreflightFile = require('./preflightFile');
 var PreflightDirectory = require('./preflightDirectory');
 
-// Test file exists
-var input = argv.input;
-var output = argv.output;
-
 if(argv.version){
     console.log('v0.0.1');
 }
 
 if(argv.action === 'preflight'){
 
+    // Test file exists
+    var input = argv.input;
+    var output = argv.output;
+    var append = argv.append;
+
     argv = require('yargs')
-        .usage('Usage: $0 --input [path] --output [path]')
-        .demand(['input', 'output'])
+        .usage('Usage: $0 --input [path] --output [path] [--append]')
+        .demand(['input'])
         .argv;
 
-    var preflight = new PreflightFile(input, output);
+    var preflight = new PreflightFile(input, output, append);
     preflight.init();
 
 }
