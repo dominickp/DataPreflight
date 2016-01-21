@@ -38,7 +38,7 @@ describe("preflight test", function(){
     });
 
     //it("should get the minimum character count of the 'Name' column", function(){
-    //    expect(comparisonTable.)
+    //    expect(comparisonTable.getTableRows)
     //});
 
 
