@@ -36,8 +36,6 @@ if(argv.action === 'preflight-dir'){
         .demand(['path'])
         .argv;
 
-    console.log('dir');
-
     var preflight = new PreflightDirectory(path);
     preflight.init();
 
