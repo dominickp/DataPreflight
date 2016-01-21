@@ -6,6 +6,8 @@ var fs = require('fs');
 var PreflightFile = function(input, output, append){
     var model = this;
 
+    model.debug = true;
+
     model.filename = input;
 
     model.preflightPath = output;
@@ -14,23 +16,32 @@ var PreflightFile = function(input, output, append){
 
     model.header = "Gabe's Data Preflight - Version 0.0.1";
 
-    model.write = function(path, data, append){
+    model.purgeOldPreflight = function(append, callback){
 
-        fs.stat(path, function(err, stats){
+        if(!model.preflightPath) return false;
+
+        fs.stat(model.preflightPath, function(err, stats){
             if(stats && stats.isFile() && !append){
-                fs.unlink(path, function(){
-                    fs.appendFile(path, data+'\r\n\r\n', 'utf8', function(error) {});
+                fs.unlink(model.preflightPath, function(){
+                   callback();
                 });
             } else {
-                fs.appendFile(path, data+'\r\n\r\n', 'utf8', function(error) {});
+                callback();
             }
+        });
+    };
+
+    model.write = function(path, data, append, callback){
+
+        fs.appendFile(path, data+'\r\n\r\n', 'utf8', function(error) {
+            callback(error, data);
         });
 
         // log
-        console.log(data);
+        //console.log(data);
     };
 
-    model.appendSection = function(path, section, data, major){
+    model.appendSection = function(path, section, data, major, callback){
         var headerLine;
         if(major === true){
             headerLine = '\r\n=========================================================================================\r\n';
@@ -39,44 +50,97 @@ var PreflightFile = function(input, output, append){
         }
 
         data = section + headerLine + data;
-        return model.write(path, data, model.appendFlag);
+        //
+        //if(typeof callback !== 'function'){
+        //    console.log('CALLBACK NOT A FUNCTION');
+        //    console.log(data);
+        //    console.log('EEEENNNNNDDD');
+        //}
+
+        model.write(path, data, model.appendFlag, function(error, data){
+
+
+            if(model.debug === true){
+                console.log('action - ' + section)
+            }
+
+            callback(error, data);
+        });
     };
 
-    model.init = function(){
+    model.recordSection = function(sheet, callback){
 
-        // Set default output if input left blank
-        if(!model.preflightPath){
-            model.preflightPath = model.filename+'_preflight.txt';
-        }
+        var number_of_records = sheet.length - 1;
+        model.appendSection(model.preflightPath, 'Records', number_of_records, false, function() {
+            callback();
+        });
+    };
 
-        // Write header
-        model.write(model.preflightPath, model.header, model.appendFlag);
+    model.sheetNameSection = function(sheet, sheet_id, sheet_number, callback){
+        model.appendSection(model.preflightPath, 'Sheet #'+sheet_number, sheet_id, true, function(){
+            callback(sheet);
+        });
+    };
 
-        // Write filename
-        model.appendSection(model.preflightPath, 'File', model.filename, true);
+    model.timestampSection = function(callback){
+        model.appendSection(model.preflightPath, 'Time', new Date().toISOString(), false, function(){
+            callback();
+        });
+    };
 
-        var readFileArray = J.readFile(model.filename);
-        //var parsedObject = readFileArray[1];
+    model.previewTableSection = function(sheet, callback){
 
+        var comparison = new ComparisonTable(sheet);
+        var columns = comparison.getTableRows();
+
+        // Build table
+        var table = new Table({
+            head: ["HEADER", "FIRST", "MIDDLE", "LAST", "MN", "MX"],
+            style: {
+                head: [],    //disable colors in header cells
+                border: []  //disable colors for the border
+            },
+
+            colWidths: [26, 16, 16, 16, 4, 4]
+            //wordWrap:true
+        });
+
+        columns.forEach(function (column) {
+            table.push(column);
+        });
+
+        model.appendSection(model.preflightPath, 'Preview', table.toString(), false, function() {
+            callback(sheet);
+        });
+    };
+
+    model.preflightSheets = function(filename, callback){
+
+        var readFileArray = J.readFile(filename);
         var workbookJson = J.utils.to_json(readFileArray);
 
-        // Helper function
-        Object.values = function (obj) {
-            var vals = [];
-            for( var key in obj ) {
-                if ( obj.hasOwnProperty(key) ) {
-                    vals.push(obj[key]);
-                }
-            }
-            return vals;
-        };
+        //// Helper function
+        //Object.values = function (obj) {
+        //    var vals = [];
+        //    for( var key in obj ) {
+        //        if ( obj.hasOwnProperty(key) ) {
+        //            vals.push(obj[key]);
+        //        }
+        //    }
+        //    return vals;
+        //};
 
         // Loop through sheets
         var sheet_number = 1;
-        for (var sheet_id in workbookJson) {
+        var sheet_id;
+        for ( sheet_id in workbookJson) {
 
             // Write sheet name
-            model.appendSection(model.preflightPath, 'Sheet #'+sheet_number, sheet_id, true);
+            //model.appendSection(model.preflightPath, 'Sheet #'+sheet_number, sheet_id, true, function(){
+            //    // empty callback
+            //});
+
+
             sheet_number++;
 
             // skip loop if the property is from prototype
@@ -86,37 +150,47 @@ var PreflightFile = function(input, output, append){
             var sheet = workbookJson[sheet_id];
 
 
-            var comparison = new ComparisonTable(sheet);
-            var columns = comparison.getTableRows();
-
-            // Build table
-            var table = new Table({
-                head: ["HEADER", "FIRST", "MIDDLE", "LAST", "MN", "MX"],
-                style: {
-                    head: [],    //disable colors in header cells
-                    border: []  //disable colors for the border
-                },
-
-                colWidths: [26, 16, 16, 16, 4, 4]
-                //wordWrap:true
+            model.sheetNameSection(sheet, sheet_id, sheet_number, function(sheet){
+                model.previewTableSection(sheet, function(sheet){
+                    model.recordSection(sheet, function(){
+                        model.timestampSection(function(){
+                            callback();
+                        });
+                    });
+                });
             });
 
-            columns.forEach(function (column) {
-                table.push(column);
-            });
 
-            // Write sample table
-            model.appendSection(model.preflightPath, 'Preview', table.toString());
 
-            // Records
-            var number_of_records = sheet.length - 1;
-            model.appendSection(model.preflightPath, 'Records', number_of_records);
-
-            // Timestamp
-            model.appendSection(model.preflightPath, 'Time', new Date().toISOString());
         }
     };
 
+    model.init = function(){
+
+        // Set default output if input left blank
+        if(!model.preflightPath){
+            model.preflightPath = model.filename+'_preflight.txt';
+        }
+
+        // Delete old preflight
+        model.purgeOldPreflight(model.appendFlag, function(){
+            console.log(1);
+
+            // Write header
+            model.write(model.preflightPath, model.header, model.appendFlag, function(){
+
+                // Write filename
+                model.appendSection(model.preflightPath, 'File', model.filename, true, function(){
+
+
+                    model.preflightSheets(model.filename, function(){
+                        // done
+                    });
+
+                });
+            });
+        });
+    };
 };
 
 module.exports = PreflightFile;
