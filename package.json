@@ -32,10 +32,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dominickp/VDPBuddy.git"
+    "url": "git+https://github.com/dominickp/DataPreflight.git"
   },
   "bugs": {
-    "url": "https://github.com/dominickp/VDPBuddy/issues"
+    "url": "https://github.com/dominickp/DataPreflight/issues"
   },
-  "homepage": "https://github.com/dominickp/VDPBuddy#readme"
+  "homepage": "https://github.com/dominickp/DataPreflight#readme"
 }
