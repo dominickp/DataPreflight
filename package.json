@@ -13,6 +13,7 @@
     "snippet": "./index.js"
   },
   "dependencies": {
+    "async": "^1.5.2",
     "cli-table": "^0.3.1",
     "cli-table2": "^0.1.9",
     "glob": "^6.0.4",

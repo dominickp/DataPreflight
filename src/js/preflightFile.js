@@ -2,11 +2,13 @@ var J = require('j');
 var Table = require('cli-table2');
 var ComparisonTable = require('./comparisonTable');
 var fs = require('fs');
+var async = require("async");
+
 
 var PreflightFile = function(input, output, append){
     var model = this;
 
-    model.debug = true;
+    model.debug = false;
 
     model.filename = input;
 
@@ -114,55 +116,74 @@ var PreflightFile = function(input, output, append){
         });
     };
 
-    model.preflightSheets = function(filename, callback){
+    model.preflightSheet = function(sheet, sheet_id, callback){
 
-        var readFileArray = J.readFile(filename);
-        var workbookJson = J.utils.to_json(readFileArray);
-
-        //// Helper function
-        //Object.values = function (obj) {
-        //    var vals = [];
-        //    for( var key in obj ) {
-        //        if ( obj.hasOwnProperty(key) ) {
-        //            vals.push(obj[key]);
-        //        }
-        //    }
-        //    return vals;
-        //};
-
-        // Loop through sheets
-        var sheet_number = 1;
-        var sheet_id;
-        for ( sheet_id in workbookJson) {
-
-            // Write sheet name
-            //model.appendSection(model.preflightPath, 'Sheet #'+sheet_number, sheet_id, true, function(){
-            //    // empty callback
-            //});
+        //Write sheet name
+        model.appendSection(model.preflightPath, 'Sheet #', sheet_id, true, function(){
+            // empty callback
+            console.log(sheet_id);
 
 
-            sheet_number++;
-
-            // skip loop if the property is from prototype
-            if (!workbookJson.hasOwnProperty(sheet_id)){
-                continue;
-            }
-            var sheet = workbookJson[sheet_id];
+            //sheet_number++;
 
 
-            model.sheetNameSection(sheet, sheet_id, sheet_number, function(sheet){
+            //var sheet = workbookJson[sheet_id];
+
+
+            model.sheetNameSection(sheet, sheet_id, 1, function(sheet){
                 model.previewTableSection(sheet, function(sheet){
                     model.recordSection(sheet, function(){
                         model.timestampSection(function(){
+                            console.log('done with this sheet' +sheet_id);
                             callback();
                         });
                     });
                 });
             });
 
+        });
+
+    };
+
+    model.preflightSheets = function(filename, callback){
+
+        var readFileArray = J.readFile(filename);
+        var workbookJson = J.utils.to_json(readFileArray);
+
+        async.forEachOfSeries(workbookJson, function (sheet, sheet_id, cb) {
+
+            //console.log('1111111');
+            //console.log(key);
+
+            model.preflightSheet(sheet, sheet_id, function(){
+                console.log('finished one sheet');
+
+                cb();
+            });
+
+            //callback();
+        }, function (err) {
+            if (err) console.error(err.message);
+            // configs is now a map of JSON data
+            //console.log(workbookJson);
+            console.log('done with all');
+            callback();
+        });
 
 
-        }
+    //    for ( sheet_id in workbookJson) {
+    //        // skip loop if the property is from prototype
+    //        if (!workbookJson.hasOwnProperty(sheet_id)){
+    //            continue;
+    //        }
+    //
+    //        model.preflightSheet(workbookJson, sheet_number, sheet_id, function(){
+    //            console.log('finished one sheet');
+    //        });
+    //
+    //        //var sheet = workbookJson[sheet_id];
+    //
+    //    }
     };
 
     model.init = function(){
