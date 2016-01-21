@@ -3,21 +3,26 @@ var Table = require('cli-table2');
 var ComparisonTable = require('./comparisonTable');
 var fs = require('fs');
 
-var PreflightFile = function(input, output){
+var PreflightFile = function(input, output, append){
     var model = this;
 
     model.filename = input;
 
     model.preflightPath = output;
 
+    model.appendFlag = append;
+
     model.header = "Gabe's Data Preflight - Version 0.0.1";
 
-    model.append = function(path, data){
-        fs.appendFile(path, data+'\r\n\r\n', function(error) {
-            if (error) {
-                //console.error("write error:  " + error.message);
+    model.write = function(path, data, append){
+
+        fs.stat(path, function(err, stats){
+            if(stats && stats.isFile() && !append){
+                fs.unlink(path, function(){
+                    fs.appendFile(path, data+'\r\n\r\n', 'utf8', function(error) {});
+                });
             } else {
-                //console.log("Successful Write to " + path);
+                fs.appendFile(path, data+'\r\n\r\n', 'utf8', function(error) {});
             }
         });
 
@@ -34,7 +39,7 @@ var PreflightFile = function(input, output){
         }
 
         data = section + headerLine + data;
-        return model.append(path, data);
+        return model.write(path, data, model.appendFlag);
     };
 
     model.init = function(){
@@ -45,7 +50,7 @@ var PreflightFile = function(input, output){
         }
 
         // Write header
-        model.append(model.preflightPath, model.header);
+        model.write(model.preflightPath, model.header, model.appendFlag);
 
         // Write filename
         model.appendSection(model.preflightPath, 'File', model.filename, true);
