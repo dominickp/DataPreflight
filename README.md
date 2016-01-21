@@ -1,5 +1,5 @@
 # DataPreflight
-A utility to preflight databases.
+A utility to preflight spreadsheets.
 
 ## Installation
 ```
