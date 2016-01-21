@@ -25,13 +25,15 @@ $ data-preflight --action=preflight-dir --input=/Users/dominickpeluso/Desktop/Sa
 
 ### Example preflight report
 ```
-Sheet #1
+Gabe's Data Preflight - Version 0.0.1
+
+File
+=========================================================================================
+/Users/dominickpeluso/Desktop/Shawmut/VDPBuddy/Samples/Sample_4_col.csv
+
+Sheet #
 =========================================================================================
 Sheet1
-
-Time
----------------------------------------------
-2016-01-21T20:54:41.072Z
 
 Preview
 ---------------------------------------------
@@ -51,11 +53,8 @@ Records
 ---------------------------------------------
 1
 
-Gabe's Data Preflight - Version 0.0.1
-
-File
-=========================================================================================
-/Users/dominickpeluso/Desktop/Shawmut/VDPBuddy/Samples/Sample_4_col.csv
-
+Time
+---------------------------------------------
+2016-01-21T23:12:49.542Z
 
 ```

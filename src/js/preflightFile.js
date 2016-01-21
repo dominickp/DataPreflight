@@ -120,29 +120,15 @@ var PreflightFile = function(input, output, append){
 
         //Write sheet name
         model.appendSection(model.preflightPath, 'Sheet #', sheet_id, true, function(){
-            // empty callback
-            console.log(sheet_id);
-
-
-            //sheet_number++;
-
-
-            //var sheet = workbookJson[sheet_id];
-
-
-            model.sheetNameSection(sheet, sheet_id, 1, function(sheet){
-                model.previewTableSection(sheet, function(sheet){
-                    model.recordSection(sheet, function(){
-                        model.timestampSection(function(){
-                            console.log('done with this sheet' +sheet_id);
-                            callback();
-                        });
+            model.previewTableSection(sheet, function(sheet){
+                model.recordSection(sheet, function(){
+                    model.timestampSection(function(){
+                        console.log('done with this sheet' +sheet_id);
+                        callback();
                     });
                 });
             });
-
         });
-
     };
 
     model.preflightSheets = function(filename, callback){
@@ -150,18 +136,15 @@ var PreflightFile = function(input, output, append){
         var readFileArray = J.readFile(filename);
         var workbookJson = J.utils.to_json(readFileArray);
 
-        async.forEachOfSeries(workbookJson, function (sheet, sheet_id, cb) {
-
-            //console.log('1111111');
-            //console.log(key);
+        // Complete sheet preflight in a series
+        async.forEachOfSeries(workbookJson, function (sheet, sheet_id, sheetCallback) {
 
             model.preflightSheet(sheet, sheet_id, function(){
                 console.log('finished one sheet');
 
-                cb();
+                sheetCallback();
             });
 
-            //callback();
         }, function (err) {
             if (err) console.error(err.message);
             // configs is now a map of JSON data
@@ -170,20 +153,6 @@ var PreflightFile = function(input, output, append){
             callback();
         });
 
-
-    //    for ( sheet_id in workbookJson) {
-    //        // skip loop if the property is from prototype
-    //        if (!workbookJson.hasOwnProperty(sheet_id)){
-    //            continue;
-    //        }
-    //
-    //        model.preflightSheet(workbookJson, sheet_number, sheet_id, function(){
-    //            console.log('finished one sheet');
-    //        });
-    //
-    //        //var sheet = workbookJson[sheet_id];
-    //
-    //    }
     };
 
     model.init = function(){
