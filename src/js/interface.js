@@ -31,13 +31,14 @@ if(argv.action === 'preflight'){
 if(argv.action === 'preflight-dir'){
 
     var path = argv.path;
+    var append = argv.append;
 
     argv = require('yargs')
         .usage('Usage: $0 --path')
         .demand(['path'])
         .argv;
 
-    var preflight = new PreflightDirectory(path);
+    var preflight = new PreflightDirectory(path, append);
     preflight.init();
 
 }

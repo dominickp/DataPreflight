@@ -1,12 +1,14 @@
 var PreflightFile = require('./preflightFile');
 var glob = require("multi-glob").glob;
 
-var PreflightDirectory = function(path) {
+var PreflightDirectory = function(path, append) {
     var model = this;
 
     model.path = path;
 
     model.files = [];
+
+    model.appendFlag = append;
 
     model.getFiles = function(directory, callback){
 
@@ -27,7 +29,7 @@ var PreflightDirectory = function(path) {
         var preflight;
         model.getFiles(path, function(files, directory){
             files.forEach(function(file){
-                preflight = new PreflightFile( directory + file );
+                preflight = new PreflightFile( directory + file, null, model.appendFlag );
                 preflight.init();
             });
         });

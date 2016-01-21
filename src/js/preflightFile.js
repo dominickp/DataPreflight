@@ -17,7 +17,7 @@ var PreflightFile = function(input, output, append){
     model.write = function(path, data, append){
 
         fs.stat(path, function(err, stats){
-            if(stats.isFile() && !append){
+            if(stats && stats.isFile() && !append){
                 fs.unlink(path, function(){
                     fs.appendFile(path, data+'\r\n\r\n', 'utf8', function(error) {});
                 });
