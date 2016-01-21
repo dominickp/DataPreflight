@@ -16,7 +16,7 @@ var PreflightFile = function(input, output, append){
 
     model.write = function(path, data, append){
         if(append){
-            fs.appendFile(path, data+'\r\n\r\n', function(error) {
+            fs.appendFile(path, data+'\r\n\r\n', 'utf8', function(error) {
                 //if (error) {
                 //    //console.error("write error:  " + error.message);
                 //} else {
@@ -24,7 +24,7 @@ var PreflightFile = function(input, output, append){
                 //}
             });
         } else {
-            fs.writeFile(path, data+'\r\n\r\n', function(error) {});
+            fs.writeFile(path, data+'\r\n\r\n', 'utf8', function(error) {});
         }
 
         // log
