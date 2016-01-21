@@ -1,5 +1,5 @@
 # DataPreflight
-A utility to preflight spreadsheets.
+A utility to preflight spreadsheets. Handles most types of spreadsheet formats (txt, csv, xls, xslx, ods, etc...) and will preflight multiple sheets if the input is a workbook.
 
 ## Installation
 ```
