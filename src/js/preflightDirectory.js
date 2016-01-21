@@ -25,7 +25,7 @@ var PreflightDirectory = function(path) {
 
     model.preflightFiles = function(path){
         var preflight;
-        model.getFiles('/Users/dominickpeluso/Desktop/Shawmut/VDPBuddy/Samples', function(files, directory){ // change to path
+        model.getFiles(path, function(files, directory){
             files.forEach(function(file){
                 preflight = new PreflightFile( directory + file );
                 preflight.init();
