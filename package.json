@@ -1,0 +1,41 @@
+{
+  "name": "vdp-buddy",
+  "version": "1.0.0",
+  "description": "data preflight and automation utility",
+  "main": "./src/js/interface.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "bin": {
+    "data-preflight": "./src/js/interface.js",
+    "snippet": "./index.js"
+  },
+  "dependencies": {
+    "cli-table": "^0.3.1",
+    "cli-table2": "^0.1.9",
+    "glob": "^6.0.4",
+    "gulp": "^3.9.0",
+    "install": "^0.4.1",
+    "j": "^0.4.3",
+    "multi-glob": "^1.0.1",
+    "npm": "^3.5.3",
+    "underscore": "^1.8.3",
+    "yargs": "^3.31.0"
+  },
+  "devDependencies": {
+    "gulp-jasmine": "^2.2.1",
+    "gulp-jshint": "^2.0.0",
+    "jshint": "^2.9.1-rc3",
+    "jshint-stylish": "^2.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dominickp/VDPBuddy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dominickp/VDPBuddy/issues"
+  },
+  "homepage": "https://github.com/dominickp/VDPBuddy#readme"
+}

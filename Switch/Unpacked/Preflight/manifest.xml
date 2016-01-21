@@ -1,0 +1,12 @@
+<Manifest>
+    <ScripterInstanceName>Data Preflight</ScripterInstanceName>
+    <ScriptPackageFormatVersion>1.0</ScriptPackageFormatVersion>
+    <ScripterPassword></ScripterPassword>
+    <ScriptDeclarationFile>Preflight.xml</ScriptDeclarationFile>
+    <ScriptProgramFiles>
+        <ScriptProgramFile ScriptLanguage="JavaScript">Preflight.js</ScriptProgramFile>
+    </ScriptProgramFiles>
+    <ScriptIconFile>data_logo.png</ScriptIconFile>
+    <AppleBinary></AppleBinary>
+    <LocalizationItems/>
+</Manifest>
