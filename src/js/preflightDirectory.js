@@ -16,7 +16,13 @@ var PreflightDirectory = function(path) {
         }
 
         // Search for files to preflight
-        glob(["**/*.txt", "**/*.csv", "**/*.xls", "**/*.xlsx", "**/*.ods"], {cwd:directory}, function (er, files) {
+        glob([
+            "**/!(*preflight).txt",
+            "**/*.csv",
+            "**/*.xls",
+            "**/*.xlsx",
+            "**/*.ods",
+        ], {cwd:directory}, function (er, files) {
             callback(files, directory);
         });
     };
