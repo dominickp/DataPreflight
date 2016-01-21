@@ -2,11 +2,11 @@ var ComparisonTable = require('../js/comparisonTable');
 
 describe("preflight test", function(){
     var mockedSheet = [
-        { Identifier: 1, Name: 'Lance', Cost: 711, Date: '2/14/1994' },
-        { Identifier: 2, Name: 'Sam', Cost: 218, Date: '12/24/2036' },
-        { Identifier: 3, Name: 'Gabe', Cost: 477, Date: '1/23/4567' },
-        { Identifier: 4, Name: 'Bill', Cost: 2155, Date: '1/21/2016' },
-        { Identifier: 5, Name: 'Harold', Cost: 99999, Date: '99/99/9999' }
+        { Identifier: 1, Giblets: '', Name: 'Lance', Cost: 711, Date: '2/14/1994' },
+        { Identifier: 2, Giblets: 'xli3js9z', Name: 'Sam', Cost: 218, Date: '12/24/2036' },
+        { Identifier: 3, Giblets: 'd5s86eE5', Name: 'Gabe', Cost: 477, Date: '1/23/4567' },
+        { Identifier: 4, Giblets: 'a6sEF651dud5', Name: 'Bill', Cost: 2155, Date: '1/21/2016' },
+        { Identifier: 5, Giblets: '5s6E', Name: 'Harold', Cost: 99999, Date: '99/99/9999' }
     ];
 
     var comparisonTable;
@@ -37,21 +37,44 @@ describe("preflight test", function(){
         expect(comparisonTable.last.Date).toBe('99/99/9999');
     });
 
-    //it("should get the minimum character count of the 'Name' column", function(){
-    //    expect(comparisonTable.getTableRows)
-    //});
+    it("should get the minimum character count of the 'Identifier' column", function(){
+        expect(comparisonTable.getMin('Identifier')).toBe(1);
+    });
 
+    it("should get the minimum character count of the 'Name' column", function(){
+        expect(comparisonTable.getMin('Name')).toBe(3);
+    });
 
+    it("should get the minimum character count of the 'Giblets' column", function(){
+        expect(comparisonTable.getMin('Giblets')).toBe('X');
+    });
+
+    it("should get the minimum character count of the 'Cost' column", function(){
+        expect(comparisonTable.getMin('Cost')).toBe(3);
+    });
+
+    it("should get the minimum character count of the 'Date' column", function(){
+        expect(comparisonTable.getMin('Date')).toBe(9);
+    });
+
+    it("should get the maximum character count of the 'Identifier' column", function(){
+        expect(comparisonTable.getMax('Identifier')).toBe(1);
+    });
+
+    it("should get the maximum character count of the 'Name' column", function(){
+        expect(comparisonTable.getMax('Name')).toBe(6);
+    });
+
+    it("should get the maximum character count of the 'Giblets' column", function(){
+        expect(comparisonTable.getMax('Giblets')).toBe(12);
+    });
+
+    it("should get the maximum character count of the 'Cost' column", function(){
+        expect(comparisonTable.getMax('Cost')).toBe(5);
+    });
+
+    it("should get the maximum character count of the 'Date' column", function(){
+        expect(comparisonTable.getMax('Date')).toBe(10);
+    });
 
 });
-
-
-/*
-    [
-        { Identifier: 1, Name: 'Lance', Cost: 711, Date: '2/14/1994' },
-        { Identifier: 2, Name: 'Sam', Cost: 218, Date: '12/24/2036' },
-        { Identifier: 3, Name: 'Gabe', Cost: 477, Date: '1/23/4567' },
-        { Identifier: 4, Name: 'Bill', Cost: 2155, Date: '1/21/2016' },
-        { Identifier: 5, Name: 'Harold', Cost: 99999, Date: '99/99/9999' }
-    ]
- */
