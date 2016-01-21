@@ -15,9 +15,9 @@ var PreflightFile = function(input, output){
     model.append = function(path, data){
         fs.appendFile(path, data+'\r\n\r\n', function(error) {
             if (error) {
-                console.error("write error:  " + error.message);
+                //console.error("write error:  " + error.message);
             } else {
-                console.log("Successful Write to " + path);
+                //console.log("Successful Write to " + path);
             }
         });
 
