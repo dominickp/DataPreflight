@@ -15,17 +15,16 @@ var PreflightFile = function(input, output, append){
     model.header = "Gabe's Data Preflight - Version 0.0.1";
 
     model.write = function(path, data, append){
-        if(append){
-            fs.appendFile(path, data+'\r\n\r\n', 'utf8', function(error) {
-                //if (error) {
-                //    //console.error("write error:  " + error.message);
-                //} else {
-                //    //console.log("Successful Write to " + path);
-                //}
-            });
-        } else {
-            fs.writeFile(path, data+'\r\n\r\n', 'utf8', function(error) {});
-        }
+
+        fs.stat(path, function(err, stats){
+            if(stats.isFile() && !append){
+                fs.unlink(path, function(){
+                    fs.appendFile(path, data+'\r\n\r\n', 'utf8', function(error) {});
+                });
+            } else {
+                fs.appendFile(path, data+'\r\n\r\n', 'utf8', function(error) {});
+            }
+        });
 
         // log
         console.log(data);
