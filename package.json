@@ -4,7 +4,9 @@
   "description": "data preflight and automation utility",
   "main": "./src/js/interface.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "jshint .",
+    "validate": "npm ls"
   },
   "author": "",
   "license": "ISC",
@@ -38,5 +40,10 @@
   "bugs": {
     "url": "https://github.com/dominickp/DataPreflight/issues"
   },
-  "homepage": "https://github.com/dominickp/DataPreflight#readme"
+  "homepage": "https://github.com/dominickp/DataPreflight#readme",
+  "pre-commit": [
+    "lint",
+    "validate",
+    "test"
+  ]
 }

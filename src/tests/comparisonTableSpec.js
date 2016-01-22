@@ -9,8 +9,6 @@ describe("preflight test", function(){
         { Identifier: 5, Giblets: '5s6E', Name: 'Harold', Cost: 99999, Date: '99/99/9999' }
     ];
 
-    console.log('test');
-
     var comparisonTable;
 
     beforeEach(function(){
