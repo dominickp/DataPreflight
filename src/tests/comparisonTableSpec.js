@@ -1,6 +1,6 @@
 var ComparisonTable = require('../js/comparisonTable');
 
-describe("preflight test", function(){
+describe("Comparison Table tests", function(){
     var mockedSheet = [
         { Identifier: 1, Giblets: '', Name: 'Lance', Cost: 711, Date: '2/14/1994' },
         { Identifier: 2, Giblets: 'xli3js9z', Name: 'Sam', Cost: 218, Date: '12/24/2036' },
