@@ -59,7 +59,9 @@ var ComparisonTable = function(sheet){
         var first_pairs = _.pairs(model.first);
         var middle_pairs = _.pairs(model.middle);
         var last_pairs = _.pairs(model.last);
-        var columns = [];
+        var columns = [
+            {'Header (1)':['First (2)', 'Middle ('+(Math.floor(model.records/2)+2)+')', 'Last ('+(model.records+1)+')', 'Min', 'Max']}
+        ];
 
         var getValue = function(pairs, header){
             var value = '';
