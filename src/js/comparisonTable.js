@@ -59,9 +59,13 @@ var ComparisonTable = function(sheet){
         var first_pairs = _.pairs(model.first);
         var middle_pairs = _.pairs(model.middle);
         var last_pairs = _.pairs(model.last);
-        var columns = [
-            {'Header (1)':['First (2)', 'Middle ('+(Math.floor(model.records/2)+2)+')', 'Last ('+(model.records+1)+')', 'Min', 'Max']}
-        ];
+        var columns = [];
+
+        var header_info = {
+            first_position: 2,
+            middle_position: (Math.floor(model.records/2)+2),
+            last_position: (model.records+1)
+        };
 
         var getValue = function(pairs, header){
             var value = '';
@@ -72,6 +76,20 @@ var ComparisonTable = function(sheet){
             });
 
             return value;
+        };
+
+        var getUniques = function(header){
+
+
+            var values = [];
+
+            sheet.forEach(function(row, index){
+                values.push(row[header]);
+            });
+
+            var uniqueValues = _.uniq(values);
+
+            return uniqueValues;
         };
 
 
@@ -88,14 +106,18 @@ var ComparisonTable = function(sheet){
                 getValue(middle_pairs, header),
                 getValue(last_pairs, header),
                 model.getMin(header),
-                model.getMax(header)
+                model.getMax(header),
+                getUniques(header)
             ];
 
             columns.push(column);
 
         });
 
-        return columns;
+        return {
+            columns: columns,
+            header_info: header_info
+        };
     };
 
 };

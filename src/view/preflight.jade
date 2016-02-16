@@ -31,17 +31,23 @@ html
                                     h4 Column Preview
                                     div(class="table-responsive")
                                         table(id="sheet-preview-"+index, class="table table-bordered table-hover table-striped")
-                                            each row, index in sheet.column_preview
-                                                - var key = Object.keys(row)[0]
-                                                    if index === 0
-                                                        tr
-                                                            th=key
-                                                            th=row[key][0]
-                                                            th=row[key][1]
-                                                            th=row[key][2]
-                                                            th=row[key][3]
-                                                            th=row[key][4]
-                                                    else
+                                            thead
+                                                tr
+                                                    th="Header"
+                                                        span(class="badge pull-right")="row "+1
+                                                    th="First"
+                                                        span(class="badge pull-right")="row "+sheet.header_info.first_position
+                                                    th="Middle"
+                                                        span(class="badge pull-right")="row " + sheet.header_info.middle_position
+                                                    th="Last"
+                                                        span(class="badge pull-right")="row " + sheet.header_info.last_position
+                                                    th="Min"
+                                                    th="Max"
+                                                    th="Unique"
+                                            tbody
+                                                each row, index in sheet.column_preview
+                                                    - var key = Object.keys(row)[0]
+                                                    - var unique_values = row[key][5]
                                                         tr
                                                             td=key
                                                             td=row[key][0]
@@ -49,6 +55,15 @@ html
                                                             td=row[key][2]
                                                             td=row[key][3]
                                                             td=row[key][4]
+                                                            if row[key][5].length === sheet.row_count
+                                                                td="ALL"
+                                                            else
+                                                                if row[key][5].length === 1
+                                                                    td=row[key][5].length+" "
+                                                                        each value in row[key][5]
+                                                                            span(class="badge")=value
+                                                                else
+                                                                    td=row[key][5].length
 
             div(class="col-md-12")
                 p Gabe's Data Preflight v0.02

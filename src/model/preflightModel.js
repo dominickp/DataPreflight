@@ -30,7 +30,7 @@ var PreflightModel = function(filePath, initCallback){
             };
 
             model.preflightSheet(sheet, sheetModel, function (sheetModel) {
-                console.log('finished one sheet');
+                console.log('finished one sheet', sheetModel);
 
                 model.sheets.push(sheetModel);
 
@@ -53,13 +53,17 @@ var PreflightModel = function(filePath, initCallback){
 
     model.preflightSheet = function(sheet, sheetModel, callback){
 
-        console.log(sheet);
+
 
         // Number of records
         sheetModel.row_count = sheet.length;
 
         // Column preview
-        sheetModel.column_preview = model.getColumnPreview(sheet);
+        var previewObject = model.getColumnPreview(sheet);
+        sheetModel.column_preview = previewObject.columns;
+        sheetModel.header_info = previewObject.header_info;
+
+        console.log("One sheet", sheetModel);
 
         callback(sheetModel);
     };
@@ -67,9 +71,9 @@ var PreflightModel = function(filePath, initCallback){
     model.getColumnPreview = function(sheet){
 
         var comparison = new ComparisonTable(sheet);
-        var columns = comparison.getTableRows();
+        var previewObject = comparison.getTableRows();
 
-        return columns;
+        return previewObject;
     };
 
 
@@ -80,9 +84,9 @@ var PreflightModel = function(filePath, initCallback){
         model.preflightSheets(function(){
             //console.log("done");
 
-            console.log(model.sheets.length);
+            console.log("model.sheets.length", model.sheets.length);
 
-            initCallback();
+            initCallback(model);
         });
     }();
 

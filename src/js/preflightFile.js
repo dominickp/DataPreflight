@@ -44,13 +44,17 @@ var PreflightFile = function(input, output, append){
     model.init = function(){
 
 
-        var pm = new PreflightModel(model.filename, function(){
+        var pm = new PreflightModel(model.filename, function(preflightModelReturn){
+
+            pm = preflightModelReturn;
+
             // Jade testing
             var jadeOptions = {doctype: 'html'};
             var fn = jade.compileFile(__dirname+'/../view/preflight.jade', jadeOptions);
             var html = fn({
                 workbook: pm
             });
+
 
 
             // Set default output if input left blank
