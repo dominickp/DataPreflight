@@ -20,6 +20,9 @@ html
                                 tr
                                     td Record count
                                     td= sheet.row_count
+                                tr
+                                    td Columns
+                                    td= (sheet.column_preview.length-1)
 
                             h4 Column Preview
                             div(class="table-responsive")
