@@ -4,7 +4,6 @@ var ComparisonTable = require('./comparisonTable');
 var fs = require('fs');
 var async = require("async");
 
-
 var PreflightFile = function(input, output, append){
     var model = this;
 

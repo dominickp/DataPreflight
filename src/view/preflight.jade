@@ -1,0 +1,45 @@
+html
+    head
+        link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', rel='stylesheet')
+        link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css', rel='stylesheet')
+    body
+        div(class='container')
+            div(class="col-md-12")
+                h1= workbook.basename
+
+                h2 Sheets
+                div(class="panel panel-default")
+                    each sheet, index in workbook.sheets
+                        div(class="panel-heading")
+                            h3(class="panel-title")= sheet.sheet_id
+                        div(class="panel-body")
+
+                            h4 Stats
+                            table(id="sheet-stats-"+index, class="table table-bordered table-hover")
+                                tr
+                                    td Record count
+                                    td= sheet.row_count
+
+                            h4 Column Preview
+                            table(id="sheet-preview-"+index, class="table table-bordered table-hover table-striped")
+                                thead
+                                    tr
+                                        td Header
+                                        td First
+                                        td Middle
+                                        td Last
+                                        td Min
+                                        td Max
+                                tbody
+                                    each row in sheet.column_preview
+                                        - var key = Object.keys(row)[0]
+                                        tr
+                                            td=key
+                                            td=row[key][0]
+                                            td=row[key][1]
+                                            td=row[key][2]
+                                            td=row[key][3]
+                                            td=row[key][4]
+
+            div(class="col-md-12")
+                p Gabe's Data Preflight v0.02
