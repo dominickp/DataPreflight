@@ -22,25 +22,26 @@ html
                                     td= sheet.row_count
 
                             h4 Column Preview
-                            table(id="sheet-preview-"+index, class="table table-bordered table-hover table-striped")
-                                each row, index in sheet.column_preview
-                                    - var key = Object.keys(row)[0]
-                                        if index === 0
-                                            tr
-                                                th=key
-                                                th=row[key][0]
-                                                th=row[key][1]
-                                                th=row[key][2]
-                                                th=row[key][3]
-                                                th=row[key][4]
-                                        else
-                                            tr
-                                                td=key
-                                                td=row[key][0]
-                                                td=row[key][1]
-                                                td=row[key][2]
-                                                td=row[key][3]
-                                                td=row[key][4]
+                            div(class="table-responsive")
+                                table(id="sheet-preview-"+index, class="table table-bordered table-hover table-striped")
+                                    each row, index in sheet.column_preview
+                                        - var key = Object.keys(row)[0]
+                                            if index === 0
+                                                tr
+                                                    th=key
+                                                    th=row[key][0]
+                                                    th=row[key][1]
+                                                    th=row[key][2]
+                                                    th=row[key][3]
+                                                    th=row[key][4]
+                                            else
+                                                tr
+                                                    td=key
+                                                    td=row[key][0]
+                                                    td=row[key][1]
+                                                    td=row[key][2]
+                                                    td=row[key][3]
+                                                    td=row[key][4]
 
             div(class="col-md-12")
                 p Gabe's Data Preflight v0.02
