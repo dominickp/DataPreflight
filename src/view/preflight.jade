@@ -11,8 +11,9 @@ html
                 div(class="panel panel-default")
                     each sheet, index in workbook.sheets
                         div(class="panel-heading")
-                            h3(class="panel-title")= sheet.sheet_id
-                        div(class="panel-body")
+                            h3(class="panel-title")
+                                a(data-toggle="collapse", href="#sheet-"+index)= sheet.sheet_id
+                        div(id="sheet-"+index, class="panel-body")
 
                             h4 Stats
                             table(id="sheet-stats-"+index, class="table table-bordered table-hover")
@@ -43,3 +44,6 @@ html
 
             div(class="col-md-12")
                 p Gabe's Data Preflight v0.02
+
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
+        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
