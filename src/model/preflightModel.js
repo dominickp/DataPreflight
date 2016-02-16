@@ -3,7 +3,7 @@ var async = require("async");
 var ComparisonTable = require('./../js/comparisonTable');
 
 
-var PreflightModel = function(filePath){
+var PreflightModel = function(filePath, initCallback){
     var model = this;
 
     model.filename = filePath;
@@ -35,6 +35,7 @@ var PreflightModel = function(filePath){
 
                 //console.log(sheetModel);
 
+
                 sheetCallback();
             });
 
@@ -42,7 +43,7 @@ var PreflightModel = function(filePath){
             if (err) console.error(err.message);
             // configs is now a map of JSON data
             //console.log(workbookJson);
-            console.log('done with all');
+            //console.log('done with all');
             callback();
         });
     };
@@ -57,8 +58,6 @@ var PreflightModel = function(filePath){
         // Column preview
         sheetModel.column_preview = model.getColumnPreview(sheet);
 
-
-        console.log(sheetModel.column_preview[0].One)
         callback(sheetModel);
     };
 
@@ -76,7 +75,11 @@ var PreflightModel = function(filePath){
         model.jWorkBook = J.utils.to_json(readFileArray);
 
         model.preflightSheets(function(){
-            console.log("done");
+            //console.log("done");
+
+            console.log(model.sheets.length);
+
+            initCallback()
         });
     }();
 

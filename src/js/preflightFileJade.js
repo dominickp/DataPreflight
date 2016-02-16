@@ -43,36 +43,36 @@ var PreflightFile = function(input, output, append){
         //console.log(data);
     };
 
-    model.generatePreflightObject = function(){
-
-    };
-
     model.init = function(){
 
 
-        var pm = new PreflightModel(model.filename);
+        var pm = new PreflightModel(model.filename, function(){
+            // Jade testing
+            var jadeOptions = {doctype: 'html'};
+            var fn = jade.compileFile(__dirname+'/../view/preflight.jade', jadeOptions);
+            var html = fn({
+                workbook: pm
+            });
 
-        // Jade testing
-        var jadeOptions = {doctype: 'html'};
-        var fn = jade.compileFile(__dirname+'/../view/preflight.jade', jadeOptions);
-        var html = fn({
-            workbook: pm
+            console.log(pm.sheets.length);
+
+            //console.log(Object.keys(pm.sheets[0].column_preview[0]));
+
+
+            // Set default output if input left blank
+            if(!model.preflightPath){
+                model.preflightPath = model.filename+'_preflight.html';
+            }
+
+            // Delete old preflight
+            model.purgeOldPreflight(model.appendFlag, function(){
+
+                model.writeFile(model.preflightPath, html);
+
+            });
+
         });
 
-        console.log(Object.keys(pm.sheets[0].column_preview[0]));
-
-
-        // Set default output if input left blank
-        if(!model.preflightPath){
-            model.preflightPath = model.filename+'_preflight.html';
-        }
-
-        // Delete old preflight
-        model.purgeOldPreflight(model.appendFlag, function(){
-
-            model.writeFile(model.preflightPath, html);
-
-        });
 
 
     };
