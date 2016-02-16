@@ -1,5 +1,4 @@
 var fs = require('fs');
-var async = require("async");
 var jade = require('jade');
 var PreflightModel = require('./../model/preflightModel.js');
 
@@ -19,7 +18,9 @@ var PreflightFile = function(input, output, append){
 
     model.purgeOldPreflight = function(append, callback){
 
-        if(!model.preflightPath) return false;
+        if(!model.preflightPath){
+            return false;
+        }
 
         fs.stat(model.preflightPath, function(err, stats){
             if(stats && stats.isFile() && !append){

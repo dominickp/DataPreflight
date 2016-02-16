@@ -14,8 +14,9 @@ var PreflightModel = function(filePath, initCallback){
 
     model.getBaseName = function(){
         var base = model.filename.substring(model.filename.lastIndexOf('/') + 1);
-        if(base.lastIndexOf(".") != -1)
+        if(base.lastIndexOf(".") !== -1){
             base = base.substring(0, base.lastIndexOf("."));
+        }
         model.basename = base;
     }();
 
@@ -40,7 +41,9 @@ var PreflightModel = function(filePath, initCallback){
             });
 
         }, function (err) {
-            if (err) console.error(err.message);
+            if (err){
+                console.error(err.message);
+            }
             // configs is now a map of JSON data
             //console.log(workbookJson);
             //console.log('done with all');
@@ -79,7 +82,7 @@ var PreflightModel = function(filePath, initCallback){
 
             console.log(model.sheets.length);
 
-            initCallback()
+            initCallback();
         });
     }();
 
