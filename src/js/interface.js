@@ -5,7 +5,6 @@ var argv = require('yargs')
     //.demand(['action', 'input', 'output'])
     .argv;
 var PreflightFile = require('./preflightFile');
-var PreflightFileJade = require('./preflightFileJade');
 var PreflightDirectory = require('./preflightDirectory');
 
 if(argv.version){
@@ -25,23 +24,6 @@ if(argv.action === 'preflight'){
         .argv;
 
     var preflight = new PreflightFile(input, output, append);
-    preflight.init();
-
-}
-
-if(argv.action === 'preflight-jade'){
-
-    // Test file exists
-    var input = argv.input;
-    var output = argv.output;
-    var append = argv.append;
-
-    argv = require('yargs')
-        .usage('Usage: $0 --input [path] --output [path] [--append]')
-        .demand(['input'])
-        .argv;
-
-    var preflight = new PreflightFileJade(input, output, append);
     preflight.init();
 
 }
