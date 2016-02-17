@@ -26,6 +26,10 @@ var ComparisonTable = function(sheet, column_headers){
                 }
             }
         });
+
+        if(max === 0){
+            max = 'X';
+        }
         return max;
     };
 
