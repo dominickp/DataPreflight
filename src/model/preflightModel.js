@@ -31,7 +31,9 @@ var PreflightModel = function(filePath, initCallback){
             var cell = sheet[J.XLSX.utils.encode_cell({c:C, r:R})]; /* find the cell in the first row */
 
             var hdr = "UNKNOWN " + C; // <-- replace with your desired default
-            if(cell && cell.t) hdr = J.XLSX.utils.format_cell(cell);
+            if(cell && cell.t){
+                hdr = J.XLSX.utils.format_cell(cell);
+            }
 
             headers.push(hdr);
         }
@@ -101,28 +103,23 @@ var PreflightModel = function(filePath, initCallback){
             "non_ascii_characters": []
         };
 
-        row_num = 0;
+        var row_num = 0;
+
         sheet.forEach(function(row){
-            //console.log("row", row);
-
-            _.each(row, function(value, column, row){
-
-                if(/^[ -~]+$/.test(value) == false) {
+            _.each(row, function(value, column){
+                // Check for non-ascii characters
+                if(/^[ -~]+$/.test(value) === false) {
                     console.log("Strange character found: ", value, column);
                     warnings.non_ascii_characters.push({
                         value: value,
                         column: column,
                         row: row_num
-                    })
+                    });
                 }
-
                 row_num++;
             });
-
         });
-
         return warnings;
-
     };
 
     model.getColumnPreview = function(sheet, column_headers){

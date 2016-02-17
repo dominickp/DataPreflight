@@ -1,5 +1,4 @@
 var _ = require('underscore');
-var J = require('j');
 
 var ComparisonTable = function(sheet, column_headers){
 
@@ -89,7 +88,7 @@ var ComparisonTable = function(sheet, column_headers){
 
             var values = [];
 
-            sheet.forEach(function(row, index){
+            sheet.forEach(function(row){
                 values.push(row[header]);
             });
 
@@ -103,7 +102,7 @@ var ComparisonTable = function(sheet, column_headers){
         column_headers.forEach(function(header){
 
             var column = {};
-            var header = header.toString();
+            header = header.toString();
 
             column[header] = [
                 getValue(first_pairs, header),
