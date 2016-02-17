@@ -49,7 +49,7 @@ var PreflightFile = function(input, output, append){
             pm = preflightModelReturn;
 
             // Jade testing
-            var jadeOptions = {doctype: 'html'};
+            var jadeOptions = {doctype: 'html', pretty:true};
             var fn = jade.compileFile(__dirname+'/../view/preflight.jade', jadeOptions);
             var html = fn({
                 workbook: pm
