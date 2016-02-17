@@ -50,17 +50,17 @@ html
                                                     - var unique_values = row[key][5]
                                                         tr
                                                             td=key
-                                                            td(title=row[key][0])
+                                                            td(title=row[key][0], data-toggle="tooltip")
                                                                 if row[key][0].length > 20
                                                                     =row[key][0].toString().substr(0,20)+'...'
                                                                 else
                                                                     =row[key][0]
-                                                            td(title=row[key][1])
+                                                            td(title=row[key][1], data-toggle="tooltip")
                                                                 if row[key][1].length > 20
                                                                     =row[key][1].toString().substr(0, 20) + '...'
                                                                 else
                                                                     =row[key][1]
-                                                            td(title=row[key][2])
+                                                            td(title=row[key][2], data-toggle="tooltip")
                                                                 if row[key][2].length > 20
                                                                     =row[key][2].toString().substr(0, 20) + '...'
                                                                 else
@@ -82,3 +82,9 @@ html
 
         script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
         script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
+        script(type="text/javascript").
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip({
+                    container: 'body'
+                });
+            });
