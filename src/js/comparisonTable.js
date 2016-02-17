@@ -1,9 +1,11 @@
 var _ = require('underscore');
+var J = require('j');
 
-var ComparisonTable = function(sheet){
+var ComparisonTable = function(sheet, column_headers){
 
     var model = this;
 
+    model.column_headers = column_headers;
     model.sheet = sheet;
     model.records = sheet.length;
     model.first = model.sheet[0];
@@ -92,14 +94,12 @@ var ComparisonTable = function(sheet){
             return uniqueValues;
         };
 
-
-
         // For each column
-        first_pairs.forEach(function(pair){
+        // was iterating over column_headers
+        column_headers.forEach(function(header){
 
             var column = {};
-            var header = pair[0];
-
+            var header = header.toString();
 
             column[header] = [
                 getValue(first_pairs, header),
@@ -113,6 +113,8 @@ var ComparisonTable = function(sheet){
             columns.push(column);
 
         });
+
+        //console.log("columns", columns);
 
         return {
             columns: columns,
