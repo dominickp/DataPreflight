@@ -1,6 +1,7 @@
 var J = require('j');
 var async = require("async");
 var ComparisonTable = require('./../js/comparisonTable');
+var _ = require('underscore');
 
 
 var PreflightModel = function(filePath, initCallback){
@@ -51,7 +52,7 @@ var PreflightModel = function(filePath, initCallback){
 
             //console.log("column_headers", column_headers);
 
-            model.preflightSheet(sheet, sheetModel, column_headers, function (sheetModel) {
+            model.preflightSheet(sheet, sheetModel, column_headers, sheet_id, function (sheetModel) {
 
                 model.sheets.push(sheetModel);
 
@@ -69,7 +70,7 @@ var PreflightModel = function(filePath, initCallback){
         });
     };
 
-    model.preflightSheet = function(sheet, sheetModel, column_headers, callback){
+    model.preflightSheet = function(sheet, sheetModel, column_headers, sheet_id, callback){
 
 
 
@@ -81,12 +82,47 @@ var PreflightModel = function(filePath, initCallback){
         sheetModel.column_preview = previewObject.columns;
         sheetModel.header_info = previewObject.header_info;
 
+        // Check warnings
+        sheetModel.warnings = model.getSheetWarnings(sheet);
+
+        console.log(sheetModel.warnings);
+
         //console.log("One sheet", sheetModel);
 
         // Verify header row
         //model.checkHeaderRow(model.sheets, model.readFileArray);
 
         callback(sheetModel);
+    };
+
+    model.getSheetWarnings = function(sheet){
+
+        var warnings = {
+            "non_ascii_characters": []
+        };
+
+        row_num = 0;
+        sheet.forEach(function(row){
+            //console.log("row", row);
+
+            _.each(row, function(value, column, row){
+
+                if(/^[ -~]+$/.test(value) == false) {
+                    console.log("Strange character found: ", value, column);
+                    warnings.non_ascii_characters.push({
+                        value: value,
+                        column: column,
+                        row: row_num
+                    })
+                }
+
+                row_num++;
+            });
+
+        });
+
+        return warnings;
+
     };
 
     model.getColumnPreview = function(sheet, column_headers){
