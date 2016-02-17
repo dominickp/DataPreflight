@@ -50,9 +50,21 @@ html
                                                     - var unique_values = row[key][5]
                                                         tr
                                                             td=key
-                                                            td=row[key][0].toString().substr(0,30)
-                                                            td=row[key][1].toString().substr(0,30)
-                                                            td=row[key][2].toString().substr(0,30)
+                                                            td(title=row[key][0])
+                                                                if row[key][0].length > 20
+                                                                    =row[key][0].toString().substr(0,20)+'...'
+                                                                else
+                                                                    =row[key][0]
+                                                            td(title=row[key][1])
+                                                                if row[key][1].length > 20
+                                                                    =row[key][1].toString().substr(0, 20) + '...'
+                                                                else
+                                                                    =row[key][1]
+                                                            td(title=row[key][2])
+                                                                if row[key][2].length > 20
+                                                                    =row[key][2].toString().substr(0, 20) + '...'
+                                                                else
+                                                                    =row[key][2]
                                                             td=row[key][3]
                                                             td=row[key][4]
                                                             if row[key][5].length === sheet.row_count
