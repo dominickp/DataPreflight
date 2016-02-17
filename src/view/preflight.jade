@@ -50,9 +50,9 @@ html
                                                     - var unique_values = row[key][5]
                                                         tr
                                                             td=key
-                                                            td=row[key][0]
-                                                            td=row[key][1]
-                                                            td=row[key][2]
+                                                            td=row[key][0].toString().substr(0,30)
+                                                            td=row[key][1].toString().substr(0,30)
+                                                            td=row[key][2].toString().substr(0,30)
                                                             td=row[key][3]
                                                             td=row[key][4]
                                                             if row[key][5].length === sheet.row_count

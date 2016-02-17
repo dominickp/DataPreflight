@@ -81,6 +81,9 @@ var PreflightModel = function(filePath, initCallback){
         var readFileArray = J.readFile(model.filename);
         model.jWorkBook = J.utils.to_json(readFileArray);
 
+        //console.log("jworkbook",model.jWorkBook);
+        //console.log("readFileArray",readFileArray[0].utils.decode_col);
+
         model.preflightSheets(function(){
             //console.log("done");
 
