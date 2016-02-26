@@ -1,0 +1,88 @@
+div(class="panel panel-default")
+    div(class="panel-heading")
+        h3(class="panel-title")
+            a(data-toggle="collapse", href="#sheet-"+index)= sheet.sheet_id
+    div(id="sheet-"+index, class="panel-body in")
+
+        div(class="col-md-6")
+            h4 Stats
+            table(id="sheet-stats-"+index, class="table table-bordered table-hover")
+                tr
+                    td Record count
+                    td= sheet.row_count
+                tr
+                    td Columns
+                    td= sheet.column_preview.length
+
+        div(class="col-md-12")
+            h4 Column Preview
+            div(class="table-responsive")
+                table(id="sheet-preview-"+index, class="table table-bordered table-hover table-striped")
+                    thead
+                        tr
+                            th="Header"
+                                span(class="badge pull-right")="row "+1
+                            th="First"
+                                span(class="badge pull-right")="row "+sheet.header_info.first_position
+                            th="Middle"
+                                span(class="badge pull-right")="row " + sheet.header_info.middle_position
+                            th="Last"
+                                span(class="badge pull-right")="row " + sheet.header_info.last_position
+                    tbody
+                        each row, index in sheet.column_preview
+                            - var key = Object.keys(row)[0]
+                            - var unique_values = row[key][5]
+                            tr
+                                td=key
+                                td(title=row[key][0], data-toggle="tooltip")
+                                    if row[key][0].length > 20
+                                        =row[key][0].toString().substr(0,20)+'...'
+                                    else
+                                        =row[key][0]
+                                td(title=row[key][1], data-toggle="tooltip")
+                                    if row[key][1].length > 20
+                                        =row[key][1].toString().substr(0, 20) + '...'
+                                    else
+                                        =row[key][1]
+                                td(title=row[key][2], data-toggle="tooltip")
+                                    if row[key][2].length > 20
+                                        =row[key][2].toString().substr(0, 20) + '...'
+                                    else
+                                        =row[key][2]
+                h4 Column Details
+                div(class="table-responsive")
+                    table(id="sheet-preview-" + index, class="table table-bordered table-hover table-striped")
+                        thead
+                            tr
+                                th="Header"
+                                th="Min"
+                                th="Max"
+                                th="Uniques"
+                        tbody
+                            each row, index in sheet.column_preview
+                                - var key = Object.keys(row)[0]
+                                - var unique_values = row[key][5]
+                                tr
+                                    td=key
+                                    td=row[key][3]
+                                    td=row[key][4]
+                                    if row[key][5].length === sheet.row_count
+                                        td="ALL"
+                                    else
+                                        if row[key][5].length === 1
+                                            td=row[key][5].length + " "
+                                                each value in row[key][5]
+                                                    span(class="badge single-value-marker")=value
+                                        else
+                                            td=row[key][5].length
+        div(class="col-md-6")
+            h4 Warnings
+            if (typeof(sheet.warnings)) !== "undefined"
+                each warn_type, warn_type_key in sheet.warnings
+                    h5=warn_type_key
+                    ul(class="list-group")
+                        each warning in warn_type
+                            li(class="list-group-item")
+                                span=warning.value
+                                span(class="badge pull-right")="col "+warning.column
+                                span(class="badge pull-right")="row "+warning.row
