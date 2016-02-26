@@ -148,7 +148,7 @@ var PreflightModel = function(filePath, initCallback){
         //console.log("to_csv", J.utils.to_csv(model.readFileArray));
 
         //console.log("jworkbook",model.jWorkBook);
-        //console.log("readFileArray",readFileArray[0].utils.decode_col);
+        //console.log("readFileArray",model.readFileArray[1].Sheets.Sheet1.B2);
 
         model.preflightSheets(function(){
             //console.log("done");
