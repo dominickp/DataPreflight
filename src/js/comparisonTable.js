@@ -116,17 +116,6 @@ var ComparisonTable = function(sheet, column_headers){
                 getValue(last_pairs, column.name)
             );
 
-            //header = header.toString();
-            //
-            //column[header] = [
-            //    getValue(first_pairs, header),
-            //    getValue(middle_pairs, header),
-            //    getValue(last_pairs, header),
-            //    model.getMin(header),
-            //    model.getMax(header),
-            //    getUniques(header)
-            //];
-
             columns.push(column);
 
         });

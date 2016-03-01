@@ -83,13 +83,10 @@ var PreflightModel = function(filePath, initCallback){
         // Column preview
         var columnComparison = model.getColumns(sheet, column_headers);
         sheetModel.columns = columnComparison.columns;
-        //sheetModel.column_preview = previewObject.columns;
-        //sheetModel.columns.preview = previewObject.columns;
         sheetModel.header_info = columnComparison.header_info;
         //
-        //// Check warnings
+        // Check warnings
         sheetModel.warnings = model.getSheetWarnings(sheet);
-        //sheetModel.columns.warnings = model.getColumnWarnings(sheet, sheetModel);
 
         console.log(sheetModel);
 
@@ -129,18 +126,25 @@ var PreflightModel = function(filePath, initCallback){
         return warnings;
     };
 
-    model.getColumnWarnings = function(sheet, sheetModel){
-        sheetModel.columns.preview.forEach(function(previewHeader){
-            console.log('previewHeader', previewHeader);
+    model.appendColumnWarnings = function(columns){
+        columns.forEach(function(column){
+            // Check for blanks
+            if(column.attributes.min === "X"){
+                column.addWarning("Contains blanks");
+            }
         });
+
+        return columns;
     };
 
     model.getColumns = function(sheet, column_headers){
 
         var comparison = new ComparisonTable(sheet, column_headers);
-        var columns = comparison.getTableRows();
+        var comparisonColumns = comparison.getTableRows();
 
-        return columns;
+        comparisonColumns.columns = model.appendColumnWarnings(comparisonColumns.columns);
+
+        return comparisonColumns;
     };
 
     //model.checkHeaderRow = function(sheet, readFileArray){
