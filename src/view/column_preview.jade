@@ -13,7 +13,7 @@ div(class="table-responsive")
                     span(class="badge pull-right")="row " + sheet.header_info.last_position
         tbody
             - var preview_char_limit = 25
-            each row, index in sheet.column_preview
+            each row, index in sheet.columns.preview
                 - var key = Object.keys(row)[0]
                 - var unique_values = row[key][5]
                 tr

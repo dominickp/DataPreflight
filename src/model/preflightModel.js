@@ -46,11 +46,17 @@ var PreflightModel = function(filePath, initCallback){
         async.forEachOfSeries(model.jWorkBook, function (sheet, sheet_id, sheetCallback) {
 
             var sheetModel = {
-                sheet_id: sheet_id
+                sheet_id: sheet_id,
+                columns: {
+                    preview: [],
+                    warnings: [],
+                    headers: []
+                }
             };
 
             // Determine header row
             var column_headers = model.get_header_row(model.readFileArray, sheet_id);
+            sheetModel.columns.headers = column_headers;
 
             //console.log("column_headers", column_headers);
 
@@ -81,13 +87,18 @@ var PreflightModel = function(filePath, initCallback){
 
         // Column preview
         var previewObject = model.getColumnPreview(sheet, column_headers);
-        sheetModel.column_preview = previewObject.columns;
+        //sheetModel.column_preview = previewObject.columns;
+        sheetModel.columns.preview = previewObject.columns;
         sheetModel.header_info = previewObject.header_info;
 
         // Check warnings
         sheetModel.warnings = model.getSheetWarnings(sheet);
+        sheetModel.columns.warnings = model.getColumnWarnings(sheet, sheetModel);
 
-        console.log(sheetModel.warnings);
+        console.log(sheetModel);
+
+
+        //console.log(sheetModel);
 
         //console.log("One sheet", sheetModel);
 
@@ -120,6 +131,12 @@ var PreflightModel = function(filePath, initCallback){
             });
         });
         return warnings;
+    };
+
+    model.getColumnWarnings = function(sheet, sheetModel){
+        sheetModel.columns.preview.forEach(function(previewHeader){
+            console.log(previewHeader);
+        });
     };
 
     model.getColumnPreview = function(sheet, column_headers){
