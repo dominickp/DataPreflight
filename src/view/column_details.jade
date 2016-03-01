@@ -57,9 +57,9 @@ div(id="#column-details")
                     div(id="sheet-"+sheet_index+"-column-data-values-" + index, class="collapse col-md-12")
                         - var preview_value_limit = 100
                         if column.attributes.uniques.length > preview_value_limit
-                            h6="Data Values (Top " + preview_value_limit + ")"
+                            h6="Column Values (Top " + preview_value_limit + ")"
                         else
-                            h6="Data Values"
+                            h6="Column Values"
                         each value, index in column.attributes.uniques
                             if index < preview_value_limit
                                 if typeof value == "undefined"
@@ -69,7 +69,7 @@ div(id="#column-details")
                                     span(class="label label-info single-value-marker")=value
                                 =" "
                     div(id="sheet-"+sheet_index+"-column-all-characters-" + index, class="collapse col-md-12")
-                        h6="All Characters"
+                        h6="Column Characters"
                         each character, index in column.attributes.unique_characters
                             if character === " "
                                 span(class="label label-info unique-character-marker", data-toggle="tooltip", title="Space, ASCII "+character.charCodeAt(0))

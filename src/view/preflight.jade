@@ -25,4 +25,7 @@ html
                 $('[data-toggle="tooltip"], .bind-tooltip').tooltip({
                     container: 'body'
                 });
+                $('[data-toggle="collapse"]').click(function(){
+                    $(this).toggleClass("active");
+                })
             });
