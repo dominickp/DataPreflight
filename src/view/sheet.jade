@@ -15,66 +15,33 @@ div(class="panel panel-default")
                     td= sheet.column_preview.length
 
         div(class="col-md-12")
-            h4 Column Preview
+            include ./column_preview.jade
+            h4 Column Details
             div(class="table-responsive")
-                table(id="sheet-preview-"+index, class="table table-bordered table-hover table-striped")
+                table(id="sheet-preview-" + index, class="table table-bordered table-hover table-striped")
                     thead
                         tr
                             th="Header"
-                                span(class="badge pull-right")="row "+1
-                            th="First"
-                                span(class="badge pull-right")="row "+sheet.header_info.first_position
-                            th="Middle"
-                                span(class="badge pull-right")="row " + sheet.header_info.middle_position
-                            th="Last"
-                                span(class="badge pull-right")="row " + sheet.header_info.last_position
+                            th="Min"
+                            th="Max"
+                            th="Uniques"
                     tbody
                         each row, index in sheet.column_preview
                             - var key = Object.keys(row)[0]
                             - var unique_values = row[key][5]
                             tr
                                 td=key
-                                td(title=row[key][0], data-toggle="tooltip")
-                                    if row[key][0].length > 20
-                                        =row[key][0].toString().substr(0,20)+'...'
+                                td=row[key][3]
+                                td=row[key][4]
+                                if row[key][5].length === sheet.row_count
+                                    td="ALL"
+                                else
+                                    if row[key][5].length === 1
+                                        td=row[key][5].length + " "
+                                            each value in row[key][5]
+                                                span(class="badge single-value-marker")=value
                                     else
-                                        =row[key][0]
-                                td(title=row[key][1], data-toggle="tooltip")
-                                    if row[key][1].length > 20
-                                        =row[key][1].toString().substr(0, 20) + '...'
-                                    else
-                                        =row[key][1]
-                                td(title=row[key][2], data-toggle="tooltip")
-                                    if row[key][2].length > 20
-                                        =row[key][2].toString().substr(0, 20) + '...'
-                                    else
-                                        =row[key][2]
-                h4 Column Details
-                div(class="table-responsive")
-                    table(id="sheet-preview-" + index, class="table table-bordered table-hover table-striped")
-                        thead
-                            tr
-                                th="Header"
-                                th="Min"
-                                th="Max"
-                                th="Uniques"
-                        tbody
-                            each row, index in sheet.column_preview
-                                - var key = Object.keys(row)[0]
-                                - var unique_values = row[key][5]
-                                tr
-                                    td=key
-                                    td=row[key][3]
-                                    td=row[key][4]
-                                    if row[key][5].length === sheet.row_count
-                                        td="ALL"
-                                    else
-                                        if row[key][5].length === 1
-                                            td=row[key][5].length + " "
-                                                each value in row[key][5]
-                                                    span(class="badge single-value-marker")=value
-                                        else
-                                            td=row[key][5].length
+                                        td=row[key][5].length
         div(class="col-md-6")
             h4 Warnings
             if (typeof(sheet.warnings)) !== "undefined"
