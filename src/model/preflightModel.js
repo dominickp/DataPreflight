@@ -46,17 +46,12 @@ var PreflightModel = function(filePath, initCallback){
         async.forEachOfSeries(model.jWorkBook, function (sheet, sheet_id, sheetCallback) {
 
             var sheetModel = {
-                sheet_id: sheet_id,
-                columns: {
-                    preview: [],
-                    warnings: [],
-                    headers: []
-                }
+                sheet_id: sheet_id
             };
 
             // Determine header row
             var column_headers = model.get_header_row(model.readFileArray, sheet_id);
-            sheetModel.columns.headers = column_headers;
+            //sheetModel.columns.headers = column_headers;
 
             //console.log("column_headers", column_headers);
 
@@ -86,14 +81,15 @@ var PreflightModel = function(filePath, initCallback){
         sheetModel.row_count = sheet.length;
 
         // Column preview
-        var previewObject = model.getColumnPreview(sheet, column_headers);
+        var columnComparison = model.getColumns(sheet, column_headers);
+        sheetModel.columns = columnComparison.columns;
         //sheetModel.column_preview = previewObject.columns;
-        sheetModel.columns.preview = previewObject.columns;
-        sheetModel.header_info = previewObject.header_info;
-
-        // Check warnings
+        //sheetModel.columns.preview = previewObject.columns;
+        sheetModel.header_info = columnComparison.header_info;
+        //
+        //// Check warnings
         sheetModel.warnings = model.getSheetWarnings(sheet);
-        sheetModel.columns.warnings = model.getColumnWarnings(sheet, sheetModel);
+        //sheetModel.columns.warnings = model.getColumnWarnings(sheet, sheetModel);
 
         console.log(sheetModel);
 
@@ -135,16 +131,16 @@ var PreflightModel = function(filePath, initCallback){
 
     model.getColumnWarnings = function(sheet, sheetModel){
         sheetModel.columns.preview.forEach(function(previewHeader){
-            console.log(previewHeader);
+            console.log('previewHeader', previewHeader);
         });
     };
 
-    model.getColumnPreview = function(sheet, column_headers){
+    model.getColumns = function(sheet, column_headers){
 
         var comparison = new ComparisonTable(sheet, column_headers);
-        var previewObject = comparison.getTableRows();
+        var columns = comparison.getTableRows();
 
-        return previewObject;
+        return columns;
     };
 
     //model.checkHeaderRow = function(sheet, readFileArray){

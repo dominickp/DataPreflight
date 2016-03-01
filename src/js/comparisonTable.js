@@ -1,4 +1,5 @@
 var _ = require('underscore');
+var ColumnModel = require('./../model/columnModel');
 
 var ComparisonTable = function(sheet, column_headers){
 
@@ -101,17 +102,30 @@ var ComparisonTable = function(sheet, column_headers){
         // was iterating over column_headers
         column_headers.forEach(function(header){
 
-            var column = {};
-            header = header.toString();
+            var column = new ColumnModel(header.toString());
 
-            column[header] = [
-                getValue(first_pairs, header),
-                getValue(middle_pairs, header),
-                getValue(last_pairs, header),
-                model.getMin(header),
-                model.getMax(header),
-                getUniques(header)
-            ];
+            column.setAttributes(
+                model.getMin(column.name),
+                model.getMax(column.name),
+                getUniques(column.name)
+            );
+
+            column.setPreview(
+                getValue(first_pairs, column.name),
+                getValue(middle_pairs, column.name),
+                getValue(last_pairs, column.name)
+            );
+
+            //header = header.toString();
+            //
+            //column[header] = [
+            //    getValue(first_pairs, header),
+            //    getValue(middle_pairs, header),
+            //    getValue(last_pairs, header),
+            //    model.getMin(header),
+            //    model.getMax(header),
+            //    getUniques(header)
+            //];
 
             columns.push(column);
 

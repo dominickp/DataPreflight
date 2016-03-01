@@ -13,23 +13,21 @@ div(class="table-responsive")
                     span(class="badge pull-right")="row " + sheet.header_info.last_position
         tbody
             - var preview_char_limit = 25
-            each row, index in sheet.columns.preview
-                - var key = Object.keys(row)[0]
-                - var unique_values = row[key][5]
+            each column, index in sheet.columns
                 tr
-                    td=key
-                    td(title=row[key][0], data-toggle="tooltip")
-                        if row[key][0].length > preview_char_limit
-                            =row[key][0].toString().substr(0, preview_char_limit) + '...'
+                    td=column.name
+                    td(title=column.preview.first, data-toggle="tooltip")
+                        if column.preview.first.length > preview_char_limit
+                            =column.preview.first.toString().substr(0, preview_char_limit) + '...'
                         else
-                            =row[key][0]
-                    td(title=row[key][1], data-toggle="tooltip")
-                        if row[key][1].length > preview_char_limit
-                            =row[key][1].toString().substr(0, preview_char_limit) + '...'
+                            =column.preview.first
+                    td(title=column.preview.middle, data-toggle="tooltip")
+                        if column.preview.middle.length > preview_char_limit
+                            =column.preview.middle.toString().substr(0, preview_char_limit) + '...'
                         else
-                            =row[key][1]
-                    td(title=row[key][2], data-toggle="tooltip")
-                        if row[key][2].length > preview_char_limit
-                            =row[key][2].toString().substr(0, preview_char_limit) + '...'
+                            =column.preview.middle
+                    td(title=column.preview.last, data-toggle="tooltip")
+                        if column.preview.last.length > preview_char_limit
+                            =column.preview.last.toString().substr(0, preview_char_limit) + '...'
                         else
-                            =row[key][2]
+                            =column.preview.last

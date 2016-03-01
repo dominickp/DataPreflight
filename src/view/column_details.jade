@@ -1,32 +1,30 @@
 h4 Column Details
 
 div(id="#column-details")
-    each row, index in sheet.columns.preview
-        - var key = Object.keys(row)[0]
-        - var unique_values = row[key][5]
+    each column, index in sheet.columns
         h5
             small=(index+1)+" "
-            =key
+            =column.name
         div(class="btn-group")
             button(type="button", class="btn btn-default", data-toggle="tooltip", title="Minimum length")
                 i(class="fa fa-compress")
-                =" " + row[key][3]
+                =" " + column.attributes.min
             button(type="button", class="btn btn-default", data-toggle="tooltip", title="Maximum length")
                 i(class="fa fa-expand")
-                =" " + row[key][4]
+                =" " + column.attributes.max
             button(type="button", class="btn btn-default bind-tooltip", data-toggle="collapse", data-target="#column-data-values-"+index, title="Unique values")
                 i(class="fa fa-star-half-o")
-                if row[key][5].length === sheet.row_count
+                if column.attributes.uniques.length === sheet.row_count
                     =" ALL"
                 else
-                    =" " + row[key][5].length
+                    =" " + column.attributes.uniques.length
         div(id="column-data-values-"+index, class="collapse")
             - var preview_value_limit = 100
-            if row[key][5].length > preview_value_limit
+            if column.attributes.uniques.length > preview_value_limit
                 h6="Data Values (Top "+preview_value_limit+")"
             else
                 h6="Data Values"
-            each value, index in row[key][5]
+            each value, index in column.attributes.uniques
                 if index < preview_value_limit
                     if typeof value == "undefined"
                         span(class="label label-warning single-value-marker")
