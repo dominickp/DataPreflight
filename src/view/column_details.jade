@@ -45,6 +45,10 @@ div(id="#column-details")
                             span(class="label label-info", data-toggle="tooltip", title="Alphabetic (uppercase)")
                                 ="A-Z"
                             =" "
+                        if(column.attributes.types.punctuation)
+                            span(class="label label-info", data-toggle="tooltip", title="Punctuation")
+                               i(class="fa fa-question")
+                            =" "
                         if(column.attributes.types.non_ascii)
                             span(class="label label-info", data-toggle="tooltip", title="Non-ASCII")
                                i(class="fa fa-subscript")
