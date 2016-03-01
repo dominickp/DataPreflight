@@ -1,41 +1,48 @@
 h4 Column Details
 
-div(id="#column-details", class="list-group")
+div(id="#column-details")
     each column, index in sheet.columns
-        div(class="list-group-item")
-            h5
-                small=(index+1)+" "
-                =column.name
-            div(class="btn-group")
-                button(type="button", class="btn btn-default", data-toggle="tooltip", title="Minimum length")
-                    i(class="fa fa-compress")
-                    =" " + column.attributes.min
-                button(type="button", class="btn btn-default", data-toggle="tooltip", title="Maximum length")
-                    i(class="fa fa-expand")
-                    =" " + column.attributes.max
-                button(type="button", class="btn btn-default bind-tooltip", data-toggle="collapse", data-target="#column-data-values-"+index, title="Unique values")
-                    i(class="fa fa-star-half-o")
-                    if column.attributes.uniques.length === sheet.row_count
-                        =" ALL"
-                    else
-                        =" " + column.attributes.uniques.length
-            div(id="column-data-values-"+index, class="collapse")
-                - var preview_value_limit = 100
-                if column.attributes.uniques.length > preview_value_limit
-                    h6="Data Values (Top "+preview_value_limit+")"
-                else
-                    h6="Data Values"
-                each value, index in column.attributes.uniques
-                    if index < preview_value_limit
-                        if typeof value == "undefined"
-                            span(class="label label-warning single-value-marker")
-                                i(class="fa fa-times")
+        div(class="panel panel-default")
+            div(class="panel-heading")
+                h5(class="list-group-item-heading")
+                    small=(index + 1) + " "
+                    =column.name
+            div(class="panel-body")
+                div(class="row")
+
+                    div(class="col-md-4")
+                        div(class="btn-group")
+                            button(type="button", class="btn btn-default", data-toggle="tooltip", title="Minimum length")
+                                i(class="fa fa-compress")
+                                =" " + column.attributes.min
+                            button(type="button", class="btn btn-default", data-toggle="tooltip", title="Maximum length")
+                                i(class="fa fa-expand")
+                                =" " + column.attributes.max
+                            button(type="button", class="btn btn-default bind-tooltip", data-toggle="collapse", data-target="#column-data-values-"+index, title="Unique values")
+                                i(class="fa fa-star-half-o")
+                                if column.attributes.uniques.length === sheet.row_count
+                                    =" ALL"
+                                else
+                                    =" " + column.attributes.uniques.length
+                    div(class="col-md-4")
+                        if column.warnings.length > 0
+                            div(class="column-warnings")
+                                each warning in column.warnings
+                                    span(class="label label-warning")
+                                        i(class="fa fa-exclamation")
+                                        =" "+warning
+                div(class="row")
+                    div(id="column-data-values-" + index, class="collapse col-md-12")
+                        - var preview_value_limit = 100
+                        if column.attributes.uniques.length > preview_value_limit
+                            h6="Data Values (Top " + preview_value_limit + ")"
                         else
-                            span(class="label label-info single-value-marker")=value
-                        =" "
-            if column.warnings.length > 0
-                div(class="column-warnings")
-                    each warning in column.warnings
-                        span(class="label label-warning")
-                            i(class="fa fa-exclamation")
-                            =" "+warning
+                            h6="Data Values"
+                        each value, index in column.attributes.uniques
+                            if index < preview_value_limit
+                                if typeof value == "undefined"
+                                    span(class="label label-warning single-value-marker")
+                                        i(class="fa fa-times")
+                                else
+                                    span(class="label label-info single-value-marker")=value
+                                =" "
