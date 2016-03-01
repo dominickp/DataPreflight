@@ -1,26 +1,34 @@
 h4 Column Details
-div(class="table-responsive")
-    table(id="sheet-preview-" + index, class="table table-bordered table-hover table-striped")
-        thead
-            tr
-                th="Header"
-                th="Min"
-                th="Max"
-                th="Uniques"
-        tbody
-            each row, index in sheet.column_preview
-                - var key = Object.keys(row)[0]
-                - var unique_values = row[key][5]
-                tr
-                    td=key
-                    td=row[key][3]
-                    td=row[key][4]
-                    if row[key][5].length === sheet.row_count
-                        td="ALL"
+
+div(id="#column-details")
+    each row, index in sheet.column_preview
+        - var key = Object.keys(row)[0]
+        - var unique_values = row[key][5]
+        h5=key
+        div(class="btn-group")
+            button(type="button", class="btn btn-default", data-toggle="tooltip", title="Minimum length")
+                i(class="fa fa-compress")
+                =" " + row[key][3]
+            button(type="button", class="btn btn-default", data-toggle="tooltip", title="Maximum length")
+                i(class="fa fa-expand")
+                =" " + row[key][4]
+            button(type="button", class="btn btn-default bind-tooltip", data-toggle="collapse", data-target="#column-data-values-"+index, title="Unique values")
+                i(class="fa fa-star-half-o")
+                if row[key][5].length === sheet.row_count
+                    =" ALL"
+                else
+                    =" " + row[key][5].length
+        div(id="column-data-values-"+index, class="collapse")
+            - var preview_value_limit = 100
+            if row[key][5].length > preview_value_limit
+                h6="Data Values (Top "+preview_value_limit+")"
+            else
+                h6="Data Values"
+            each value, index in row[key][5]
+                if index < preview_value_limit
+                    if typeof value == "undefined"
+                        span(class="label label-warning single-value-marker")
+                            i(class="fa fa-times")
                     else
-                        if row[key][5].length === 1
-                            td=row[key][5].length + " "
-                                each value in row[key][5]
-                                    span(class="badge single-value-marker")=value
-                        else
-                            td=row[key][5].length
+                        span(class="label label-info single-value-marker")=value
+                    =" "
