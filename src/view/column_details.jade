@@ -27,13 +27,28 @@ div(id="#column-details")
                             button(type="button", class="btn btn-default bind-tooltip", data-toggle="collapse", data-target="#sheet-"+sheet_index+"-column-all-characters-"+index, title="Unique characters")
                                 i(class="fa fa-font")
                                 =" "+column.attributes.unique_characters.length
-                    div(class="col-md-4")
+                    div(class="col-md-4", id="column-tags")
                         if column.warnings.length > 0
-                            div(class="column-warnings")
-                                each warning in column.warnings
-                                    span(class="label label-warning")
-                                        i(class="fa fa-exclamation")
-                                        =" "+warning
+                            each warning in column.warnings
+                                span(class="label label-warning")
+                                    i(class="fa fa-exclamation")=" "+warning
+                                =" "
+                        if(column.attributes.types.numeric)
+                            span(class="label label-info", data-toggle="tooltip", title="Numeric")
+                                ="123"
+                            =" "
+                        if(column.attributes.types.alpha_lower)
+                            span(class="label label-info", data-toggle="tooltip", title="Alphabetic (lowercase)")
+                                ="a-z"
+                            =" "
+                        if(column.attributes.types.alpha_upper)
+                            span(class="label label-info", data-toggle="tooltip", title="Alphabetic (uppercase)")
+                                ="A-Z"
+                            =" "
+                        if(column.attributes.types.non_ascii)
+                            span(class="label label-info", data-toggle="tooltip", title="Non-ASCII")
+                               i(class="fa fa-subscript")
+                            =" "
                 div(class="row")
                     div(id="sheet-"+sheet_index+"-column-data-values-" + index, class="collapse col-md-12")
                         - var preview_value_limit = 100

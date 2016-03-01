@@ -60,6 +60,39 @@ var ComparisonTable = function(sheet, column_headers){
         return min;
     };
 
+    model.getType = function(uniqueCharacters){
+        var types_found = {
+            numeric: false,
+            alpha_lower: false,
+            alpha_upper: false,
+            non_ascii: false
+
+        };
+
+        uniqueCharacters.forEach(function(char){
+            // Test numeric
+            if(!isNaN(char)){
+                types_found.numeric = true;
+            } else {
+                // Test case letters
+                if(char === char.toUpperCase()){
+                    types_found.alpha_upper = true;
+                }
+                if(char === char.toLowerCase()){
+                    types_found.alpha_lower = true;
+                }
+            }
+
+            // Test non-ascii
+            if(char.charCodeAt(0) > 127){
+                types_found.non_ascii = true;
+            }
+        });
+
+
+        return types_found;
+    };
+
     model.getTableRows = function(){
 
         var first_pairs = _.pairs(model.first);
@@ -126,11 +159,15 @@ var ComparisonTable = function(sheet, column_headers){
 
             var column = new ColumnModel(header.toString());
 
+            // I'll use these twice
+            var uniqueCharacters = getUniqueCharacters(column.name);
+
             column.setAttributes(
                 model.getMin(column.name),
                 model.getMax(column.name),
                 getUniques(column.name),
-                getUniqueCharacters(column.name)
+                uniqueCharacters,
+                model.getType(uniqueCharacters)
             );
 
             column.setPreview(

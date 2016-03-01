@@ -128,12 +128,17 @@ var PreflightModel = function(filePath, initCallback){
 
     model.appendColumnWarnings = function(columns){
         columns.forEach(function(column){
-            // Check for blanks
+            // Check for blank values
             if(column.attributes.min === "X"){
                 column.addWarning("Blank values");
             }
+            // Check for static values
             if(column.attributes.uniques.length === 1){
                 column.addWarning("Static value");
+            }
+            // Check for non-ascii characters
+            if(column.attributes.types.non_ascii === true){
+                column.addWarning("Non-ASCII characters");
             }
         });
 
