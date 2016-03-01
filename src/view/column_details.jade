@@ -30,7 +30,7 @@ div(id="#column-details")
                     div(class="col-md-4", id="column-tags")
                         if column.warnings.length > 0
                             each warning in column.warnings
-                                span(class="label label-warning")
+                                span(class="label label-warning", data-toggle="tooltip", title="Warning")
                                     i(class="fa fa-exclamation")=" "+warning
                                 =" "
                         if(column.attributes.types.numeric)
