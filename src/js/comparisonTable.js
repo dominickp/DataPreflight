@@ -98,6 +98,28 @@ var ComparisonTable = function(sheet, column_headers){
             return uniqueValues;
         };
 
+        var getUniqueCharacters = function(header){
+
+            var all_characters = [];
+
+            sheet.forEach(function(row){
+                var value = row[header];
+                if(typeof value !== "undefined"){
+                    value = value.toString();
+                    var characters = value.split('');
+                    //console.log(characters);
+                    all_characters = all_characters.concat(characters);
+
+                }
+            });
+
+            var uniqueValues = _.uniq(all_characters);
+
+            uniqueValues = uniqueValues.sort();
+
+            return uniqueValues;
+        };
+
         // For each column
         // was iterating over column_headers
         column_headers.forEach(function(header){
@@ -107,7 +129,8 @@ var ComparisonTable = function(sheet, column_headers){
             column.setAttributes(
                 model.getMin(column.name),
                 model.getMax(column.name),
-                getUniques(column.name)
+                getUniques(column.name),
+                getUniqueCharacters(column.name)
             );
 
             column.setPreview(

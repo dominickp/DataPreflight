@@ -8,10 +8,11 @@ var ColumnModel = function(name) {
     column.attributes = {};
     column.warnings = [];
 
-    column.setAttributes = function(min, max, uniques){
+    column.setAttributes = function(min, max, uniques, unique_characters){
         column.attributes.min = min;
         column.attributes.max = max;
         column.attributes.uniques = uniques;
+        column.attributes.unique_characters = unique_characters;
     };
 
     column.setPreview = function(first, middle, last){

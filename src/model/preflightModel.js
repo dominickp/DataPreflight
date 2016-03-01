@@ -130,7 +130,10 @@ var PreflightModel = function(filePath, initCallback){
         columns.forEach(function(column){
             // Check for blanks
             if(column.attributes.min === "X"){
-                column.addWarning("Contains blanks");
+                column.addWarning("Blank values");
+            }
+            if(column.attributes.uniques.length === 1){
+                column.addWarning("Static value");
             }
         });
 

@@ -18,12 +18,15 @@ div(id="#column-details")
                             button(type="button", class="btn btn-default", data-toggle="tooltip", title="Maximum length")
                                 i(class="fa fa-expand")
                                 =" " + column.attributes.max
-                            button(type="button", class="btn btn-default bind-tooltip", data-toggle="collapse", data-target="#column-data-values-"+index, title="Unique values")
+                            button(type="button", class="btn btn-default bind-tooltip", data-toggle="collapse", data-target="#sheet-"+sheet_index+"-column-data-values-"+index, title="Unique values")
                                 i(class="fa fa-star-half-o")
                                 if column.attributes.uniques.length === sheet.row_count
                                     =" ALL"
                                 else
                                     =" " + column.attributes.uniques.length
+                            button(type="button", class="btn btn-default bind-tooltip", data-toggle="collapse", data-target="#sheet-"+sheet_index+"-column-all-characters-"+index, title="Unique characters")
+                                i(class="fa fa-font")
+                                =" "+column.attributes.unique_characters.length
                     div(class="col-md-4")
                         if column.warnings.length > 0
                             div(class="column-warnings")
@@ -32,7 +35,7 @@ div(id="#column-details")
                                         i(class="fa fa-exclamation")
                                         =" "+warning
                 div(class="row")
-                    div(id="column-data-values-" + index, class="collapse col-md-12")
+                    div(id="sheet-"+sheet_index+"-column-data-values-" + index, class="collapse col-md-12")
                         - var preview_value_limit = 100
                         if column.attributes.uniques.length > preview_value_limit
                             h6="Data Values (Top " + preview_value_limit + ")"
@@ -46,3 +49,12 @@ div(id="#column-details")
                                 else
                                     span(class="label label-info single-value-marker")=value
                                 =" "
+                    div(id="sheet-"+sheet_index+"-column-all-characters-" + index, class="collapse col-md-12")
+                        h6="All Characters"
+                        each character, index in column.attributes.unique_characters
+                            if character === " "
+                                span(class="label label-info unique-character-marker", data-toggle="tooltip", title="Space, ASCII "+character.charCodeAt(0))
+                                    i(class="fa fa-terminal")
+                            else
+                                span(class="label label-info unique-character-marker", data-toggle="tooltip", title="ASCII "+character.charCodeAt(0))=character
+                            ="  "

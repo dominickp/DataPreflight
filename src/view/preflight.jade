@@ -12,7 +12,7 @@ html
                     span(class="badge")=workbook.sheets.length
                 div(class="panel-group")
 
-                    each sheet, index in workbook.sheets
+                    each sheet, sheet_index in workbook.sheets
                         include ./sheet.jade
 
             div(class="col-md-12")
