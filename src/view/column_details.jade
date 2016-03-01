@@ -4,7 +4,9 @@ div(id="#column-details")
     each row, index in sheet.column_preview
         - var key = Object.keys(row)[0]
         - var unique_values = row[key][5]
-        h5=key
+        h5
+            small=(index+1)+" "
+            =key
         div(class="btn-group")
             button(type="button", class="btn btn-default", data-toggle="tooltip", title="Minimum length")
                 i(class="fa fa-compress")
