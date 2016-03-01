@@ -72,8 +72,8 @@ div(id="#column-details")
                         h6="Column Characters"
                         each character, index in column.attributes.unique_characters
                             if character === " "
-                                span(class="label label-info unique-character-marker", data-toggle="tooltip", title="Space, ASCII "+character.charCodeAt(0))
+                                span(class="label label-info unique-character-marker", data-toggle="tooltip", title="Space, UTF "+character.charCodeAt(0))
                                     i(class="fa fa-terminal")
                             else
-                                span(class="label label-info unique-character-marker", data-toggle="tooltip", title="ASCII "+character.charCodeAt(0))=character
+                                span(class="label label-info unique-character-marker", data-toggle="tooltip", title="UTF "+character.charCodeAt(0))=character
                             ="  "
