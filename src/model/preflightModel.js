@@ -155,20 +155,17 @@ var PreflightModel = function(filePath, initCallback){
     //};
 
     model.init = function() {
-        model.readFileArray = J.readFile(model.filename);
-        model.jWorkBook = J.utils.to_json(model.readFileArray);
 
-        //console.log("to_csv", J.utils.to_csv(model.readFileArray));
-
-        //console.log("jworkbook",model.jWorkBook);
-        //console.log("readFileArray",model.readFileArray[1].Sheets.Sheet1.B2);
+        try {
+            model.readFileArray = J.readFile(model.filename);
+            model.jWorkBook = J.utils.to_json(model.readFileArray);
+        } catch (e) {
+            console.log("'"+model.basename+"' could not be parsed. Skipping...");
+            initCallback(false);
+            return false;
+        }
 
         model.preflightSheets(function(){
-            //console.log("done");
-
-            //console.log("model.sheets.length", model.sheets.length);
-
-
             initCallback(model);
         });
     }();

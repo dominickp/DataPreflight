@@ -48,26 +48,29 @@ var PreflightFile = function(input, output, append){
 
             pm = preflightModelReturn;
 
-            // Jade testing
-            var jadeOptions = {doctype: 'html', pretty:true};
-            var fn = jade.compileFile(__dirname+'/../view/preflight.jade', jadeOptions);
-            var html = fn({
-                workbook: pm
-            });
+            if(preflightModelReturn !== false){
+
+                // Jade testing
+                var jadeOptions = {doctype: 'html', pretty:true};
+                var fn = jade.compileFile(__dirname+'/../view/preflight.jade', jadeOptions);
+                var html = fn({
+                    workbook: pm
+                });
 
 
+                // Set default output if input left blank
+                if(!model.preflightPath){
+                    model.preflightPath = model.filename+'_preflight.html';
+                }
 
-            // Set default output if input left blank
-            if(!model.preflightPath){
-                model.preflightPath = model.filename+'_preflight.html';
+                // Delete old preflight
+                model.purgeOldPreflight(model.appendFlag, function(){
+
+                    model.writeFile(model.preflightPath, html);
+
+                });
+
             }
-
-            // Delete old preflight
-            model.purgeOldPreflight(model.appendFlag, function(){
-
-                model.writeFile(model.preflightPath, html);
-
-            });
 
         });
 
