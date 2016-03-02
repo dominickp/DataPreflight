@@ -160,7 +160,7 @@ var PreflightModel = function(filePath, initCallback){
             model.readFileArray = J.readFile(model.filename);
             model.jWorkBook = J.utils.to_json(model.readFileArray);
         } catch (e) {
-            console.log("'"+model.basename+"' could not be parsed. Skipping...");
+            console.log("'"+model.basename+"' could not be parsed: '"+e+"'. Skipping...");
             initCallback(false);
             return false;
         }
