@@ -1,5 +1,6 @@
 var _ = require('underscore');
 var ColumnModel = require('./../model/columnModel');
+var object_hash = require('object-hash');
 
 var ComparisonTable = function(sheet, column_headers){
 
@@ -98,6 +99,24 @@ var ComparisonTable = function(sheet, column_headers){
         return types_found;
     };
 
+    model.getColumnHash = function(header){
+
+        var columnContents = [];
+
+        sheet.forEach(function(row, index){
+            var value = row[header];
+            if(typeof value !== 'undefined'){
+                columnContents.push(value);
+            }
+        });
+
+        var hash = object_hash(columnContents);
+
+        //console.log('hash',hash);
+
+        return hash;
+    };
+
     model.getTableRows = function(){
 
         var first_pairs = _.pairs(model.first);
@@ -180,6 +199,9 @@ var ComparisonTable = function(sheet, column_headers){
                 getValue(middle_pairs, column.name),
                 getValue(last_pairs, column.name)
             );
+
+            // Generate hash
+            column.setHash(model.getColumnHash(column.name));
 
             columns.push(column);
 

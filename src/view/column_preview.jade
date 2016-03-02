@@ -1,4 +1,4 @@
-h4 Column Preview
+h4 Data Integrity Check
 div(class="table-responsive")
     table(id="sheet-preview-" + index, class="table table-bordered table-hover table-striped")
         thead
@@ -11,6 +11,7 @@ div(class="table-responsive")
                     span(class="badge pull-right")="row " + sheet.header_info.middle_position
                 th="Last"
                     span(class="badge pull-right")="row " + sheet.header_info.last_position
+                th(class="text-center")="Hash"
         tbody
             - var preview_char_limit = 25
             each column, index in sheet.columns
@@ -31,3 +32,5 @@ div(class="table-responsive")
                             =column.preview.last.toString().substr(0, preview_char_limit) + '...'
                         else
                             =column.preview.last
+                    td(class="no-padding text-center", data-toggle="tooltip", title=column.hash, data-placement="left",)
+                        img(alt=column.hash, src='data:image/svg+xml;base64,'+new Buffer(column.hash_image).toString('base64'))

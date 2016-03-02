@@ -53,6 +53,15 @@ div(id="#column-details")
                             span(class="label label-info", data-toggle="tooltip", title="Non-ASCII")
                                i(class="fa fa-subscript")
                             =" "
+                    div(class="col-md-4", id="column-hash")
+                        img(
+                                data-toggle="tooltip",
+                                data-placement="left",
+                                title=column.hash
+                                class="pull-right",
+                                alt=column.hash,
+                                src='data:image/svg+xml;base64,'+new Buffer(column.hash_image).toString('base64')
+                            )
                 div(class="row")
                     div(id="sheet-"+sheet_index+"-column-data-values-" + index, class="collapse col-md-12")
                         - var preview_value_limit = 100

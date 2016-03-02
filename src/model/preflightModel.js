@@ -88,7 +88,7 @@ var PreflightModel = function(filePath, initCallback){
         // Check warnings
         sheetModel.warnings = model.getSheetWarnings(sheet);
 
-        console.log(sheetModel);
+        //console.log(sheetModel);
 
 
         //console.log(sheetModel);
@@ -178,7 +178,7 @@ var PreflightModel = function(filePath, initCallback){
         model.preflightSheets(function(){
             //console.log("done");
 
-            console.log("model.sheets.length", model.sheets.length);
+            //console.log("model.sheets.length", model.sheets.length);
 
 
             initCallback(model);

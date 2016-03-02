@@ -1,3 +1,4 @@
+var jdenticon = require("jdenticon")
 
 var ColumnModel = function(name) {
 
@@ -24,6 +25,11 @@ var ColumnModel = function(name) {
 
     column.addWarning = function(warning){
         column.warnings.push(warning);
+    };
+
+    column.setHash = function(hash){
+        column.hash = hash;
+        column.hash_image = jdenticon.toSvg(hash, 34);
     };
 
 };
