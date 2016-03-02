@@ -75,8 +75,6 @@ var PreflightModel = function(filePath, initCallback){
 
     model.preflightSheet = function(sheet, sheetModel, column_headers, sheet_id, callback){
 
-
-
         // Number of records
         sheetModel.row_count = sheet.length;
 
@@ -84,19 +82,9 @@ var PreflightModel = function(filePath, initCallback){
         var columnComparison = model.getColumns(sheet, column_headers);
         sheetModel.columns = columnComparison.columns;
         sheetModel.header_info = columnComparison.header_info;
-        //
+
         // Check warnings
         sheetModel.warnings = model.getSheetWarnings(sheet);
-
-        //console.log(sheetModel);
-
-
-        //console.log(sheetModel);
-
-        //console.log("One sheet", sheetModel);
-
-        // Verify header row
-        //model.checkHeaderRow(model.sheets, model.readFileArray);
 
         callback(sheetModel);
     };
