@@ -187,17 +187,22 @@ var ComparisonTable = function(sheet, column_headers, debug){
         var values = [];
 
         sheet.forEach(function(row){
-            values.push(row[header]);
-        });
 
-        var uniqueValues = _.uniq(values);
+            var value = row[header];
+
+            if(_.indexOf(values, value, false) === -1){
+                values.push(value);
+            }
+
+        });
 
         if(model.debugFlag){
             console.timeEnd(console_tag);
         }
 
-        return uniqueValues;
+        return values;
     };
+
 
     model.getTableRows = function(){
 
