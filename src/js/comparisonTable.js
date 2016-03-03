@@ -146,6 +146,59 @@ var ComparisonTable = function(sheet, column_headers, debug){
         return hash;
     };
 
+    model.getUniqueCharacters = function(header){
+
+        if(model.debugFlag){
+            var console_tag = "------------[Finding unique characters]";
+            console.time(console_tag);
+        }
+
+        var all_characters = [];
+
+        sheet.forEach(function(row){
+            var value = row[header];
+            if(typeof value !== "undefined"){
+                value = value.toString();
+                var characters = value.split('');
+                //console.log(characters);
+                all_characters = _.union(all_characters, characters);
+
+            }
+        });
+
+        var uniqueValues = all_characters;
+
+        uniqueValues = uniqueValues.sort();
+
+        if(model.debugFlag){
+            console.timeEnd(console_tag);
+        }
+
+        return uniqueValues;
+    };
+
+    model.getUniques = function(header){
+
+        if(model.debugFlag){
+            var console_tag = "------------[Finding unique values]";
+            console.time(console_tag);
+        }
+
+        var values = [];
+
+        sheet.forEach(function(row){
+            values.push(row[header]);
+        });
+
+        var uniqueValues = _.uniq(values);
+
+        if(model.debugFlag){
+            console.timeEnd(console_tag);
+        }
+
+        return uniqueValues;
+    };
+
     model.getTableRows = function(){
 
         var first_pairs = _.pairs(model.first);
@@ -170,58 +223,7 @@ var ComparisonTable = function(sheet, column_headers, debug){
             return value;
         };
 
-        var getUniques = function(header){
 
-            if(model.debugFlag){
-                var console_tag = "------------[Finding unique values]";
-                console.time(console_tag);
-            }
-
-            var values = [];
-
-            sheet.forEach(function(row){
-                values.push(row[header]);
-            });
-
-            var uniqueValues = _.uniq(values);
-
-            if(model.debugFlag){
-                console.timeEnd(console_tag);
-            }
-
-            return uniqueValues;
-        };
-
-        var getUniqueCharacters = function(header){
-
-            if(model.debugFlag){
-                var console_tag = "------------[Finding unique characters2]";
-                console.time(console_tag);
-            }
-
-            var all_characters = [];
-
-            sheet.forEach(function(row){
-                var value = row[header];
-                if(typeof value !== "undefined"){
-                    value = value.toString();
-                    var characters = value.split('');
-                    //console.log(characters);
-                    all_characters = _.union(all_characters, characters);
-
-                }
-            });
-
-            var uniqueValues = all_characters;
-
-            uniqueValues = uniqueValues.sort();
-
-            if(model.debugFlag){
-                console.timeEnd(console_tag);
-            }
-
-            return uniqueValues;
-        };
 
         // For each column
         // was iterating over column_headers
@@ -234,12 +236,12 @@ var ComparisonTable = function(sheet, column_headers, debug){
             var column = new ColumnModel(header.toString());
 
             // I'll use these twice
-            var uniqueCharacters = getUniqueCharacters(column.name);
+            var uniqueCharacters = model.getUniqueCharacters(column.name);
 
             column.setAttributes(
                 model.getMin(column.name),
                 model.getMax(column.name),
-                getUniques(column.name),
+                model.getUniques(column.name),
                 uniqueCharacters,
                 model.getType(uniqueCharacters)
             );
