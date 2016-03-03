@@ -4,7 +4,7 @@ var ComparisonTable = require('./../js/comparisonTable');
 var _ = require('underscore');
 
 
-var PreflightModel = function(filePath, initCallback){
+var PreflightModel = function(filePath, debug, initCallback){
     var model = this;
 
     model.filename = filePath;
@@ -12,6 +12,8 @@ var PreflightModel = function(filePath, initCallback){
     model.jWorkBook = null;
 
     model.sheets = [];
+
+    model.debugFlag = debug;
 
     model.getBaseName = function(){
         var base = model.filename.substring(model.filename.lastIndexOf('/') + 1);
@@ -22,6 +24,9 @@ var PreflightModel = function(filePath, initCallback){
     }();
 
     model.get_header_row = function(readFileArray, sheet_id) {
+        if(model.debugFlag){
+            console.log("---[Getting header row]");
+        }
         var sheet = readFileArray[1].Sheets[sheet_id];
         var headers = [];
         var range = J.XLSX.utils.decode_range(sheet['!ref']);
@@ -75,6 +80,10 @@ var PreflightModel = function(filePath, initCallback){
 
     model.preflightSheet = function(sheet, sheetModel, column_headers, sheet_id, callback){
 
+        if(model.debugFlag){
+            console.log("---[Preflighting sheet]", sheet_id);
+        }
+
         // Number of records
         sheetModel.row_count = sheet.length;
 
@@ -91,6 +100,10 @@ var PreflightModel = function(filePath, initCallback){
 
     model.getSheetWarnings = function(sheet){
 
+        if(model.debugFlag){
+            console.log("------[Finding sheet warnings]");
+        }
+
         var warnings = {
             "non_ascii_characters": []
         };
@@ -101,7 +114,9 @@ var PreflightModel = function(filePath, initCallback){
             _.each(row, function(value, column){
                 // Check for non-ascii characters
                 if(/^[ -~]+$/.test(value) === false) {
-                    console.log("Strange character found: ", value, column);
+                    if(model.debugFlag){
+                        console.log("---------[Non-ascii character found]", value);
+                    }
                     warnings.non_ascii_characters.push({
                         value: value,
                         column: column,
@@ -115,6 +130,11 @@ var PreflightModel = function(filePath, initCallback){
     };
 
     model.appendColumnWarnings = function(columns){
+
+        if(model.debugFlag){
+            console.log("---------[Finding column warnings]");
+        }
+
         columns.forEach(function(column){
             // Check for blank values
             if(column.attributes.min === "X"){
@@ -134,6 +154,10 @@ var PreflightModel = function(filePath, initCallback){
     };
 
     model.getColumns = function(sheet, column_headers){
+
+        if(model.debugFlag){
+            console.log("------[Preflighting columns]");
+        }
 
         var comparison = new ComparisonTable(sheet, column_headers);
         var comparisonColumns = comparison.getTableRows();

@@ -17,13 +17,14 @@ if(argv.action === 'preflight'){
     var input = argv.input;
     var output = argv.output;
     var append = argv.append;
+    var debug = argv.debug;
 
     argv = require('yargs')
-        .usage('Usage: $0 --input [path] --output [path] [--append]')
+        .usage('Usage: $0 --input [path] --output [path] [--append] [--debug]')
         .demand(['input'])
         .argv;
 
-    var preflight = new PreflightFile(input, output, append);
+    var preflight = new PreflightFile(input, output, append, debug);
     preflight.init();
 
 }
@@ -32,13 +33,14 @@ if(argv.action === 'preflight-dir'){
 
     var path = argv.path;
     var append = argv.append;
+    var debug = argv.debug;
 
     argv = require('yargs')
-        .usage('Usage: $0 --path')
+        .usage('Usage: $0 --path [--debug]')
         .demand(['path'])
         .argv;
 
-    var preflight = new PreflightDirectory(path, append);
+    var preflight = new PreflightDirectory(path, append, debug);
     preflight.init();
 
 }

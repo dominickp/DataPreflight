@@ -3,7 +3,7 @@ var jade = require('jade');
 var PreflightModel = require('./../model/preflightModel.js');
 
 
-var PreflightFile = function(input, output, append){
+var PreflightFile = function(input, output, append, debug){
     var model = this;
 
     model.debug = false;
@@ -13,6 +13,8 @@ var PreflightFile = function(input, output, append){
     model.preflightPath = output;
 
     model.appendFlag = append;
+
+    model.debugFlag = debug;
 
     model.header = "Gabe's Data Preflight - Version 0.0.1";
 
@@ -43,12 +45,20 @@ var PreflightFile = function(input, output, append){
 
     model.init = function(){
 
+        if(model.debugFlag){
+            console.log("[Debugging on]");
+        }
 
-        var pm = new PreflightModel(model.filename, function(preflightModelReturn){
+
+        var pm = new PreflightModel(model.filename, model.debugFlag, function(preflightModelReturn){
 
             pm = preflightModelReturn;
 
             if(preflightModelReturn !== false){
+
+                if(model.debugFlag){
+                    console.log("[Preflight done]", pm.basename);
+                }
 
                 // Jade testing
                 var jadeOptions = {doctype: 'html', pretty:true};
