@@ -10,53 +10,24 @@ data-preflight --version
 ```
 
 ## Usage
-Use 'data-preflight' or 'node path/to/repo/src/js/interface.js'
+Use 'data-preflight' if you installed globally or 'node path/to/repo/src/js/interface.js' if you didn't.
 
 ### Preflight file
-The 'preflight' action produces a preflight report, showing the sheet name, headers, first/middle/last, and the max/mins for each column. If the '--output' parameter is left blank, it will create the preflight in the same directory as the input file with "_preflight.txt" appended. You may also use the optional flag '--append' to append the preflight reports, instead of overwriting them. If you are verison controlling your databases, you probably want to overwrite them.
+The 'preflight' action produces a preflight report. If the '--output' parameter is left blank, it will create the preflight in the same directory as the input file with "_preflight.html" appended. You may also add the optional flag '--debug' to see debug messags while the preflight runs.
+
 ```
 $ data-preflight --action=preflight --input=/Users/dominickpeluso/Desktop/Sample_spreadsheet.csv --output=/Users/dominickpeluso/Desktop/my_preflight.txt
+
+$ data-preflight --action=preflight --input=/Users/dominickpeluso/Desktop/AnotherSheet.csv --debug
 ```
 
 ### Preflight directory
-You may also recursively preflight an entire directory. Doing so will scan the directory and all sub-folders for spreadsheet files and preflight them all. You may also specify an '--append' flag here.
+You may also recursively preflight an entire directory. Doing so will scan the directory and all sub-folders for spreadsheet files and preflight them all. You may also specify a '--debug' flag here.
 
 ```
-$ data-preflight --action=preflight-dir --input=/Users/dominickpeluso/Desktop/Samples
+$ data-preflight --action=preflight-dir --input=/Users/dominickpeluso/Desktop/MySpreadsheets
+
+$ data-preflight --action=preflight-dir --input=/Users/dominickpeluso/Desktop/MySpreadsheets --debug
 ```
 
-### Example preflight report
-```
-Gabe's Data Preflight - Version 0.0.1
-
-File
-=========================================================================================
-/Users/dominickpeluso/Desktop/Shawmut/VDPBuddy/Samples/Sample_4_col.csv
-
-Sheet #
-=========================================================================================
-Sheet1
-
-Preview
----------------------------------------------
-┌──────────────────────────┬────────────────┬────────────────┬────────────────┬────┬────┐
-│ HEADER                   │ FIRST          │ MIDDLE         │ LAST           │ MN │ MX │
-├──────────────────────────┼────────────────┼────────────────┼────────────────┼────┼────┤
-│ One                      │ Data           │ Data           │ Data           │ 4  │ 4  │
-├──────────────────────────┼────────────────┼────────────────┼────────────────┼────┼────┤
-│ Two                      │ Data           │ Data           │ Data           │ 4  │ 4  │
-├──────────────────────────┼────────────────┼────────────────┼────────────────┼────┼────┤
-│ Another column           │ Data           │ Data           │ Data           │ 4  │ 4  │
-├──────────────────────────┼────────────────┼────────────────┼────────────────┼────┼────┤
-│ Four                     │ Data           │ Data           │ Data           │ 4  │ 4  │
-└──────────────────────────┴────────────────┴────────────────┴────────────────┴────┴────┘
-
-Records
----------------------------------------------
-1
-
-Time
----------------------------------------------
-2016-01-21T23:12:49.542Z
-
-```
+### Examples
