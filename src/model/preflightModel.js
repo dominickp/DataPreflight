@@ -159,7 +159,7 @@ var PreflightModel = function(filePath, debug, initCallback){
             console.log("------[Preflighting columns]");
         }
 
-        var comparison = new ComparisonTable(sheet, column_headers);
+        var comparison = new ComparisonTable(sheet, column_headers, model.debugFlag);
         var comparisonColumns = comparison.getTableRows();
 
         comparisonColumns.columns = model.appendColumnWarnings(comparisonColumns.columns);

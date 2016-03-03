@@ -2,10 +2,11 @@ var _ = require('underscore');
 var ColumnModel = require('./../model/columnModel');
 var object_hash = require('object-hash');
 
-var ComparisonTable = function(sheet, column_headers){
+var ComparisonTable = function(sheet, column_headers, debug){
 
     var model = this;
 
+    model.debugFlag = debug;
     model.column_headers = column_headers;
     model.sheet = sheet;
     model.records = sheet.length;
@@ -14,6 +15,12 @@ var ComparisonTable = function(sheet, column_headers){
     model.last = model.sheet[model.records-1];
 
     model.getMax = function(header){
+
+        if(model.debugFlag){
+            var console_tag = "------------[Finding column max]";
+            console.time(console_tag);
+        }
+
         var max = 0;
         sheet.forEach(function(row){
 
@@ -31,10 +38,21 @@ var ComparisonTable = function(sheet, column_headers){
         if(max === 0){
             max = 'X';
         }
+
+        if(model.debugFlag){
+            console.timeEnd(console_tag);
+        }
+
         return max;
     };
 
     model.getMin = function(header){
+
+        if(model.debugFlag){
+            var console_tag = "------------[Finding column min]";
+            console.time(console_tag);
+        }
+
         var min;
         sheet.forEach(function(row, index){
             if(typeof row[header] !== 'undefined'){
@@ -56,6 +74,10 @@ var ComparisonTable = function(sheet, column_headers){
 
         if(min === 0){
             min = 'X';
+        }
+
+        if(model.debugFlag){
+            console.timeEnd(console_tag);
         }
 
         return min;
@@ -101,6 +123,11 @@ var ComparisonTable = function(sheet, column_headers){
 
     model.getColumnHash = function(header){
 
+        if(model.debugFlag){
+            var console_tag = "------------[Hashing column]";
+            console.time(console_tag);
+        }
+
         var columnContents = [];
 
         sheet.forEach(function(row, index){
@@ -112,7 +139,9 @@ var ComparisonTable = function(sheet, column_headers){
 
         var hash = object_hash(columnContents);
 
-        //console.log('hash',hash);
+        if(model.debugFlag){
+            console.timeEnd(console_tag);
+        }
 
         return hash;
     };
@@ -143,6 +172,10 @@ var ComparisonTable = function(sheet, column_headers){
 
         var getUniques = function(header){
 
+            if(model.debugFlag){
+                var console_tag = "------------[Finding unique values]";
+                console.time(console_tag);
+            }
 
             var values = [];
 
@@ -152,10 +185,19 @@ var ComparisonTable = function(sheet, column_headers){
 
             var uniqueValues = _.uniq(values);
 
+            if(model.debugFlag){
+                console.timeEnd(console_tag);
+            }
+
             return uniqueValues;
         };
 
         var getUniqueCharacters = function(header){
+
+            if(model.debugFlag){
+                var console_tag = "------------[Finding unique characters2]";
+                console.time(console_tag);
+            }
 
             var all_characters = [];
 
@@ -165,14 +207,18 @@ var ComparisonTable = function(sheet, column_headers){
                     value = value.toString();
                     var characters = value.split('');
                     //console.log(characters);
-                    all_characters = all_characters.concat(characters);
+                    all_characters = _.union(all_characters, characters);
 
                 }
             });
 
-            var uniqueValues = _.uniq(all_characters);
+            var uniqueValues = all_characters;
 
             uniqueValues = uniqueValues.sort();
+
+            if(model.debugFlag){
+                console.timeEnd(console_tag);
+            }
 
             return uniqueValues;
         };
@@ -180,6 +226,10 @@ var ComparisonTable = function(sheet, column_headers){
         // For each column
         // was iterating over column_headers
         column_headers.forEach(function(header){
+
+            if(model.debugFlag){
+                console.log("---------[Preflighting column]", header);
+            }
 
             var column = new ColumnModel(header.toString());
 
