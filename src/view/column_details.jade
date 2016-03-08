@@ -27,12 +27,14 @@ div(id="#column-details")
                             button(type="button", class="btn btn-default bind-tooltip", data-toggle="collapse", data-target="#sheet-"+sheet_index+"-column-all-characters-"+index, title="Unique characters")
                                 i(class="fa fa-font")
                                 =" "+column.attributes.unique_characters.length
-                    div(class="col-md-4", id="column-tags")
+                    div(class="col-xs-7", id="column-tags")
                         if column.warnings.length > 0
+                            small="Warnings: "
                             each warning in column.warnings
                                 span(class="label label-warning", data-toggle="tooltip", title="Warning")
                                     i(class="fa fa-exclamation")=" "+warning
                                 =" "
+                        small="Types: "
                         if(column.attributes.types.numeric)
                             span(class="label label-info", data-toggle="tooltip", title="Numeric")
                                 ="123"
@@ -53,7 +55,7 @@ div(id="#column-details")
                             span(class="label label-info", data-toggle="tooltip", title="Non-ASCII")
                                i(class="fa fa-subscript")
                             =" "
-                    div(class="col-md-4", id="column-hash")
+                    div(class="col-xs-1", id="column-hash")
                         img(
                                 data-toggle="tooltip",
                                 data-placement="left",
