@@ -10,7 +10,7 @@ div(id="#column-details")
             div(class="panel-body")
                 div(class="row")
 
-                    div(class="col-md-4")
+                    div(class="col-xs-4")
                         div(class="btn-group")
                             button(type="button", class="btn btn-default", data-toggle="tooltip", title="Minimum length")
                                 i(class="fa fa-compress")
@@ -27,7 +27,7 @@ div(id="#column-details")
                             button(type="button", class="btn btn-default bind-tooltip", data-toggle="collapse", data-target="#sheet-"+sheet_index+"-column-all-characters-"+index, title="Unique characters")
                                 i(class="fa fa-font")
                                 =" "+column.attributes.unique_characters.length
-                    div(class="col-xs-7", id="column-tags")
+                    div(class="col-xs-7 column-tags")
                         if column.warnings.length > 0
                             small="Warnings: "
                             each warning in column.warnings
@@ -55,7 +55,7 @@ div(id="#column-details")
                             span(class="label label-info", data-toggle="tooltip", title="Non-ASCII")
                                i(class="fa fa-subscript")
                             =" "
-                    div(class="col-xs-1", id="column-hash")
+                    div(class="col-xs-1 column-hash")
                         img(
                                 data-toggle="tooltip",
                                 data-placement="left",
@@ -65,7 +65,7 @@ div(id="#column-details")
                                 src='data:image/svg+xml;base64,'+new Buffer(column.hash_image).toString('base64')
                             )
                 div(class="row")
-                    div(id="sheet-"+sheet_index+"-column-data-values-" + index, class="collapse col-md-12")
+                    div(id="sheet-"+sheet_index+"-column-data-values-" + index, class="collapse col-md-12 hidden-details")
                         - var preview_value_limit = 100
                         if column.attributes.uniques.length > preview_value_limit
                             h6="Column Values (Top " + preview_value_limit + ")"

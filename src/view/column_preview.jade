@@ -33,4 +33,4 @@ div(class="table-responsive")
                         else
                             =column.preview.last
                     td(class="no-padding text-center", data-toggle="tooltip", title=column.hash, data-placement="left",)
-                        img(alt=column.hash, src='data:image/svg+xml;base64,'+new Buffer(column.hash_image).toString('base64'))
+                        img(class="hash-icon", alt=column.hash, src='data:image/svg+xml;base64,'+new Buffer(column.hash_image).toString('base64'))
