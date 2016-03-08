@@ -5,14 +5,18 @@ div(class="panel panel-default")
     div(id="sheet-"+sheet_index, class="panel-body in")
 
         div(class="col-md-6")
-            h4 Stats
+            h4 Basics
             table(id="sheet-stats-"+index, class="table table-bordered table-hover")
                 tr
                     td Record count
                     td= sheet.row_count
                 tr
-                    td Columns
+                    td Column count
                     td= sheet.columns.length
+                tr
+                    td Header hash
+                    td(class="no-padding text-center", data-toggle="tooltip", title=sheet.header.hash, data-placement="left",)
+                        img(alt=sheet.header.hash, src='data:image/svg+xml;base64,' + new Buffer(sheet.header.hash_image).toString('base64'))
 
         div(class="col-md-12")
             include ./column_preview.jade

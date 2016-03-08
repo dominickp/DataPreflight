@@ -1,4 +1,4 @@
-var jdenticon = require("jdenticon")
+var jdenticon = require("jdenticon");
 
 var ColumnModel = function(name) {
 

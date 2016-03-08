@@ -1,8 +1,9 @@
 var J = require('j');
 var async = require("async");
 var ComparisonTable = require('./../js/comparisonTable');
+var SheetModel = require('./../model/sheetModel');
 var _ = require('underscore');
-
+var object_hash = require('object-hash');
 
 var PreflightModel = function(filePath, debug, initCallback){
     var model = this;
@@ -50,9 +51,7 @@ var PreflightModel = function(filePath, debug, initCallback){
         // Complete sheet preflight in a series
         async.forEachOfSeries(model.jWorkBook, function (sheet, sheet_id, sheetCallback) {
 
-            var sheetModel = {
-                sheet_id: sheet_id
-            };
+            var sheetModel = new SheetModel(sheet_id);
 
             // Determine header row
             var column_headers = model.get_header_row(model.readFileArray, sheet_id);
@@ -91,6 +90,12 @@ var PreflightModel = function(filePath, debug, initCallback){
         var columnComparison = model.getColumns(sheet, column_headers);
         sheetModel.columns = columnComparison.columns;
         sheetModel.header_info = columnComparison.header_info;
+
+
+        // Get column header hash
+        sheetModel.setHeaders(column_headers);
+        sheetModel.setHeadersHash(object_hash(column_headers));
+
 
         // Check warnings
         sheetModel.warnings = model.getSheetWarnings(sheet);
