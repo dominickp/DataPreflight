@@ -9,10 +9,10 @@ div(class="panel panel-default")
             table(id="sheet-stats-"+index, class="table table-bordered table-hover")
                 tr
                     td Record count
-                    td= sheet.row_count
+                    td(class="text-center")= sheet.row_count
                 tr
                     td Column count
-                    td= sheet.columns.length
+                    td(class="text-center")= sheet.columns.length
                 tr
                     td Header hash
                     td(class="no-padding text-center", data-toggle="tooltip", title=sheet.header.hash, data-placement="left",)
