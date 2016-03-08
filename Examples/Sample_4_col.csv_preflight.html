@@ -9,17 +9,91 @@
       
       @media print {
           .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+              padding:4px;
           }
       
+          .badge{
+              font-size:8px;
+          }
+      
+          .row {
+              margin-right: -2px;
+              margin-left: -2px;
+          }
+          .list-group-item-heading{
+              margin-bottom:0;
+          }
+      
+          body{
+              font-size:9px;
+          }
+          .panel{
+              border:0;
+          }
           .panel-heading {
               padding: 2px 4px;
           }
           .panel-body{
-              padding: 2px;
+              padding: 0px;
+          }
+      
+          .panel-group .panel + .panel {
+              margin-top: 0px;
           }
       
           .btn {
               padding: 2px 4px;
+          }
+          .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+              padding-right:2px;
+              padding-left:2px;
+          }
+      
+          .container {
+              padding-right: 15px;
+              padding-left: 15px;
+              width:100% !important;
+          }
+      
+          td .hash-icon{
+              width:20px;
+          }
+      
+          .column-hash img{
+              width:20px;
+          }
+      
+          .hidden-details{
+              padding-left:10px;
+          }
+      
+          .btn {
+              border: 0;
+              font-size: 10px;
+          }
+      
+          .h1, h1 {
+              font-size: 20px;
+          }
+          .h2, h2 {
+              font-size: 16px;
+          }
+          .h3, h3 {
+              font-size: 14px;
+          }
+          .h4, h4 {
+              font-size: 12px;
+          }
+          .h5, h5 {
+              font-size: 11px;
+          }
+          .h6, h6 {
+              font-size: 10px;
+          }
+      
+          .h4, .h5, .h6, h4, h5, h6 {
+              margin-top: 1px;
+              margin-bottom: 1px;
           }
       }
     </style>
@@ -74,7 +148,7 @@
                         </td>
                         <td title="Data" data-toggle="tooltip">Data
                         </td>
-                        <td data-toggle="tooltip" title="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" data-placement="left" class="no-padding text-center"><img alt="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgdmlld0JveD0iMCAwIDM0IDM0IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij48cGF0aCBmaWxsPSIjZDliYWU4IiBkPSJNMTcgMTBMMTAgMTBMMTAgNi41Wk0xNyAxMEwxNyAzTDIwLjUgM1pNMTcgMjRMMjQgMjRMMjQgMjcuNVpNMTcgMjRMMTcgMzFMMTMuNSAzMVpNMTAgMTdMMyAxN0wzIDEzLjVaTTI0IDE3TDI0IDEwTDI3LjUgMTBaTTI0IDE3TDMxIDE3TDMxIDIwLjVaTTEwIDE3TDEwIDI0TDYuNSAyNFoiLz48cGF0aCBmaWxsPSIjNGM0YzRjIiBkPSJNMTAgMTBMMyAxMEwzIDYuNVpNMjQgMTBMMjQgM0wyNy41IDNaTTI0IDI0TDMxIDI0TDMxIDI3LjVaTTEwIDI0TDEwIDMxTDYuNSAzMVoiLz48cGF0aCBmaWxsPSIjYjM3NWQxIiBkPSJNMTAgMTBMMTcgMTBMMTcgMTQuODk5OTk5OTk5OTk5OTk5TDEyLjggMTIuOEwxNC44OTk5OTk5OTk5OTk5OTkgMTdMMTAgMTdaTTI0IDEwTDI0IDE3TDE5LjEgMTdMMjEuMiAxMi44TDE3IDE0Ljg5OTk5OTk5OTk5OTk5OUwxNyAxMFpNMjQgMjRMMTcgMjRMMTcgMTkuMUwyMS4yIDIxLjJMMTkuMSAxN0wyNCAxN1pNMTAgMjRMMTAgMTdMMTQuODk5OTk5OTk5OTk5OTk5IDE3TDEyLjggMjEuMkwxNyAxOS4xTDE3IDI0WiIvPjwvc3ZnPg=="></td>
+                        <td data-toggle="tooltip" title="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" data-placement="left" class="no-padding text-center"><img alt="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgdmlld0JveD0iMCAwIDM0IDM0IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij48cGF0aCBmaWxsPSIjZDliYWU4IiBkPSJNMTcgMTBMMTAgMTBMMTAgNi41Wk0xNyAxMEwxNyAzTDIwLjUgM1pNMTcgMjRMMjQgMjRMMjQgMjcuNVpNMTcgMjRMMTcgMzFMMTMuNSAzMVpNMTAgMTdMMyAxN0wzIDEzLjVaTTI0IDE3TDI0IDEwTDI3LjUgMTBaTTI0IDE3TDMxIDE3TDMxIDIwLjVaTTEwIDE3TDEwIDI0TDYuNSAyNFoiLz48cGF0aCBmaWxsPSIjNGM0YzRjIiBkPSJNMTAgMTBMMyAxMEwzIDYuNVpNMjQgMTBMMjQgM0wyNy41IDNaTTI0IDI0TDMxIDI0TDMxIDI3LjVaTTEwIDI0TDEwIDMxTDYuNSAzMVoiLz48cGF0aCBmaWxsPSIjYjM3NWQxIiBkPSJNMTAgMTBMMTcgMTBMMTcgMTQuODk5OTk5OTk5OTk5OTk5TDEyLjggMTIuOEwxNC44OTk5OTk5OTk5OTk5OTkgMTdMMTAgMTdaTTI0IDEwTDI0IDE3TDE5LjEgMTdMMjEuMiAxMi44TDE3IDE0Ljg5OTk5OTk5OTk5OTk5OUwxNyAxMFpNMjQgMjRMMTcgMjRMMTcgMTkuMUwyMS4yIDIxLjJMMTkuMSAxN0wyNCAxN1pNMTAgMjRMMTAgMTdMMTQuODk5OTk5OTk5OTk5OTk5IDE3TDEyLjggMjEuMkwxNyAxOS4xTDE3IDI0WiIvPjwvc3ZnPg==" class="hash-icon"></td>
                       </tr>
                       <tr>
                         <td>Two</td>
@@ -84,7 +158,7 @@
                         </td>
                         <td title="Data" data-toggle="tooltip">Data
                         </td>
-                        <td data-toggle="tooltip" title="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" data-placement="left" class="no-padding text-center"><img alt="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgdmlld0JveD0iMCAwIDM0IDM0IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij48cGF0aCBmaWxsPSIjZDliYWU4IiBkPSJNMTcgMTBMMTAgMTBMMTAgNi41Wk0xNyAxMEwxNyAzTDIwLjUgM1pNMTcgMjRMMjQgMjRMMjQgMjcuNVpNMTcgMjRMMTcgMzFMMTMuNSAzMVpNMTAgMTdMMyAxN0wzIDEzLjVaTTI0IDE3TDI0IDEwTDI3LjUgMTBaTTI0IDE3TDMxIDE3TDMxIDIwLjVaTTEwIDE3TDEwIDI0TDYuNSAyNFoiLz48cGF0aCBmaWxsPSIjNGM0YzRjIiBkPSJNMTAgMTBMMyAxMEwzIDYuNVpNMjQgMTBMMjQgM0wyNy41IDNaTTI0IDI0TDMxIDI0TDMxIDI3LjVaTTEwIDI0TDEwIDMxTDYuNSAzMVoiLz48cGF0aCBmaWxsPSIjYjM3NWQxIiBkPSJNMTAgMTBMMTcgMTBMMTcgMTQuODk5OTk5OTk5OTk5OTk5TDEyLjggMTIuOEwxNC44OTk5OTk5OTk5OTk5OTkgMTdMMTAgMTdaTTI0IDEwTDI0IDE3TDE5LjEgMTdMMjEuMiAxMi44TDE3IDE0Ljg5OTk5OTk5OTk5OTk5OUwxNyAxMFpNMjQgMjRMMTcgMjRMMTcgMTkuMUwyMS4yIDIxLjJMMTkuMSAxN0wyNCAxN1pNMTAgMjRMMTAgMTdMMTQuODk5OTk5OTk5OTk5OTk5IDE3TDEyLjggMjEuMkwxNyAxOS4xTDE3IDI0WiIvPjwvc3ZnPg=="></td>
+                        <td data-toggle="tooltip" title="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" data-placement="left" class="no-padding text-center"><img alt="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgdmlld0JveD0iMCAwIDM0IDM0IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij48cGF0aCBmaWxsPSIjZDliYWU4IiBkPSJNMTcgMTBMMTAgMTBMMTAgNi41Wk0xNyAxMEwxNyAzTDIwLjUgM1pNMTcgMjRMMjQgMjRMMjQgMjcuNVpNMTcgMjRMMTcgMzFMMTMuNSAzMVpNMTAgMTdMMyAxN0wzIDEzLjVaTTI0IDE3TDI0IDEwTDI3LjUgMTBaTTI0IDE3TDMxIDE3TDMxIDIwLjVaTTEwIDE3TDEwIDI0TDYuNSAyNFoiLz48cGF0aCBmaWxsPSIjNGM0YzRjIiBkPSJNMTAgMTBMMyAxMEwzIDYuNVpNMjQgMTBMMjQgM0wyNy41IDNaTTI0IDI0TDMxIDI0TDMxIDI3LjVaTTEwIDI0TDEwIDMxTDYuNSAzMVoiLz48cGF0aCBmaWxsPSIjYjM3NWQxIiBkPSJNMTAgMTBMMTcgMTBMMTcgMTQuODk5OTk5OTk5OTk5OTk5TDEyLjggMTIuOEwxNC44OTk5OTk5OTk5OTk5OTkgMTdMMTAgMTdaTTI0IDEwTDI0IDE3TDE5LjEgMTdMMjEuMiAxMi44TDE3IDE0Ljg5OTk5OTk5OTk5OTk5OUwxNyAxMFpNMjQgMjRMMTcgMjRMMTcgMTkuMUwyMS4yIDIxLjJMMTkuMSAxN0wyNCAxN1pNMTAgMjRMMTAgMTdMMTQuODk5OTk5OTk5OTk5OTk5IDE3TDEyLjggMjEuMkwxNyAxOS4xTDE3IDI0WiIvPjwvc3ZnPg==" class="hash-icon"></td>
                       </tr>
                       <tr>
                         <td>Another column</td>
@@ -94,7 +168,7 @@
                         </td>
                         <td title="Data" data-toggle="tooltip">Data
                         </td>
-                        <td data-toggle="tooltip" title="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" data-placement="left" class="no-padding text-center"><img alt="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgdmlld0JveD0iMCAwIDM0IDM0IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij48cGF0aCBmaWxsPSIjZDliYWU4IiBkPSJNMTcgMTBMMTAgMTBMMTAgNi41Wk0xNyAxMEwxNyAzTDIwLjUgM1pNMTcgMjRMMjQgMjRMMjQgMjcuNVpNMTcgMjRMMTcgMzFMMTMuNSAzMVpNMTAgMTdMMyAxN0wzIDEzLjVaTTI0IDE3TDI0IDEwTDI3LjUgMTBaTTI0IDE3TDMxIDE3TDMxIDIwLjVaTTEwIDE3TDEwIDI0TDYuNSAyNFoiLz48cGF0aCBmaWxsPSIjNGM0YzRjIiBkPSJNMTAgMTBMMyAxMEwzIDYuNVpNMjQgMTBMMjQgM0wyNy41IDNaTTI0IDI0TDMxIDI0TDMxIDI3LjVaTTEwIDI0TDEwIDMxTDYuNSAzMVoiLz48cGF0aCBmaWxsPSIjYjM3NWQxIiBkPSJNMTAgMTBMMTcgMTBMMTcgMTQuODk5OTk5OTk5OTk5OTk5TDEyLjggMTIuOEwxNC44OTk5OTk5OTk5OTk5OTkgMTdMMTAgMTdaTTI0IDEwTDI0IDE3TDE5LjEgMTdMMjEuMiAxMi44TDE3IDE0Ljg5OTk5OTk5OTk5OTk5OUwxNyAxMFpNMjQgMjRMMTcgMjRMMTcgMTkuMUwyMS4yIDIxLjJMMTkuMSAxN0wyNCAxN1pNMTAgMjRMMTAgMTdMMTQuODk5OTk5OTk5OTk5OTk5IDE3TDEyLjggMjEuMkwxNyAxOS4xTDE3IDI0WiIvPjwvc3ZnPg=="></td>
+                        <td data-toggle="tooltip" title="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" data-placement="left" class="no-padding text-center"><img alt="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgdmlld0JveD0iMCAwIDM0IDM0IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij48cGF0aCBmaWxsPSIjZDliYWU4IiBkPSJNMTcgMTBMMTAgMTBMMTAgNi41Wk0xNyAxMEwxNyAzTDIwLjUgM1pNMTcgMjRMMjQgMjRMMjQgMjcuNVpNMTcgMjRMMTcgMzFMMTMuNSAzMVpNMTAgMTdMMyAxN0wzIDEzLjVaTTI0IDE3TDI0IDEwTDI3LjUgMTBaTTI0IDE3TDMxIDE3TDMxIDIwLjVaTTEwIDE3TDEwIDI0TDYuNSAyNFoiLz48cGF0aCBmaWxsPSIjNGM0YzRjIiBkPSJNMTAgMTBMMyAxMEwzIDYuNVpNMjQgMTBMMjQgM0wyNy41IDNaTTI0IDI0TDMxIDI0TDMxIDI3LjVaTTEwIDI0TDEwIDMxTDYuNSAzMVoiLz48cGF0aCBmaWxsPSIjYjM3NWQxIiBkPSJNMTAgMTBMMTcgMTBMMTcgMTQuODk5OTk5OTk5OTk5OTk5TDEyLjggMTIuOEwxNC44OTk5OTk5OTk5OTk5OTkgMTdMMTAgMTdaTTI0IDEwTDI0IDE3TDE5LjEgMTdMMjEuMiAxMi44TDE3IDE0Ljg5OTk5OTk5OTk5OTk5OUwxNyAxMFpNMjQgMjRMMTcgMjRMMTcgMTkuMUwyMS4yIDIxLjJMMTkuMSAxN0wyNCAxN1pNMTAgMjRMMTAgMTdMMTQuODk5OTk5OTk5OTk5OTk5IDE3TDEyLjggMjEuMkwxNyAxOS4xTDE3IDI0WiIvPjwvc3ZnPg==" class="hash-icon"></td>
                       </tr>
                       <tr>
                         <td>Four</td>
@@ -104,7 +178,7 @@
                         </td>
                         <td title="Data" data-toggle="tooltip">Data
                         </td>
-                        <td data-toggle="tooltip" title="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" data-placement="left" class="no-padding text-center"><img alt="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgdmlld0JveD0iMCAwIDM0IDM0IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij48cGF0aCBmaWxsPSIjZDliYWU4IiBkPSJNMTcgMTBMMTAgMTBMMTAgNi41Wk0xNyAxMEwxNyAzTDIwLjUgM1pNMTcgMjRMMjQgMjRMMjQgMjcuNVpNMTcgMjRMMTcgMzFMMTMuNSAzMVpNMTAgMTdMMyAxN0wzIDEzLjVaTTI0IDE3TDI0IDEwTDI3LjUgMTBaTTI0IDE3TDMxIDE3TDMxIDIwLjVaTTEwIDE3TDEwIDI0TDYuNSAyNFoiLz48cGF0aCBmaWxsPSIjNGM0YzRjIiBkPSJNMTAgMTBMMyAxMEwzIDYuNVpNMjQgMTBMMjQgM0wyNy41IDNaTTI0IDI0TDMxIDI0TDMxIDI3LjVaTTEwIDI0TDEwIDMxTDYuNSAzMVoiLz48cGF0aCBmaWxsPSIjYjM3NWQxIiBkPSJNMTAgMTBMMTcgMTBMMTcgMTQuODk5OTk5OTk5OTk5OTk5TDEyLjggMTIuOEwxNC44OTk5OTk5OTk5OTk5OTkgMTdMMTAgMTdaTTI0IDEwTDI0IDE3TDE5LjEgMTdMMjEuMiAxMi44TDE3IDE0Ljg5OTk5OTk5OTk5OTk5OUwxNyAxMFpNMjQgMjRMMTcgMjRMMTcgMTkuMUwyMS4yIDIxLjJMMTkuMSAxN0wyNCAxN1pNMTAgMjRMMTAgMTdMMTQuODk5OTk5OTk5OTk5OTk5IDE3TDEyLjggMjEuMkwxNyAxOS4xTDE3IDI0WiIvPjwvc3ZnPg=="></td>
+                        <td data-toggle="tooltip" title="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" data-placement="left" class="no-padding text-center"><img alt="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgdmlld0JveD0iMCAwIDM0IDM0IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij48cGF0aCBmaWxsPSIjZDliYWU4IiBkPSJNMTcgMTBMMTAgMTBMMTAgNi41Wk0xNyAxMEwxNyAzTDIwLjUgM1pNMTcgMjRMMjQgMjRMMjQgMjcuNVpNMTcgMjRMMTcgMzFMMTMuNSAzMVpNMTAgMTdMMyAxN0wzIDEzLjVaTTI0IDE3TDI0IDEwTDI3LjUgMTBaTTI0IDE3TDMxIDE3TDMxIDIwLjVaTTEwIDE3TDEwIDI0TDYuNSAyNFoiLz48cGF0aCBmaWxsPSIjNGM0YzRjIiBkPSJNMTAgMTBMMyAxMEwzIDYuNVpNMjQgMTBMMjQgM0wyNy41IDNaTTI0IDI0TDMxIDI0TDMxIDI3LjVaTTEwIDI0TDEwIDMxTDYuNSAzMVoiLz48cGF0aCBmaWxsPSIjYjM3NWQxIiBkPSJNMTAgMTBMMTcgMTBMMTcgMTQuODk5OTk5OTk5OTk5OTk5TDEyLjggMTIuOEwxNC44OTk5OTk5OTk5OTk5OTkgMTdMMTAgMTdaTTI0IDEwTDI0IDE3TDE5LjEgMTdMMjEuMiAxMi44TDE3IDE0Ljg5OTk5OTk5OTk5OTk5OUwxNyAxMFpNMjQgMjRMMTcgMjRMMTcgMTkuMUwyMS4yIDIxLjJMMTkuMSAxN0wyNCAxN1pNMTAgMjRMMTAgMTdMMTQuODk5OTk5OTk5OTk5OTk5IDE3TDEyLjggMjEuMkwxNyAxOS4xTDE3IDI0WiIvPjwvc3ZnPg==" class="hash-icon"></td>
                       </tr>
                     </tbody>
                   </table>
@@ -118,7 +192,7 @@
                     </div>
                     <div class="panel-body">
                       <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-xs-4">
                           <div class="btn-group">
                             <button type="button" data-toggle="tooltip" title="Minimum length" class="btn btn-default"><i class="fa fa-compress"></i> 4
                             </button>
@@ -130,12 +204,12 @@
                             </button>
                           </div>
                         </div>
-                        <div id="column-tags" class="col-xs-7"><small>Warnings: </small><span data-toggle="tooltip" title="Warning" class="label label-warning"><i class="fa fa-exclamation"> Static value</i></span> <small>Types: </small><span data-toggle="tooltip" title="Alphabetic (lowercase)" class="label label-info">a-z</span> <span data-toggle="tooltip" title="Alphabetic (uppercase)" class="label label-info">A-Z</span> 
+                        <div class="col-xs-7 column-tags"><small>Warnings: </small><span data-toggle="tooltip" title="Warning" class="label label-warning"><i class="fa fa-exclamation"> Static value</i></span> <small>Types: </small><span data-toggle="tooltip" title="Alphabetic (lowercase)" class="label label-info">a-z</span> <span data-toggle="tooltip" title="Alphabetic (uppercase)" class="label label-info">A-Z</span> 
                         </div>
-                        <div id="column-hash" class="col-xs-1"><img data-toggle="tooltip" data-placement="left" title="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" alt="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgdmlld0JveD0iMCAwIDM0IDM0IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij48cGF0aCBmaWxsPSIjZDliYWU4IiBkPSJNMTcgMTBMMTAgMTBMMTAgNi41Wk0xNyAxMEwxNyAzTDIwLjUgM1pNMTcgMjRMMjQgMjRMMjQgMjcuNVpNMTcgMjRMMTcgMzFMMTMuNSAzMVpNMTAgMTdMMyAxN0wzIDEzLjVaTTI0IDE3TDI0IDEwTDI3LjUgMTBaTTI0IDE3TDMxIDE3TDMxIDIwLjVaTTEwIDE3TDEwIDI0TDYuNSAyNFoiLz48cGF0aCBmaWxsPSIjNGM0YzRjIiBkPSJNMTAgMTBMMyAxMEwzIDYuNVpNMjQgMTBMMjQgM0wyNy41IDNaTTI0IDI0TDMxIDI0TDMxIDI3LjVaTTEwIDI0TDEwIDMxTDYuNSAzMVoiLz48cGF0aCBmaWxsPSIjYjM3NWQxIiBkPSJNMTAgMTBMMTcgMTBMMTcgMTQuODk5OTk5OTk5OTk5OTk5TDEyLjggMTIuOEwxNC44OTk5OTk5OTk5OTk5OTkgMTdMMTAgMTdaTTI0IDEwTDI0IDE3TDE5LjEgMTdMMjEuMiAxMi44TDE3IDE0Ljg5OTk5OTk5OTk5OTk5OUwxNyAxMFpNMjQgMjRMMTcgMjRMMTcgMTkuMUwyMS4yIDIxLjJMMTkuMSAxN0wyNCAxN1pNMTAgMjRMMTAgMTdMMTQuODk5OTk5OTk5OTk5OTk5IDE3TDEyLjggMjEuMkwxNyAxOS4xTDE3IDI0WiIvPjwvc3ZnPg==" class="pull-right"></div>
+                        <div class="col-xs-1 column-hash"><img data-toggle="tooltip" data-placement="left" title="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" alt="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgdmlld0JveD0iMCAwIDM0IDM0IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij48cGF0aCBmaWxsPSIjZDliYWU4IiBkPSJNMTcgMTBMMTAgMTBMMTAgNi41Wk0xNyAxMEwxNyAzTDIwLjUgM1pNMTcgMjRMMjQgMjRMMjQgMjcuNVpNMTcgMjRMMTcgMzFMMTMuNSAzMVpNMTAgMTdMMyAxN0wzIDEzLjVaTTI0IDE3TDI0IDEwTDI3LjUgMTBaTTI0IDE3TDMxIDE3TDMxIDIwLjVaTTEwIDE3TDEwIDI0TDYuNSAyNFoiLz48cGF0aCBmaWxsPSIjNGM0YzRjIiBkPSJNMTAgMTBMMyAxMEwzIDYuNVpNMjQgMTBMMjQgM0wyNy41IDNaTTI0IDI0TDMxIDI0TDMxIDI3LjVaTTEwIDI0TDEwIDMxTDYuNSAzMVoiLz48cGF0aCBmaWxsPSIjYjM3NWQxIiBkPSJNMTAgMTBMMTcgMTBMMTcgMTQuODk5OTk5OTk5OTk5OTk5TDEyLjggMTIuOEwxNC44OTk5OTk5OTk5OTk5OTkgMTdMMTAgMTdaTTI0IDEwTDI0IDE3TDE5LjEgMTdMMjEuMiAxMi44TDE3IDE0Ljg5OTk5OTk5OTk5OTk5OUwxNyAxMFpNMjQgMjRMMTcgMjRMMTcgMTkuMUwyMS4yIDIxLjJMMTkuMSAxN0wyNCAxN1pNMTAgMjRMMTAgMTdMMTQuODk5OTk5OTk5OTk5OTk5IDE3TDEyLjggMjEuMkwxNyAxOS4xTDE3IDI0WiIvPjwvc3ZnPg==" class="pull-right"></div>
                       </div>
                       <div class="row">
-                        <div id="sheet-0-column-data-values-0" class="collapse col-md-12">
+                        <div id="sheet-0-column-data-values-0" class="collapse col-md-12 hidden-details">
                           <h6>Column Values</h6><span class="label label-info single-value-marker">Data</span> 
                         </div>
                         <div id="sheet-0-column-all-characters-0" class="collapse col-md-12">
@@ -151,7 +225,7 @@
                     </div>
                     <div class="panel-body">
                       <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-xs-4">
                           <div class="btn-group">
                             <button type="button" data-toggle="tooltip" title="Minimum length" class="btn btn-default"><i class="fa fa-compress"></i> 4
                             </button>
@@ -163,12 +237,12 @@
                             </button>
                           </div>
                         </div>
-                        <div id="column-tags" class="col-xs-7"><small>Warnings: </small><span data-toggle="tooltip" title="Warning" class="label label-warning"><i class="fa fa-exclamation"> Static value</i></span> <small>Types: </small><span data-toggle="tooltip" title="Alphabetic (lowercase)" class="label label-info">a-z</span> <span data-toggle="tooltip" title="Alphabetic (uppercase)" class="label label-info">A-Z</span> 
+                        <div class="col-xs-7 column-tags"><small>Warnings: </small><span data-toggle="tooltip" title="Warning" class="label label-warning"><i class="fa fa-exclamation"> Static value</i></span> <small>Types: </small><span data-toggle="tooltip" title="Alphabetic (lowercase)" class="label label-info">a-z</span> <span data-toggle="tooltip" title="Alphabetic (uppercase)" class="label label-info">A-Z</span> 
                         </div>
-                        <div id="column-hash" class="col-xs-1"><img data-toggle="tooltip" data-placement="left" title="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" alt="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgdmlld0JveD0iMCAwIDM0IDM0IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij48cGF0aCBmaWxsPSIjZDliYWU4IiBkPSJNMTcgMTBMMTAgMTBMMTAgNi41Wk0xNyAxMEwxNyAzTDIwLjUgM1pNMTcgMjRMMjQgMjRMMjQgMjcuNVpNMTcgMjRMMTcgMzFMMTMuNSAzMVpNMTAgMTdMMyAxN0wzIDEzLjVaTTI0IDE3TDI0IDEwTDI3LjUgMTBaTTI0IDE3TDMxIDE3TDMxIDIwLjVaTTEwIDE3TDEwIDI0TDYuNSAyNFoiLz48cGF0aCBmaWxsPSIjNGM0YzRjIiBkPSJNMTAgMTBMMyAxMEwzIDYuNVpNMjQgMTBMMjQgM0wyNy41IDNaTTI0IDI0TDMxIDI0TDMxIDI3LjVaTTEwIDI0TDEwIDMxTDYuNSAzMVoiLz48cGF0aCBmaWxsPSIjYjM3NWQxIiBkPSJNMTAgMTBMMTcgMTBMMTcgMTQuODk5OTk5OTk5OTk5OTk5TDEyLjggMTIuOEwxNC44OTk5OTk5OTk5OTk5OTkgMTdMMTAgMTdaTTI0IDEwTDI0IDE3TDE5LjEgMTdMMjEuMiAxMi44TDE3IDE0Ljg5OTk5OTk5OTk5OTk5OUwxNyAxMFpNMjQgMjRMMTcgMjRMMTcgMTkuMUwyMS4yIDIxLjJMMTkuMSAxN0wyNCAxN1pNMTAgMjRMMTAgMTdMMTQuODk5OTk5OTk5OTk5OTk5IDE3TDEyLjggMjEuMkwxNyAxOS4xTDE3IDI0WiIvPjwvc3ZnPg==" class="pull-right"></div>
+                        <div class="col-xs-1 column-hash"><img data-toggle="tooltip" data-placement="left" title="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" alt="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgdmlld0JveD0iMCAwIDM0IDM0IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij48cGF0aCBmaWxsPSIjZDliYWU4IiBkPSJNMTcgMTBMMTAgMTBMMTAgNi41Wk0xNyAxMEwxNyAzTDIwLjUgM1pNMTcgMjRMMjQgMjRMMjQgMjcuNVpNMTcgMjRMMTcgMzFMMTMuNSAzMVpNMTAgMTdMMyAxN0wzIDEzLjVaTTI0IDE3TDI0IDEwTDI3LjUgMTBaTTI0IDE3TDMxIDE3TDMxIDIwLjVaTTEwIDE3TDEwIDI0TDYuNSAyNFoiLz48cGF0aCBmaWxsPSIjNGM0YzRjIiBkPSJNMTAgMTBMMyAxMEwzIDYuNVpNMjQgMTBMMjQgM0wyNy41IDNaTTI0IDI0TDMxIDI0TDMxIDI3LjVaTTEwIDI0TDEwIDMxTDYuNSAzMVoiLz48cGF0aCBmaWxsPSIjYjM3NWQxIiBkPSJNMTAgMTBMMTcgMTBMMTcgMTQuODk5OTk5OTk5OTk5OTk5TDEyLjggMTIuOEwxNC44OTk5OTk5OTk5OTk5OTkgMTdMMTAgMTdaTTI0IDEwTDI0IDE3TDE5LjEgMTdMMjEuMiAxMi44TDE3IDE0Ljg5OTk5OTk5OTk5OTk5OUwxNyAxMFpNMjQgMjRMMTcgMjRMMTcgMTkuMUwyMS4yIDIxLjJMMTkuMSAxN0wyNCAxN1pNMTAgMjRMMTAgMTdMMTQuODk5OTk5OTk5OTk5OTk5IDE3TDEyLjggMjEuMkwxNyAxOS4xTDE3IDI0WiIvPjwvc3ZnPg==" class="pull-right"></div>
                       </div>
                       <div class="row">
-                        <div id="sheet-0-column-data-values-1" class="collapse col-md-12">
+                        <div id="sheet-0-column-data-values-1" class="collapse col-md-12 hidden-details">
                           <h6>Column Values</h6><span class="label label-info single-value-marker">Data</span> 
                         </div>
                         <div id="sheet-0-column-all-characters-1" class="collapse col-md-12">
@@ -184,7 +258,7 @@
                     </div>
                     <div class="panel-body">
                       <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-xs-4">
                           <div class="btn-group">
                             <button type="button" data-toggle="tooltip" title="Minimum length" class="btn btn-default"><i class="fa fa-compress"></i> 4
                             </button>
@@ -196,12 +270,12 @@
                             </button>
                           </div>
                         </div>
-                        <div id="column-tags" class="col-xs-7"><small>Warnings: </small><span data-toggle="tooltip" title="Warning" class="label label-warning"><i class="fa fa-exclamation"> Static value</i></span> <small>Types: </small><span data-toggle="tooltip" title="Alphabetic (lowercase)" class="label label-info">a-z</span> <span data-toggle="tooltip" title="Alphabetic (uppercase)" class="label label-info">A-Z</span> 
+                        <div class="col-xs-7 column-tags"><small>Warnings: </small><span data-toggle="tooltip" title="Warning" class="label label-warning"><i class="fa fa-exclamation"> Static value</i></span> <small>Types: </small><span data-toggle="tooltip" title="Alphabetic (lowercase)" class="label label-info">a-z</span> <span data-toggle="tooltip" title="Alphabetic (uppercase)" class="label label-info">A-Z</span> 
                         </div>
-                        <div id="column-hash" class="col-xs-1"><img data-toggle="tooltip" data-placement="left" title="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" alt="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgdmlld0JveD0iMCAwIDM0IDM0IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij48cGF0aCBmaWxsPSIjZDliYWU4IiBkPSJNMTcgMTBMMTAgMTBMMTAgNi41Wk0xNyAxMEwxNyAzTDIwLjUgM1pNMTcgMjRMMjQgMjRMMjQgMjcuNVpNMTcgMjRMMTcgMzFMMTMuNSAzMVpNMTAgMTdMMyAxN0wzIDEzLjVaTTI0IDE3TDI0IDEwTDI3LjUgMTBaTTI0IDE3TDMxIDE3TDMxIDIwLjVaTTEwIDE3TDEwIDI0TDYuNSAyNFoiLz48cGF0aCBmaWxsPSIjNGM0YzRjIiBkPSJNMTAgMTBMMyAxMEwzIDYuNVpNMjQgMTBMMjQgM0wyNy41IDNaTTI0IDI0TDMxIDI0TDMxIDI3LjVaTTEwIDI0TDEwIDMxTDYuNSAzMVoiLz48cGF0aCBmaWxsPSIjYjM3NWQxIiBkPSJNMTAgMTBMMTcgMTBMMTcgMTQuODk5OTk5OTk5OTk5OTk5TDEyLjggMTIuOEwxNC44OTk5OTk5OTk5OTk5OTkgMTdMMTAgMTdaTTI0IDEwTDI0IDE3TDE5LjEgMTdMMjEuMiAxMi44TDE3IDE0Ljg5OTk5OTk5OTk5OTk5OUwxNyAxMFpNMjQgMjRMMTcgMjRMMTcgMTkuMUwyMS4yIDIxLjJMMTkuMSAxN0wyNCAxN1pNMTAgMjRMMTAgMTdMMTQuODk5OTk5OTk5OTk5OTk5IDE3TDEyLjggMjEuMkwxNyAxOS4xTDE3IDI0WiIvPjwvc3ZnPg==" class="pull-right"></div>
+                        <div class="col-xs-1 column-hash"><img data-toggle="tooltip" data-placement="left" title="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" alt="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgdmlld0JveD0iMCAwIDM0IDM0IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij48cGF0aCBmaWxsPSIjZDliYWU4IiBkPSJNMTcgMTBMMTAgMTBMMTAgNi41Wk0xNyAxMEwxNyAzTDIwLjUgM1pNMTcgMjRMMjQgMjRMMjQgMjcuNVpNMTcgMjRMMTcgMzFMMTMuNSAzMVpNMTAgMTdMMyAxN0wzIDEzLjVaTTI0IDE3TDI0IDEwTDI3LjUgMTBaTTI0IDE3TDMxIDE3TDMxIDIwLjVaTTEwIDE3TDEwIDI0TDYuNSAyNFoiLz48cGF0aCBmaWxsPSIjNGM0YzRjIiBkPSJNMTAgMTBMMyAxMEwzIDYuNVpNMjQgMTBMMjQgM0wyNy41IDNaTTI0IDI0TDMxIDI0TDMxIDI3LjVaTTEwIDI0TDEwIDMxTDYuNSAzMVoiLz48cGF0aCBmaWxsPSIjYjM3NWQxIiBkPSJNMTAgMTBMMTcgMTBMMTcgMTQuODk5OTk5OTk5OTk5OTk5TDEyLjggMTIuOEwxNC44OTk5OTk5OTk5OTk5OTkgMTdMMTAgMTdaTTI0IDEwTDI0IDE3TDE5LjEgMTdMMjEuMiAxMi44TDE3IDE0Ljg5OTk5OTk5OTk5OTk5OUwxNyAxMFpNMjQgMjRMMTcgMjRMMTcgMTkuMUwyMS4yIDIxLjJMMTkuMSAxN0wyNCAxN1pNMTAgMjRMMTAgMTdMMTQuODk5OTk5OTk5OTk5OTk5IDE3TDEyLjggMjEuMkwxNyAxOS4xTDE3IDI0WiIvPjwvc3ZnPg==" class="pull-right"></div>
                       </div>
                       <div class="row">
-                        <div id="sheet-0-column-data-values-2" class="collapse col-md-12">
+                        <div id="sheet-0-column-data-values-2" class="collapse col-md-12 hidden-details">
                           <h6>Column Values</h6><span class="label label-info single-value-marker">Data</span> 
                         </div>
                         <div id="sheet-0-column-all-characters-2" class="collapse col-md-12">
@@ -217,7 +291,7 @@
                     </div>
                     <div class="panel-body">
                       <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-xs-4">
                           <div class="btn-group">
                             <button type="button" data-toggle="tooltip" title="Minimum length" class="btn btn-default"><i class="fa fa-compress"></i> 4
                             </button>
@@ -229,12 +303,12 @@
                             </button>
                           </div>
                         </div>
-                        <div id="column-tags" class="col-xs-7"><small>Warnings: </small><span data-toggle="tooltip" title="Warning" class="label label-warning"><i class="fa fa-exclamation"> Static value</i></span> <small>Types: </small><span data-toggle="tooltip" title="Alphabetic (lowercase)" class="label label-info">a-z</span> <span data-toggle="tooltip" title="Alphabetic (uppercase)" class="label label-info">A-Z</span> 
+                        <div class="col-xs-7 column-tags"><small>Warnings: </small><span data-toggle="tooltip" title="Warning" class="label label-warning"><i class="fa fa-exclamation"> Static value</i></span> <small>Types: </small><span data-toggle="tooltip" title="Alphabetic (lowercase)" class="label label-info">a-z</span> <span data-toggle="tooltip" title="Alphabetic (uppercase)" class="label label-info">A-Z</span> 
                         </div>
-                        <div id="column-hash" class="col-xs-1"><img data-toggle="tooltip" data-placement="left" title="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" alt="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgdmlld0JveD0iMCAwIDM0IDM0IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij48cGF0aCBmaWxsPSIjZDliYWU4IiBkPSJNMTcgMTBMMTAgMTBMMTAgNi41Wk0xNyAxMEwxNyAzTDIwLjUgM1pNMTcgMjRMMjQgMjRMMjQgMjcuNVpNMTcgMjRMMTcgMzFMMTMuNSAzMVpNMTAgMTdMMyAxN0wzIDEzLjVaTTI0IDE3TDI0IDEwTDI3LjUgMTBaTTI0IDE3TDMxIDE3TDMxIDIwLjVaTTEwIDE3TDEwIDI0TDYuNSAyNFoiLz48cGF0aCBmaWxsPSIjNGM0YzRjIiBkPSJNMTAgMTBMMyAxMEwzIDYuNVpNMjQgMTBMMjQgM0wyNy41IDNaTTI0IDI0TDMxIDI0TDMxIDI3LjVaTTEwIDI0TDEwIDMxTDYuNSAzMVoiLz48cGF0aCBmaWxsPSIjYjM3NWQxIiBkPSJNMTAgMTBMMTcgMTBMMTcgMTQuODk5OTk5OTk5OTk5OTk5TDEyLjggMTIuOEwxNC44OTk5OTk5OTk5OTk5OTkgMTdMMTAgMTdaTTI0IDEwTDI0IDE3TDE5LjEgMTdMMjEuMiAxMi44TDE3IDE0Ljg5OTk5OTk5OTk5OTk5OUwxNyAxMFpNMjQgMjRMMTcgMjRMMTcgMTkuMUwyMS4yIDIxLjJMMTkuMSAxN0wyNCAxN1pNMTAgMjRMMTAgMTdMMTQuODk5OTk5OTk5OTk5OTk5IDE3TDEyLjggMjEuMkwxNyAxOS4xTDE3IDI0WiIvPjwvc3ZnPg==" class="pull-right"></div>
+                        <div class="col-xs-1 column-hash"><img data-toggle="tooltip" data-placement="left" title="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" alt="a6d81c8ed02c4e3835e5398e8e57f8bebc7a497b" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgdmlld0JveD0iMCAwIDM0IDM0IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij48cGF0aCBmaWxsPSIjZDliYWU4IiBkPSJNMTcgMTBMMTAgMTBMMTAgNi41Wk0xNyAxMEwxNyAzTDIwLjUgM1pNMTcgMjRMMjQgMjRMMjQgMjcuNVpNMTcgMjRMMTcgMzFMMTMuNSAzMVpNMTAgMTdMMyAxN0wzIDEzLjVaTTI0IDE3TDI0IDEwTDI3LjUgMTBaTTI0IDE3TDMxIDE3TDMxIDIwLjVaTTEwIDE3TDEwIDI0TDYuNSAyNFoiLz48cGF0aCBmaWxsPSIjNGM0YzRjIiBkPSJNMTAgMTBMMyAxMEwzIDYuNVpNMjQgMTBMMjQgM0wyNy41IDNaTTI0IDI0TDMxIDI0TDMxIDI3LjVaTTEwIDI0TDEwIDMxTDYuNSAzMVoiLz48cGF0aCBmaWxsPSIjYjM3NWQxIiBkPSJNMTAgMTBMMTcgMTBMMTcgMTQuODk5OTk5OTk5OTk5OTk5TDEyLjggMTIuOEwxNC44OTk5OTk5OTk5OTk5OTkgMTdMMTAgMTdaTTI0IDEwTDI0IDE3TDE5LjEgMTdMMjEuMiAxMi44TDE3IDE0Ljg5OTk5OTk5OTk5OTk5OUwxNyAxMFpNMjQgMjRMMTcgMjRMMTcgMTkuMUwyMS4yIDIxLjJMMTkuMSAxN0wyNCAxN1pNMTAgMjRMMTAgMTdMMTQuODk5OTk5OTk5OTk5OTk5IDE3TDEyLjggMjEuMkwxNyAxOS4xTDE3IDI0WiIvPjwvc3ZnPg==" class="pull-right"></div>
                       </div>
                       <div class="row">
-                        <div id="sheet-0-column-data-values-3" class="collapse col-md-12">
+                        <div id="sheet-0-column-data-values-3" class="collapse col-md-12 hidden-details">
                           <h6>Column Values</h6><span class="label label-info single-value-marker">Data</span> 
                         </div>
                         <div id="sheet-0-column-all-characters-3" class="collapse col-md-12">
