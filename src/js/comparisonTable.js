@@ -117,6 +117,8 @@ var ComparisonTable = function(sheet, column_headers, debug){
             }
         });
 
+        // Garbage collection
+        uniqueCharacters = null;
 
         return types_found;
     };
@@ -167,6 +169,8 @@ var ComparisonTable = function(sheet, column_headers, debug){
         });
 
         var uniqueValues = all_characters;
+
+        all_characters = null;
 
         uniqueValues = uniqueValues.sort();
 

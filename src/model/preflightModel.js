@@ -63,6 +63,8 @@ var PreflightModel = function(filePath, debug, initCallback){
 
                 model.sheets.push(sheetModel);
 
+                sheetModel = null;
+
                 sheetCallback();
             });
 
