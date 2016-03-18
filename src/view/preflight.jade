@@ -102,6 +102,9 @@ html
 
                 h2 Sheets &nbsp;
                     span(class="badge")=workbook.sheets.length
+                    span(class="badge pull-right")
+                        =workbook.properties.encoding.encoding
+                        =" - " + workbook.properties.encoding.percent_confidence + "%"
                 div(class="panel-group")
 
                     each sheet, sheet_index in workbook.sheets

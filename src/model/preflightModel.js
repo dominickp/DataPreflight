@@ -4,6 +4,8 @@ var ComparisonTable = require('./../js/comparisonTable');
 var SheetModel = require('./../model/sheetModel');
 var _ = require('underscore');
 var object_hash = require('object-hash');
+var jschardet = require("jschardet");
+var fs = require('fs');
 
 var PreflightModel = function(filePath, debug, initCallback){
     var model = this;
@@ -11,6 +13,8 @@ var PreflightModel = function(filePath, debug, initCallback){
     model.filename = filePath;
 
     model.jWorkBook = null;
+
+    model.properties = {};
 
     model.sheets = [];
 
@@ -23,6 +27,25 @@ var PreflightModel = function(filePath, debug, initCallback){
         }
         model.basename = base;
     }();
+
+    model.getEncoding = function(){
+        var console_tag = "------------[Determining encoding]";
+        if(model.debugFlag){
+            console.time(console_tag);
+        }
+
+        var string = fs.readFileSync(filePath, 'utf8');
+        var jschardetObj = jschardet.detect(string);
+
+        jschardetObj.percent_confidence = Math.floor(jschardetObj.confidence * 100);
+
+        model.properties.encoding = jschardetObj;
+            string = null;
+
+        if(model.debugFlag){
+            console.timeEnd(console_tag);
+        }
+    };
 
     model.get_header_row = function(readFileArray, sheet_id) {
         if(model.debugFlag){
@@ -195,6 +218,8 @@ var PreflightModel = function(filePath, debug, initCallback){
             initCallback(false);
             return false;
         }
+
+        model.getEncoding();
 
         model.preflightSheets(function(){
             initCallback(model);
