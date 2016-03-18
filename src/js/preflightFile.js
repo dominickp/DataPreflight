@@ -35,15 +35,17 @@ var PreflightFile = function(input, output, append, debug){
         });
     };
 
-    model.writeFile = function(path, data){
+    model.writeFile = function(path, data, cb){
 
         fs.writeFileSync(path, data, 'utf8');
+
+        cb();
 
         // log
         //console.log(data);
     };
 
-    model.init = function(){
+    model.init = function(initCb){
 
         if(model.debugFlag){
             console.log("[Debugging on]");
@@ -76,7 +78,11 @@ var PreflightFile = function(input, output, append, debug){
                 // Delete old preflight
                 model.purgeOldPreflight(model.appendFlag, function(){
 
-                    model.writeFile(model.preflightPath, html);
+                    model.writeFile(model.preflightPath, html, function(){
+                        // Allow for garbage cleanup
+                        //preflightModelReturn = null;
+                        initCb();
+                    });
 
                 });
 
