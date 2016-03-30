@@ -25,9 +25,9 @@ $ data-preflight --action=preflight --input=/Users/dominickpeluso/Desktop/Anothe
 You may also recursively preflight an entire directory. Doing so will scan the directory and all sub-folders for spreadsheet files and preflight them all. You may also specify a '--debug' flag here.
 
 ```
-$ data-preflight --action=preflight-dir --input=/Users/dominickpeluso/Desktop/MySpreadsheets
+$ data-preflight --action=preflight-dir --path=/Users/dominickpeluso/Desktop/MySpreadsheets
 
-$ data-preflight --action=preflight-dir --input=/Users/dominickpeluso/Desktop/MySpreadsheets --debug
+$ data-preflight --action=preflight-dir --path=/Users/dominickpeluso/Desktop/MySpreadsheets --debug
 ```
 
 ## Preflights
