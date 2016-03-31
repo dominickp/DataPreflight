@@ -26,10 +26,11 @@ div(class="panel panel-default")
             h4 Warnings
             if (typeof(sheet.warnings)) !== "undefined"
                 each warn_type, warn_type_key in sheet.warnings
-                    h5=warn_type_key
-                    ul(class="list-group")
-                        each warning in warn_type
-                            li(class="list-group-item")
-                                span=warning.value
-                                span(class="badge pull-right")="col "+warning.column
-                                span(class="badge pull-right")="row "+warning.row
+                    if(warn_type.length > 0)
+                        h5=warn_type_key
+                        ul(class="list-group")
+                            each warning in warn_type
+                                li(class="list-group-item")
+                                    span=warning.value
+                                    span(class="badge pull-right")="col "+warning.column
+                                    span(class="badge pull-right")="row "+warning.row
