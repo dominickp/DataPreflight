@@ -3,15 +3,16 @@
 var argv = require('yargs')
     .usage('Usage: $0 --action [action]')
     //.demand(['action', 'input', 'output'])
+    .describe('f', 'Load a file')
     .argv;
 var PreflightFile = require('./preflightFile');
 var PreflightDirectory = require('./preflightDirectory');
 
 if(argv.version){
-    console.log('v0.0.1');
-}
 
-if(argv.action === 'preflight'){
+    console.log('v0.0.2');
+
+} else if(argv.action === 'preflight'){
 
     // Test file exists
     var input = argv.input;
@@ -29,9 +30,7 @@ if(argv.action === 'preflight'){
 
     });
 
-}
-
-if(argv.action === 'preflight-dir'){
+} else if(argv.action === 'preflight-dir'){
 
     var path = argv.path;
     var append = argv.append;
@@ -44,5 +43,9 @@ if(argv.action === 'preflight-dir'){
 
     var preflight = new PreflightDirectory(path, append, debug);
     preflight.init();
+
+} else {
+
+    console.log("Valid --action not specified.");
 
 }
