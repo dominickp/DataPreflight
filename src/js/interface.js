@@ -25,7 +25,9 @@ if(argv.action === 'preflight'){
         .argv;
 
     var preflight = new PreflightFile(input, output, append, debug);
-    preflight.init();
+    preflight.init(function(){
+
+    });
 
 }
 
