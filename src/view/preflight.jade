@@ -6,6 +6,12 @@ html
         style.
             .no-padding{ padding:0px !important; }
 
+            .tooltip-inner {
+                max-width: 300px;
+                /* If max-width does not work, try using width instead */
+                /*width: 350px;*/
+            }
+
             @media print {
                 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
                     padding:4px;
