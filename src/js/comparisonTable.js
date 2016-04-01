@@ -236,7 +236,7 @@ var ComparisonTable = function(sheet, column_headers, debug){
 
         // For each column
         // was iterating over column_headers
-        column_headers.forEach(function(header){
+        model.column_headers.forEach(function(header){
 
             if(model.debugFlag){
                 console.log("---------[Preflighting column]", header);
