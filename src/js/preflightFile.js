@@ -62,23 +62,29 @@ var PreflightFile = function(input, output, format, debug){
                     console.log("[Preflight done]", pm.basename);
                 }
 
-                // Jade testing
-                var jadeOptions = {doctype: 'html', pretty:true};
-                var fn = jade.compileFile(__dirname+'/../view/preflight.jade', jadeOptions);
-                var html = fn({
+                // Jade
+                var jadeOptions, fn;
+                if(model.format === 'html'){
+                    jadeOptions = {doctype: 'html', pretty:true};
+                    fn = jade.compileFile(__dirname+'/../view/html/preflight.jade', jadeOptions);
+                } else if(model.format === 'xml'){
+                    jadeOptions = {doctype: 'xml', pretty:true};
+                    fn = jade.compileFile(__dirname+'/../view/xml/preflight.jade', jadeOptions);
+                }
+
+                var compiledPreflight = fn({
                     workbook: pm
                 });
 
-
                 // Set default output if input left blank
                 if(!model.preflightPath){
-                    model.preflightPath = model.filename+'_preflight.html';
+                    model.preflightPath = model.filename+'_preflight.'+format;
                 }
 
                 // Delete old preflight
                 model.purgeOldPreflight(function(){
 
-                    model.writeFile(model.preflightPath, html, function(){
+                    model.writeFile(model.preflightPath, compiledPreflight, function(){
                         // Allow for garbage cleanup
                         //preflightModelReturn = null;
                         initCb();

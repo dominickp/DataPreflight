@@ -1,0 +1,37 @@
+columns
+    each column, index in sheet.columns
+
+        if column.attributes.uniques.length === sheet.row_count
+            - var unique_val="ALL"
+        else
+            - var unique_val=column.attributes.uniques.length
+
+        column(
+            index=(index + 1),
+            min_characters=column.attributes.min,
+            max_characters=column.attributes.max,
+            unique_values=unique_val,
+            unique_characters=column.attributes.unique_characters.length
+        )
+            name=column.name
+            warnings
+                each warning in column.warnings
+                    warning=warning
+            types
+                if(column.attributes.types.numeric)
+                    numeric=true
+                if(column.attributes.types.alpha_lower)
+                    alphabetic_lowercase=true
+                if(column.attributes.types.alpha_upper)
+                    alphabetic_uppercase=true
+                if(column.attributes.types.punctuation)
+                    punctuation=true
+                if(column.attributes.types.non_ascii)
+            column_hash=column.hash
+            column_hash_image_base64=new Buffer(column.hash_image).toString('base64')
+            unique_values(limit=100)
+                each value, index in column.attributes.uniques
+                        value=value
+            unique_characters
+                each character, index in column.attributes.unique_characters
+                        character=character

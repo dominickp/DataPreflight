@@ -1,0 +1,7 @@
+data_preflight
+    file_name= workbook.basename
+    encoding('confidence'= workbook.properties.encoding.percent_confidence)=workbook.properties.encoding.encoding
+    sheets
+        each sheet, sheet_index in workbook.sheets
+            sheet
+                include ./sheet.jade
