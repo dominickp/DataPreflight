@@ -39,8 +39,10 @@ var PreflightDirectory = function(path, append, debug) {
                     callback();
                 });
             }, function (err) {
-                if (err) console.error(err.message);
-            })
+                if (err){
+                    console.error(err.message);
+                }
+            });
         });
     };
 

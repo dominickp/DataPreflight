@@ -16,8 +16,9 @@ var ComparisonTable = function(sheet, column_headers, debug){
 
     model.getMax = function(header){
 
+        var console_tag = "------------[Finding column max]";
+
         if(model.debugFlag){
-            var console_tag = "------------[Finding column max]";
             console.time(console_tag);
         }
 
@@ -48,8 +49,9 @@ var ComparisonTable = function(sheet, column_headers, debug){
 
     model.getMin = function(header){
 
+        var console_tag = "------------[Finding column min]";
+
         if(model.debugFlag){
-            var console_tag = "------------[Finding column min]";
             console.time(console_tag);
         }
 
@@ -125,14 +127,15 @@ var ComparisonTable = function(sheet, column_headers, debug){
 
     model.getColumnHash = function(header){
 
+        var console_tag = "------------[Hashing column]";
+
         if(model.debugFlag){
-            var console_tag = "------------[Hashing column]";
             console.time(console_tag);
         }
 
         var columnContents = [];
 
-        sheet.forEach(function(row, index){
+        sheet.forEach(function(row){
             var value = row[header];
             if(typeof value !== 'undefined'){
                 columnContents.push(value);
@@ -150,8 +153,9 @@ var ComparisonTable = function(sheet, column_headers, debug){
 
     model.getUniqueCharacters = function(header){
 
+        var console_tag = "------------[Finding unique characters]";
+
         if(model.debugFlag){
-            var console_tag = "------------[Finding unique characters]";
             console.time(console_tag);
         }
 
@@ -183,8 +187,9 @@ var ComparisonTable = function(sheet, column_headers, debug){
 
     model.getUniques = function(header){
 
+        var console_tag = "------------[Finding unique values]";
+
         if(model.debugFlag){
-            var console_tag = "------------[Finding unique values]";
             console.time(console_tag);
         }
 

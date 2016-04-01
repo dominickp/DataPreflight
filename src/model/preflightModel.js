@@ -232,7 +232,7 @@ var PreflightModel = function(filePath, debug, initCallback){
                     .fromString(sheet, {headers: false})
                     .on("data", function(data){
 
-                        var convertedObject = _.object(data, _.map(data, function(num){ return "NULL"; }));
+                        var convertedObject = _.object(data, _.map(data, function(){ return "NULL"; }));
 
                         newWorkbook[sheet_id] = [convertedObject];
                     })
