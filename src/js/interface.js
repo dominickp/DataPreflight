@@ -17,15 +17,22 @@ if(argv.version){
     // Test file exists
     var input = argv.input;
     var output = argv.output;
-    var append = argv.append;
     var debug = argv.debug;
 
     argv = require('yargs')
-        .usage('Usage: $0 --input [path] --output [path] [--append] [--debug]')
+        .usage('Usage: $0 --input [path] --output [path] --format [format] [--debug]')
         .demand(['input'])
+        .option('format', {
+            alias: 'f',
+            describe: 'choose a preflight format',
+            default: 'html',
+            choices: ['html', 'xml', 'json']
+        })
         .argv;
 
-    var preflight = new PreflightFile(input, output, append, debug);
+    var format = argv.format;
+
+    var preflight = new PreflightFile(input, output, format, debug);
     preflight.init(function(){
 
     });
@@ -33,15 +40,22 @@ if(argv.version){
 } else if(argv.action === 'preflight-dir'){
 
     var path = argv.path;
-    var append = argv.append;
     var debug = argv.debug;
 
     argv = require('yargs')
         .usage('Usage: $0 --path [--debug]')
         .demand(['path'])
+        .option('format', {
+            alias: 'f',
+            describe: 'choose a preflight format',
+            default: 'html',
+            choices: ['html', 'xml', 'json']
+        })
         .argv;
 
-    var preflight = new PreflightDirectory(path, append, debug);
+    var format = argv.format;
+
+    var preflight = new PreflightDirectory(path, format, debug);
     preflight.init();
 
 } else {

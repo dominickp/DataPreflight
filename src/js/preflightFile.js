@@ -3,7 +3,7 @@ var jade = require('jade');
 var PreflightModel = require('./../model/preflightModel.js');
 
 
-var PreflightFile = function(input, output, append, debug){
+var PreflightFile = function(input, output, format, debug){
     var model = this;
 
     model.debug = false;
@@ -12,20 +12,20 @@ var PreflightFile = function(input, output, append, debug){
 
     model.preflightPath = output;
 
-    model.appendFlag = append;
+    model.format = format;
 
     model.debugFlag = debug;
 
     model.header = "Gabe's Data Preflight - Version 0.0.1";
 
-    model.purgeOldPreflight = function(append, callback){
+    model.purgeOldPreflight = function(callback){
 
         if(!model.preflightPath){
             return false;
         }
 
         fs.stat(model.preflightPath, function(err, stats){
-            if(stats && stats.isFile() && !append){
+            if(stats && stats.isFile()){
                 fs.unlink(model.preflightPath, function(){
                     callback();
                 });
@@ -76,7 +76,7 @@ var PreflightFile = function(input, output, append, debug){
                 }
 
                 // Delete old preflight
-                model.purgeOldPreflight(model.appendFlag, function(){
+                model.purgeOldPreflight(function(){
 
                     model.writeFile(model.preflightPath, html, function(){
                         // Allow for garbage cleanup

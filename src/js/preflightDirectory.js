@@ -2,14 +2,14 @@ var PreflightFile = require('./preflightFile');
 var glob = require("multi-glob").glob;
 var async = require("async");
 
-var PreflightDirectory = function(path, append, debug) {
+var PreflightDirectory = function(path, format, debug) {
     var model = this;
 
     model.path = path;
 
     model.files = [];
 
-    model.appendFlag = append;
+    model.format = format;
 
     model.debugFlag = debug;
 
@@ -32,7 +32,7 @@ var PreflightDirectory = function(path, append, debug) {
         model.getFiles(path, function(files, directory){
             var preflight;
             async.forEachOfSeries(files, function (file, key, callback) {
-                preflight = new PreflightFile( directory + file, null, model.appendFlag, model.debugFlag );
+                preflight = new PreflightFile( directory + file, null, model.format, model.debugFlag );
                 preflight.init(function(){
                     // Preflight written
                     preflight = null;
