@@ -13,10 +13,10 @@ data-preflight --version
 Use 'data-preflight' if you installed globally or 'node path/to/repo/src/js/interface.js' if you didn't.
 
 ### Preflight file
-The 'preflight' action produces a preflight report. If the '--output' parameter is left blank, it will create the preflight in the same directory as the input file with "_preflight.html" appended. You may also add the optional flag '--debug' to see debug messags while the preflight runs.
+The 'preflight' action produces a preflight report. If the '--output' parameter is left blank, it will create the preflight in the same directory as the input file with "_preflight.html" appended. You may also add the optional flag '--debug' to see debug messags while the preflight runs. Choose between html or xml with the --format option.
 
 ```
-$ data-preflight --action=preflight --input=/Users/dominickpeluso/Desktop/Sample_spreadsheet.csv --output=/Users/dominickpeluso/Desktop/my_preflight.txt
+$ data-preflight --action=preflight --input=/Users/dominickpeluso/Desktop/Sample_spreadsheet.csv --output=/Users/dominickpeluso/Desktop/my_preflight.txt --format=xml
 
 $ data-preflight --action=preflight --input=/Users/dominickpeluso/Desktop/AnotherSheet.csv --debug
 ```
@@ -25,7 +25,7 @@ $ data-preflight --action=preflight --input=/Users/dominickpeluso/Desktop/Anothe
 You may also recursively preflight an entire directory. Doing so will scan the directory and all sub-folders for spreadsheet files and preflight them all. You may also specify a '--debug' flag here.
 
 ```
-$ data-preflight --action=preflight-dir --path=/Users/dominickpeluso/Desktop/MySpreadsheets
+$ data-preflight --action=preflight-dir --path=/Users/dominickpeluso/Desktop/MySpreadsheets --format=html
 
 $ data-preflight --action=preflight-dir --path=/Users/dominickpeluso/Desktop/MySpreadsheets --debug
 ```

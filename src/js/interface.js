@@ -10,7 +10,7 @@ var PreflightDirectory = require('./preflightDirectory');
 
 if(argv.version){
 
-    console.log('v0.0.2');
+    console.log('v0.0.3');
 
 } else if(argv.action === 'preflight'){
 
@@ -26,7 +26,7 @@ if(argv.version){
             alias: 'f',
             describe: 'choose a preflight format',
             default: 'html',
-            choices: ['html', 'xml', 'json']
+            choices: ['html', 'xml']
         })
         .argv;
 
@@ -49,7 +49,7 @@ if(argv.version){
             alias: 'f',
             describe: 'choose a preflight format',
             default: 'html',
-            choices: ['html', 'xml', 'json']
+            choices: ['html', 'xml']
         })
         .argv;
 
