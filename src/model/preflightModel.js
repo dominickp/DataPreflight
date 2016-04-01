@@ -6,6 +6,8 @@ var _ = require('underscore');
 var object_hash = require('object-hash');
 var jschardet = require("jschardet");
 var fs = require('fs');
+var csv = require("fast-csv");
+
 
 var PreflightModel = function(filePath, debug, initCallback){
     var model = this;
@@ -71,6 +73,8 @@ var PreflightModel = function(filePath, debug, initCallback){
 
     model.preflightSheets = function(callback) {
 
+        //console.log(model.jWorkBook);
+
         // Complete sheet preflight in a series
         async.forEachOfSeries(model.jWorkBook, function (sheet, sheet_id, sheetCallback) {
 
@@ -98,6 +102,7 @@ var PreflightModel = function(filePath, debug, initCallback){
             // configs is now a map of JSON data
             //console.log(workbookJson);
             //console.log('done with all');
+
             callback();
         });
     };
@@ -208,22 +213,90 @@ var PreflightModel = function(filePath, debug, initCallback){
     //    console.log(header_row);
     //};
 
+    model.buildWorkbookAsCsv = function(callback){
+
+        // Start this nonsense
+        if(model.debugFlag){
+            console.log("------Empty object parsed. Attempting correction.");
+        }
+
+        var workbookAsCsv = J.utils.to_csv(model.readFileArray);
+        var newWorkbook = {};
+
+        if(workbookAsCsv){
+            // Each sheet in a series
+            async.forEachOfSeries(workbookAsCsv, function (sheet, sheet_id, sheetCallback) {
+                newWorkbook[sheet_id] = {};
+
+                csv
+                    .fromString(sheet, {headers: false})
+                    .on("data", function(data){
+
+                        var convertedObject = _.object(data, _.map(data, function(num){ return "NULL"; }));
+
+                        newWorkbook[sheet_id] = [convertedObject];
+                    })
+                    .on("end", function(){
+                        //console.log("done");
+                        sheetCallback();
+                    });
+
+            }, function (err) {
+                if (err){
+                    console.error(err.message);
+                }
+
+                if(model.debugFlag){
+                    console.log("------Correction attempted.");
+                }
+
+                callback(newWorkbook);
+
+            });
+        } else {
+            if(model.debugFlag){
+                console.log("------Uncorrectable. Cannot parse list.");
+                callback();
+            }
+        }
+    };
+
     model.init = function() {
 
         try {
             model.readFileArray = J.readFile(model.filename);
             model.jWorkBook = J.utils.to_json(model.readFileArray);
+
         } catch (e) {
             console.log("'"+model.basename+"' could not be parsed: '"+e+"'. Skipping...");
             initCallback(false);
             return false;
         }
 
-        model.getEncoding();
+        // Deal with files that are only a header row
+        function isEmptyObject(obj) {
+            return !Object.keys(obj).length;
+        }
+        if(isEmptyObject(model.jWorkBook) === true){
+            model.buildWorkbookAsCsv(function(newWorkbook){
+                model.jWorkBook = newWorkbook;
 
-        model.preflightSheets(function(){
-            initCallback(model);
-        });
+                model.getEncoding();
+
+                model.preflightSheets(function(){
+                    initCallback(model);
+                });
+            });
+
+        } else {
+            model.getEncoding();
+
+            model.preflightSheets(function(){
+                initCallback(model);
+            });
+        }
+
+
     }();
 
 };
