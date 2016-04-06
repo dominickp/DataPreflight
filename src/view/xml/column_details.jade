@@ -29,9 +29,11 @@ columns
                 if(column.attributes.types.non_ascii)
             column_hash=column.hash
             column_hash_image_base64=new Buffer(column.hash_image).toString('base64')
-            unique_values(limit=100)
+            - var preview_value_limit = 100
+            unique_values(limit=preview_value_limit)
                 each value, index in column.attributes.uniques
+                    if index < preview_value_limit
                         value=value
             unique_characters
                 each character, index in column.attributes.unique_characters
-                        character=character
+                    character(utf_code=character.charCodeAt(0))=character
