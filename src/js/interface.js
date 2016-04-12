@@ -48,6 +48,35 @@ if(argv.version){
     var preflight = new PreflightDirectory(argv.path, argv.format, argv.debug);
     preflight.init();
 
+} else if(argv.action === 'extract-proof'){
+
+    argv = require('yargs')
+        .usage('Usage: $0 --input [path] [--debug] [--fml] [--css [column]] [--random [num]]')
+        .demand(['input'])
+        .option('first-middle-last', {
+            alias: 'fml',
+            describe: 'first, middle, last',
+            default:false
+        })
+        .option('random', {
+            alias: 'r',
+            describe: 'random number of records',
+            default:false
+        })
+        .option('random', {
+            alias: 'r',
+            describe: 'random number of records',
+            default:false
+        })
+        .option('column-sample-space', {
+            alias: 'css',
+            describe: 'all possible outcomes for a column\'s value'
+        })
+        .argv;
+
+    console.log(argv.fml, argv.css);
+
+
 } else {
 
     console.log("Valid --action not specified.");
