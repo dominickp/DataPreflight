@@ -7,6 +7,7 @@ var argv = require('yargs')
     .argv;
 var PreflightFile = require('./preflightFile');
 var PreflightDirectory = require('./preflightDirectory');
+var ExtractProof = require('./ExtractProof');
 
 if(argv.version){
 
@@ -51,7 +52,7 @@ if(argv.version){
 } else if(argv.action === 'extract-proof'){
 
     argv = require('yargs')
-        .usage('Usage: $0 --input [path] [--debug] [--fml] [--css [column]] [--random [num]]')
+        .usage('Usage: $0 --input [path] --output [path] [--debug] [--fml] [--css [column]] [--random [num]]')
         .demand(['input'])
         .option('first-middle-last', {
             alias: 'fml',
@@ -75,6 +76,8 @@ if(argv.version){
         .argv;
 
     console.log(argv.fml, argv.css);
+
+    var proof = new ExtractProof(argv.input, argv.output)
 
 
 } else {
