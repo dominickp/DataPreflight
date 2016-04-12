@@ -14,10 +14,7 @@ if(argv.version){
 
 } else if(argv.action === 'preflight'){
 
-    // Test file exists
-    var input = argv.input;
-    var output = argv.output;
-    var debug = argv.debug;
+    // Test if file exists
 
     argv = require('yargs')
         .usage('Usage: $0 --input [path] --output [path] --format [format] [--debug]')
@@ -30,17 +27,12 @@ if(argv.version){
         })
         .argv;
 
-    var format = argv.format;
-
-    var preflight = new PreflightFile(input, output, format, debug);
+    var preflight = new PreflightFile(argv.input, argv.output, argv.format, argv.debug);
     preflight.init(function(){
 
     });
 
 } else if(argv.action === 'preflight-dir'){
-
-    var path = argv.path;
-    var debug = argv.debug;
 
     argv = require('yargs')
         .usage('Usage: $0 --path [--debug]')
@@ -53,9 +45,7 @@ if(argv.version){
         })
         .argv;
 
-    var format = argv.format;
-
-    var preflight = new PreflightDirectory(path, format, debug);
+    var preflight = new PreflightDirectory(argv.path, argv.format, argv.debug);
     preflight.init();
 
 } else {
