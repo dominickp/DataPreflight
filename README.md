@@ -5,7 +5,7 @@ A utility to preflight spreadsheets. Handles most types of spreadsheet formats (
 
 ## Installation
 ```
-npm install -g
+npm install data-preflight -g
 data-preflight --version
 ```
 
