@@ -94,3 +94,5 @@ Samples/*
 tmp/*
 
 dist/
+
+Switch/Packed/app.js
