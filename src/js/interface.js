@@ -11,7 +11,7 @@ var ExtractProof = require('./ExtractProof');
 
 if(argv.version){
 
-    console.log('v0.0.3');
+    console.log('v1.0.3');
 
 } else if(argv.action === 'preflight'){
 

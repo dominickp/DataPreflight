@@ -1,6 +1,6 @@
 {
-  "name": "vdp-buddy",
-  "version": "1.0.0",
+  "name": "data-preflight",
+  "version": "1.0.3",
   "description": "data preflight and automation utility",
   "main": "./src/js/interface.js",
   "scripts": {
