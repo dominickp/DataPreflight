@@ -35,6 +35,7 @@ var PreflightDirectory = function(path, format, debug) {
                 preflight = new PreflightFile( directory + file, null, model.format, model.debugFlag );
                 preflight.init(function(){
                     // Preflight written
+                    console.log("Preflight complete.");
                     preflight = null;
                     callback();
                 });

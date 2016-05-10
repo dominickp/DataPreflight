@@ -32,7 +32,8 @@ gulp.task('build', function(){
         .pipe(uglify())
         .on('error', gutil.log)
         .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest('./dist/'));
+        .pipe(gulp.dest('./dist/'))
+        .pipe(gulp.dest('./Switch/Packed/'));
 
     // "globby" replaces the normal "gulp.src" as Browserify
     // creates it's own readable stream.
@@ -50,7 +51,13 @@ gulp.task('build', function(){
                 global: undefined,
                 'Buffer.isBuffer': undefined,
                 Buffer: undefined
-            }
+            },
+            require: [
+                'xlsx',
+                'jszip',
+                'xlsjs',
+                'harb'
+            ]
 
         });
 
