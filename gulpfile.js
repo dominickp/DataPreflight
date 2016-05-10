@@ -32,8 +32,7 @@ gulp.task('build', function(){
         .pipe(uglify())
         .on('error', gutil.log)
         .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest('./dist/js/'))
-        .pipe(connect.reload());
+        .pipe(gulp.dest('./dist/'));
 
     // "globby" replaces the normal "gulp.src" as Browserify
     // creates it's own readable stream.
@@ -42,7 +41,17 @@ gulp.task('build', function(){
         var b = browserify({
             entries: entries,
             debug: true,
-            transform: [reactify]
+            transform: [reactify],
+            browserField: false,
+            commondir: false,
+            builtins: false,
+            insertGlobalVars : {
+                process: undefined,
+                global: undefined,
+                'Buffer.isBuffer': undefined,
+                Buffer: undefined
+            }
+
         });
 
         // pipe the Browserify stream into the stream we created earlier
