@@ -30,7 +30,7 @@ if(argv.version){
 
     var preflight = new PreflightFile(argv.input, argv.output, argv.format, argv.debug);
     preflight.init(function(){
-
+        console.log("Preflight complete.");
     });
 
 } else if(argv.action === 'preflight-dir'){
