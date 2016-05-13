@@ -97,5 +97,5 @@ dist/
 
 Switch/Packed/app.js
 Switch/Packed/app.js.map
-
-*.enfpack
+Switch/Packed/*.enfpack
+Switch/Packed/*.png
