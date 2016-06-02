@@ -26,8 +26,7 @@
     "multi-glob": "^1.0.1",
     "object-hash": "^1.1.2",
     "pug": "^2.0.0-alpha8",
-    "underscore": "^1.8.3",
-    "yargs": "^4.7.1"
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "browserify": "^13.0.1",
