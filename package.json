@@ -47,12 +47,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dominickp/DataPreflight.git"
+    "url": "git+https://github.com/shawmut/DataPreflight.git"
   },
   "bugs": {
-    "url": "https://github.com/dominickp/DataPreflight/issues"
+    "url": "https://github.com/shawmut/DataPreflight/issues"
   },
-  "homepage": "https://github.com/dominickp/DataPreflight#readme",
+  "homepage": "https://github.com/shawmut/DataPreflight#readme",
   "pre-commit": [
     "lint",
     "validate",
