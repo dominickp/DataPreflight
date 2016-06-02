@@ -1,7 +1,6 @@
 var fs = require('fs');
-var jade = require('pug');
-var PreflightModel = require('./model/preflightModel.js');
-
+var jade = require('jade');
+var PreflightModel = require('./model/preflightModel');
 
 var PreflightFile = function(input, output, format, debug){
     var model = this;
@@ -63,16 +62,18 @@ var PreflightFile = function(input, output, format, debug){
                 }
 
                 // Jade
-                var jadeOptions, fn;
+                var jadeOptions, template;
                 if(model.format === 'html'){
-                    jadeOptions = {doctype: 'html', pretty:true};
-                    fn = jade.compileFile(__dirname+'/view/html/preflight.pug', jadeOptions);
+                    //jadeOptions = {doctype: 'html', pretty:true};
+                    // fn = jade.compileFile(__dirname+'/view/html/preflight.jade', jadeOptions);
+                    template = require('./view/html/preflight.jade');
                 } else if(model.format === 'xml'){
-                    jadeOptions = {doctype: 'xml', pretty:true};
-                    fn = jade.compileFile(__dirname+'/view/xml/preflight.pug', jadeOptions);
+                    //jadeOptions = {doctype: 'xml', pretty:true};
+                    //fn = jade.compileFile(__dirname+'/view/xml/preflight.jade', jadeOptions);
+                    template = require('./view/xml/preflight.jade')
                 }
 
-                var compiledPreflight = fn({
+                var compiledPreflight = template({
                     workbook: pm
                 });
 

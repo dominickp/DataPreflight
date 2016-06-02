@@ -13,7 +13,7 @@ var globby = require('globby');
 var reactify = require('reactify');
 var collapse = require('bundle-collapser/plugin');
 
-// var uglify = require('gulp-uglify');
+var uglify = require('gulp-uglify');
 
 // *******************************************
 
@@ -29,9 +29,10 @@ gulp.task('build', function(){
         // the rest of the gulp task, as you would normally write it.
         // here we're copying from the Browserify + Uglify2 recipe.
         .pipe(buffer())
+        .pipe(uglify())
+
         .pipe(sourcemaps.init({loadMaps: true}))
         // Add gulp plugins to the pipeline here.
-        // .pipe(uglify())
         .on('error', gutil.log)
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./dist/'))
@@ -64,10 +65,15 @@ gulp.task('build', function(){
 
         });
 
+
         // pipe the Browserify stream into the stream we created earlier
         // this starts our gulp pipeline.
         b
             // .plugin(collapse)
+            .transform(require("jadeify"))
+            .exclude('yargs')
+            .exclude('amdefine')
+            .exclude('jade')
             .bundle()
             .pipe(bundledStream);
     }).catch(function(err) {
@@ -104,4 +110,4 @@ gulp.task('watch', function () {
 
 // *******************************************
 
-gulp.task('default', ['test', 'watch']);
+gulp.task('default', ['test', 'build', 'watch']);

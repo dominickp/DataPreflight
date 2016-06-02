@@ -1,0 +1,38 @@
+html
+    head
+        meta(charset="UTF-8")
+        link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', rel='stylesheet print')
+        link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css', rel='stylesheet')
+        link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', rel='stylesheet')
+        style
+            include styles.css
+
+    body
+        div(class='container')
+            div(class="col-md-12")
+                h1= workbook.basename
+
+                h2 Sheets &nbsp;
+                    span(class="badge")=workbook.sheets.length
+                    span(class="badge pull-right")
+                        =workbook.properties.encoding.encoding
+                        =" - " + workbook.properties.encoding.percent_confidence + "%"
+                div(class="panel-group")
+
+                    each sheet, sheet_index in workbook.sheets
+                        include sheet
+
+            div(class="col-md-12")
+                p Gabe's Data Preflight v0.03
+
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
+        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
+        script(type="text/javascript").
+            $(function () {
+                $('[data-toggle="tooltip"], .bind-tooltip').tooltip({
+                    container: 'body'
+                });
+                $('[data-toggle="collapse"]').click(function(){
+                    $(this).toggleClass("active");
+                })
+            });

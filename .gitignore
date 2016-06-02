@@ -93,8 +93,6 @@ Samples/*
 
 tmp/*
 
-dist/
-
 Switch/Packed/app.js
 Switch/Packed/app.js.map
 Switch/Packed/*.enfpack
