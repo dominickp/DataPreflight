@@ -1,7 +1,7 @@
 var fs = require('fs');
 var J = require('j');
 var async = require("async");
-var SheetModel = require('./../model/sheetModel');
+var SheetModel = require('./model/sheetModel');
 
 var ExtractProof = function(input, output, format, debug, initCallback){
     var model = this;

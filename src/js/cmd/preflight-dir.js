@@ -17,7 +17,7 @@ exports.builder = {
         describe: "Preflight report format."
     },
     debug: {
-        default: true,
+        default: false,
         choices: [true, false],
         alias: 'd',
         describe: "Enable debugging messages to console."

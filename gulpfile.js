@@ -39,7 +39,7 @@ gulp.task('build', function(){
 
     // "globby" replaces the normal "gulp.src" as Browserify
     // creates it's own readable stream.
-    globby(['./src/js/*.js']).then(function(entries) {
+    globby(['./src/js/cmd/interface.js']).then(function(entries) {
         // create the Browserify instance.
         var b = browserify({
             entries: entries,

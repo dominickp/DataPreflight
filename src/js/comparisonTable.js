@@ -1,5 +1,5 @@
 var _ = require('underscore');
-var ColumnModel = require('./../model/columnModel');
+var ColumnModel = require('./model/columnModel');
 var object_hash = require('object-hash');
 
 var ComparisonTable = function(sheet, column_headers, debug){
