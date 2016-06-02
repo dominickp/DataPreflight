@@ -19,8 +19,8 @@ div(class="panel panel-default")
                         img(alt=sheet.header.hash, src='data:image/svg+xml;base64,' + new Buffer(sheet.header.hash_image).toString('base64'))
 
         div(class="col-md-12")
-            include ./column_preview.jade
-            include ./column_details.jade
+            include ./column_preview.pug
+            include ./column_details.pug
 
         div(class="col-md-6")
             h4 Warnings

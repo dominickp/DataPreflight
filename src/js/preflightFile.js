@@ -1,5 +1,5 @@
 var fs = require('fs');
-var jade = require('jade');
+var jade = require('pug');
 var PreflightModel = require('./../model/preflightModel.js');
 
 
@@ -66,10 +66,10 @@ var PreflightFile = function(input, output, format, debug){
                 var jadeOptions, fn;
                 if(model.format === 'html'){
                     jadeOptions = {doctype: 'html', pretty:true};
-                    fn = jade.compileFile(__dirname+'/../view/html/preflight.jade', jadeOptions);
+                    fn = jade.compileFile(__dirname+'/../view/html/preflight.pug', jadeOptions);
                 } else if(model.format === 'xml'){
                     jadeOptions = {doctype: 'xml', pretty:true};
-                    fn = jade.compileFile(__dirname+'/../view/xml/preflight.jade', jadeOptions);
+                    fn = jade.compileFile(__dirname+'/../view/xml/preflight.pug', jadeOptions);
                 }
 
                 var compiledPreflight = fn({
