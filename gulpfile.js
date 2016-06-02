@@ -14,6 +14,7 @@ var reactify = require('reactify');
 var collapse = require('bundle-collapser/plugin');
 
 var uglify = require('gulp-uglify');
+var header = require('gulp-header');
 
 // *******************************************
 
@@ -26,10 +27,11 @@ gulp.task('build', function(){
     // turns the output bundle stream into a stream containing
     // the normal attributes gulp plugins expect.
         .pipe(source('app.js'))
+        .pipe(header('#!/usr/bin/env node \n\n'))
         // the rest of the gulp task, as you would normally write it.
         // here we're copying from the Browserify + Uglify2 recipe.
         .pipe(buffer())
-        .pipe(uglify())
+        // .pipe(uglify())
 
         .pipe(sourcemaps.init({loadMaps: true}))
         // Add gulp plugins to the pipeline here.

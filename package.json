@@ -2,7 +2,7 @@
   "name": "data-preflight",
   "version": "1.2.1",
   "description": "data preflight and automation utility",
-  "main": "./src/js/cmd/interface.js",
+  "main": "./dist/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "jshint .",
@@ -11,9 +11,10 @@
   "author": "Dominick Peluso",
   "license": "ISC",
   "bin": {
-    "data-preflight": "./src/js/cmd/interface.js"
+    "data-preflight": "./dist/app.js"
   },
   "dependencies": {
+    "amdefine": "^1.0.0",
     "async": "^1.5.2",
     "fast-csv": "^1.1.0",
     "glob": "^6.0.4",
@@ -41,6 +42,7 @@
     "browserify": "^13.0.1",
     "bundle-collapser": "^1.2.1",
     "globby": "^4.0.0",
+    "gulp-header": "^1.8.2",
     "gulp-jasmine": "^2.2.1",
     "gulp-jshint": "^2.0.0",
     "gulp-sourcemaps": "^1.6.0",
