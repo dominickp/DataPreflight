@@ -2,7 +2,7 @@
   "name": "data-preflight",
   "version": "1.0.3",
   "description": "data preflight and automation utility",
-  "main": "./src/js/interface.js",
+  "main": "./src/js/cmd/interface.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "jshint .",
@@ -11,7 +11,7 @@
   "author": "Dominick Peluso",
   "license": "ISC",
   "bin": {
-    "data-preflight": "./src/js/interface.js"
+    "data-preflight": "./src/js/cmd/interface.js"
   },
   "dependencies": {
     "async": "^1.5.2",
