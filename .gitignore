@@ -95,8 +95,10 @@ tmp/*
 
 Switch/Packed/app.js
 Switch/Packed/app.js.map
-Switch/Packed/*.enfpack
+*.enfpack
 Switch/Packed/*.png
 Switch/Packed/*.pdf
 Switch/Packed/*.xlsx
 Switch/Packed/*.zip
+
+dist/*

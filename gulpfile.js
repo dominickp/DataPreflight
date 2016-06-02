@@ -52,6 +52,7 @@ gulp.task('build', function(){
             commondir: false,
             builtins: false,
             fullPaths: false,
+            // bundleExternal: false,
             insertGlobalVars : {
                 process: undefined,
                 global: undefined,
@@ -62,7 +63,8 @@ gulp.task('build', function(){
                 'xlsx',
                 'jszip',
                 'xlsjs',
-                'harb'
+                'harb',
+                'yargs'
             ]
 
         });
@@ -73,9 +75,10 @@ gulp.task('build', function(){
         b
             // .plugin(collapse)
             .transform(require("jadeify"))
-            .exclude('yargs')
-            .exclude('amdefine')
-            .exclude('jade')
+            // .exclude('yargs')
+            // .exclude('amdefine')
+            // .exclude('jade')
+            // .external('./node_modules/yargs/yargs.js')
             .bundle()
             .pipe(bundledStream);
     }).catch(function(err) {

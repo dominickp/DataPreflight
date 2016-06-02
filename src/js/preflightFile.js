@@ -65,12 +65,12 @@ var PreflightFile = function(input, output, format, debug){
                 var jadeOptions, template;
                 if(model.format === 'html'){
                     //jadeOptions = {doctype: 'html', pretty:true};
-                    // fn = jade.compileFile(__dirname+'/view/html/preflight.jade', jadeOptions);
-                    template = require('./view/html/preflight.jade');
+                    template = jade.compileFile(__dirname+'/view/html/preflight.jade', jadeOptions);
+                    // template = require('./view/html/preflight.jade');
                 } else if(model.format === 'xml'){
                     //jadeOptions = {doctype: 'xml', pretty:true};
-                    //fn = jade.compileFile(__dirname+'/view/xml/preflight.jade', jadeOptions);
-                    template = require('./view/xml/preflight.jade')
+                    template = jade.compileFile(__dirname+'/view/xml/preflight.jade', jadeOptions);
+                    // template = require('./view/xml/preflight.jade')
                 }
 
                 var compiledPreflight = template({
