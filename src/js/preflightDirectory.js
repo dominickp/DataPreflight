@@ -23,7 +23,7 @@ var PreflightDirectory = function(path, format, debug) {
         // Search for files to preflight
         glob([
             "**/!(*preflight).+(txt|csv|xlsx|xls|ods)"
-        ], {cwd:directory}, function (er, files) {
+        ], {cwd:directory, nocase:true}, function (er, files) {
             callback(files, directory);
         });
     };
