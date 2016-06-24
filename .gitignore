@@ -102,3 +102,6 @@ Switch/Packed/*.xlsx
 Switch/Packed/*.zip
 
 dist/*
+
+node
+node.exe
