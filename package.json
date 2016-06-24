@@ -1,6 +1,6 @@
 {
   "name": "data-preflight",
-  "version": "1.2.1",
+  "version": "1.4.0",
   "description": "data preflight and automation utility",
   "main": "./dist/app.js",
   "scripts": {
