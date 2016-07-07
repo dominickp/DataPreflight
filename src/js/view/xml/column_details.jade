@@ -27,6 +27,9 @@ columns
                 if(column.attributes.types.punctuation)
                     punctuation=true
                 if(column.attributes.types.non_ascii)
+                    non_ascii=true
+                if(column.attributes.types.non_printable)
+                    non_printable=true
             column_hash=column.hash
             column_hash_image_base64=new Buffer(column.hash_image).toString('base64')
             - var preview_value_limit = 100
