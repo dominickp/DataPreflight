@@ -96,7 +96,7 @@ var ComparisonTable = function(sheet, column_headers, debug){
 
         uniqueCharacters.forEach(function(char){
             // Test numeric
-            if(!isNaN(char)){
+            if(!isNaN(parseFloat(char)) && isFinite(char)){
                 types_found.numeric = true;
             } else {
                 // Test case letters
