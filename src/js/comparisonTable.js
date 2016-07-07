@@ -91,7 +91,8 @@ var ComparisonTable = function(sheet, column_headers, debug){
             alpha_lower: false,
             alpha_upper: false,
             non_ascii: false,
-            punctuation: false
+            non_printable: false,
+            control: false
         };
 
         uniqueCharacters.forEach(function(char){
@@ -113,10 +114,16 @@ var ComparisonTable = function(sheet, column_headers, debug){
                 types_found.non_ascii = true;
             }
 
+            // Test non-printable
+            if(/[^\x20-\x7E]+/g.test(char) === true) {
+                types_found.non_printable = true;
+            }
+
             // Test punctuation
             if( ( char.charCodeAt(0) > 31 ) && (char.charCodeAt(0) < 48) ){
                 types_found.punctuation = true;
             }
+
         });
 
         // Garbage collection

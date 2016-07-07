@@ -55,6 +55,10 @@ div(id="#column-details")
                             span(class="label label-info", data-toggle="tooltip", title="Non-ASCII")
                                i(class="fa fa-subscript")
                             =" "
+                        if(column.attributes.types.non_printable)
+                            span(class="label label-info", data-toggle="tooltip", title="Non-printable")
+                                i(class="fa fa-eye-slash")
+                            =" "
                     div(class="col-xs-1 column-hash")
                         img(
                                 data-toggle="tooltip",
