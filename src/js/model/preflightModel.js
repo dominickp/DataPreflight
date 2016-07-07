@@ -143,9 +143,10 @@ var PreflightModel = function(filePath, debug, initCallback){
             "non_ascii_characters": []
         };
 
-        var row_num = 0;
+        var row_num;
 
         sheet.forEach(function(row){
+            row_num = 2;
             _.each(row, function(value, column){
                 // Check for non-ascii characters
                 if(/^[ -~]+$/.test(value) === false) {
