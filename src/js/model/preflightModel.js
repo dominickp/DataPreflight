@@ -145,8 +145,9 @@ var PreflightModel = function(filePath, debug, initCallback){
 
         var row_num;
 
+        row_num = 2;
+
         sheet.forEach(function(row){
-            row_num = 2;
             _.each(row, function(value, column){
                 // Check for non-ascii characters
                 if(/^[ -~]+$/.test(value) === false) {
@@ -159,8 +160,9 @@ var PreflightModel = function(filePath, debug, initCallback){
                         row: row_num
                     });
                 }
-                row_num++;
+
             });
+            row_num++;
         });
         return warnings;
     };
