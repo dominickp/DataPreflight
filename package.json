@@ -1,6 +1,6 @@
 {
   "name": "data-preflight",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "description": "data preflight and automation utility",
   "main": "./src/js/cmd/interface.js",
   "scripts": {
